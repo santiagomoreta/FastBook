@@ -7,7 +7,7 @@ Development Project
   
 Members of proyect:
 
-  - Andres Culqui.
+  - Andrés Culqui.
   - Carlos Maldonado.
   - Santiago Moreta.
 
