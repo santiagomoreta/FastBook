@@ -1,6 +1,8 @@
 FASTBOOK.com
 ============
 
+![FastBook](logo.png "FastBook")
+
 Development Project  
 =========  
   
