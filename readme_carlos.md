@@ -1,3 +1,5 @@
+![FastBook](logo.png "FastBook")
+
 FastBook
 ========
 
@@ -13,3 +15,8 @@ Members of proyect:
 - Andrés Culqui.
 - Carlos Maldonado.
 - Santiago Moreta.
+
+License
+----
+
+Free Software
