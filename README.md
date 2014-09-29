@@ -28,7 +28,7 @@ This text you see here is *actually* written in Markdown! To get a feel for Mark
 Version
 ----
 
-2.0
+1.0 BETA
 
 Tech
 -----------
