@@ -44,16 +44,18 @@ function Book(title,author,edition,isbn,category, status,condition,description){
   };
   
  
-   this.setTitle = function(title) {
-    return this.title;
+ 
+ 
+  this.setTitle = function(title) {
+    this.title = title;
   };
   
-    this.getAuthor = function() {
-    return this.author;
+    this.setAuthor = function(author) {
+    this.author = author;
   };
   
-  this.getEdition = function() {
-    return this.edition;
+  this.setEdition = function(edition) {
+    this.edition = edition;
   };
   
   this.setIsbn = function(isbn){
@@ -61,19 +63,19 @@ function Book(title,author,edition,isbn,category, status,condition,description){
   };
   
   this.setCategory = function(category) {
-    return this.category;
+    this.category = category;
   };
   
-  this.getStatus = function() {
-    return this.status;
+  this.setStatus = function(status) {
+    this.status = status;
   };
   
-  this.getCondition = function(){
-    return this.condition;
+  this.setCondition = function(condition){
+    this.condition = condition;
   };
   
-  this.getDescription = function(){
-    return this.descrption;
+  this.setDescription = function(description){
+    this.description = description;
   };
   
   
