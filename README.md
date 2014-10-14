@@ -1,8 +1,5 @@
 ![FastBook](logo.png "FastBook")
 
-FASTBOOK.com
-============
-
 Development Project  
 =========  
   
@@ -14,21 +11,32 @@ Members of proyect:
   - Santiago Moreta.
 
 
-This proyect is 
-> The overriding design goal for Markdown's
-> formatting syntax is to make it as readable 
-> as possible. The idea is that a
-> Markdown-formatted document should be
-> publishable as-is, as plain text, without
-> looking like it's been marked up with tags
-> or formatting instructions.
+Our Project
+--------- 
 
-This text you see here is *actually* written in Markdown! To get a feel for Markdown's syntax, type some text into the left window and watch the results in the right.  
+> Fast-Book.com is a web application designed to facilitate the exchange of textbooks, providing a service increasingly > used as the second hand market, in our case, textbooks, academic, literary, poetic ones and so on.
+
+> What we want with our application is to provide a useful and free service to the community, which is characterized by its simplicity, speed and ease of use, so that Fast-Book automates all typical processes which occur in program exchanges, with the objective o everything being done quickly and easily.
+
+The Idea
+--------
+
+> Fast-Book.com is a website in which anyone can give a new life to your used books , the ones you no longer want to keep, selling them to recover some of your initial investment, or simply giving them away as you interchange them with somebody else.
+
+> At the same time, users can search an extensive catalog and buy or exchange the used books they need.
+
+The Goal
+--------
+
+> In Fast-Book.com we aim to extend the maximum possible use of our service in the market of second-hand books, throughout the entire country in order to ensure that everyone has access to textbooks you need or you are looking for. That’s why we can guarantee a good price for both the buyer and the seller.
+
+> In addition to an exchange platform of textbooks, Fast-Book.com allows sending notifications and communicating them  via email to users to keep them informed about their future purchases, as well as new books are added to our application.
+
 
 Version
 ----
 
-2.0
+1.0
 
 Tech
 -----------
