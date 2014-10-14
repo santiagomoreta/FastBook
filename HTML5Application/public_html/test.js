@@ -7,6 +7,8 @@ describe('book tests', function () {
       var book=bookModel.create();
      book.title="pepe";
      book.isbn=123456;
+     book.condition="regalar";
+     
       
       it(' should  getCategory', function() {
        assert.equal(book.getCategory(), "general");
@@ -18,6 +20,14 @@ describe('book tests', function () {
       });
       it(' should  isbn', function() {
        assert.equal(book.getIsbn(), 123456);
+   
+      });
+       it(' should  contition', function() {
+       assert.equal(book.getCondition(), "regalar");
+   
+      });
+      it(' should  compareContition', function() {
+       assert.equal(book.compareCondition(), 0);
    
       });
      
