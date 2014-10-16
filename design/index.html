@@ -1,0 +1,317 @@
+<!doctype html>
+<html>
+
+<head>
+
+  <title>FastBook.com</title>
+  <link rel="shortcut icon" href="favicon.ico" />
+
+  <meta name="viewport" 
+  content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
+
+  <script src="../components/platform/platform.js">
+  </script>
+
+  <link rel="import" href="../components/font-roboto/roboto.html">
+  <link rel="import" href="../components/core-scaffold/core-scaffold.html">
+  <link rel="import" href="../components/core-header-panel/core-header-panel.html">
+  <link rel="import" href="../components/core-menu/core-menu.html">
+  <link rel="import" href="../components/core-item/core-item.html">
+  <link rel="import" href="../components/core-icon-button/core-icon-button.html">
+  <link rel="import" href="../components/core-toolbar/core-toolbar.html">
+  <link rel="import" href="../components/core-menu/core-submenu.html">
+  <link rel="import" href="../components/core-field/core-field.html">
+  <link rel="import" href="../components/core-icon/core-icon.html">
+  <link rel="import" href="../components/core-input/core-input.html">
+  <link rel="import" href="../components/core-icons/core-icons.html">
+  <link rel="import" href="../components/paper-button/paper-button.html">
+ <link rel="import" href="../components/register-login/register-login.html">
+ <link rel="import" href="../components/map-spain/map-spain.html">
+
+
+
+  <style>
+  html,body {
+    height: 100%;
+    margin: 0;
+    background-color: #E5E5E5;
+    
+  }
+
+  #core_scaffold {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        bottom: 0px;
+        left: 0px;
+        width: 100%;
+        height: 100%;
+
+      }
+      #core_header_panel {
+        background-color: rgb(255, 255, 255);
+       
+
+      }
+
+      #core_toolbar {
+        position:relative;
+        color: rgb(255, 255, 255);
+        background-color: rgb(79, 125, 201);
+      }
+      #core_menu {
+        font-size: 16px;
+        left: 42px;
+        top: 432px;
+        position: absolute;
+      }
+      #core_field {
+        position: relative;
+        opacity: 1;
+        border: 3px solid rgb(79, 125, 201);
+        margin-top:5px;
+      }
+      #div {
+        width: 20px;
+        font-size: 28px;
+        font-family: 'RobotoDraft', sans-serif;
+      }
+      #div1 {
+        height: 100%;
+        width: 100%;
+        overflow: hidden;
+        left: 1670px;
+        top: 650px;
+      }
+      #core_menu1 {
+        font-size: 16px;
+        left: 12px;
+        top: 62px;
+        position: absolute;
+      }
+      #core_menu2 {
+        font-size: 16px;
+        left: 0px;
+        top: 0px;
+        position: absolute;
+      }
+      #core_submenu {
+        position: relative;
+      }
+      paper-button.colored {
+        color: rgb(66, 133, 244);
+      }
+      paper-button[raised].colored {
+        color: rgb(255, 255, 255);
+        background: rgb(66, 133, 244);
+      }
+      paper-button.custom > core-icon {
+        margin-right: 4px;
+      }
+      paper-button_2.custom > core-icon {
+        margin-left: 50%;
+      }
+      paper-button.hover:hover {
+        background: rgb(238, 238, 238);
+      }
+      paper-button.blue-ripple::shadow #ripple {
+        color: rgb(66, 133, 244);
+      }
+      #paper_button {
+        overflow: visible;
+      }
+      select.select {
+        position: relative;
+        opacity: 1;
+        border: 3px solid rgb(79, 125, 201);
+        width: 80%;
+        height: 50px;
+        margin-top:5px;
+        margin-left: 10%;
+        margin-right: 10%;
+         border-radius: 7px;
+        -webkit-box-shadow: 6px 6px 13px -1px rgba(18,27,199,0.84);
+        -moz-box-shadow: 6px 6px 13px -1px rgba(18,27,199,0.84);
+        box-shadow: 6px 6px 13px -1px rgba(18,27,199,0.84);
+
+              }
+      #buscar {
+        position: relative;
+        opacity: 1;
+        border: 3px solid rgb(79, 125, 201);
+        width: 100%;
+        height: 40px;
+        margin-left: 10%;
+        margin-right: 10%;
+        margin-top:2%;
+        border-radius: 7px;
+        -webkit-box-shadow: 6px 6px 13px -1px rgba(18,27,199,0.84);
+        -moz-box-shadow: 6px 6px 13px -1px rgba(18,27,199,0.84);
+        box-shadow: 6px 6px 13px -1px rgba(18,27,199,0.84);
+      }
+
+      #core_icon1 {
+        left: 1310px;
+        top: 370px;
+        position: absolute;
+      }
+      #paper_button_2 {
+        overflow: visible;
+        position: relative;
+        left: 35%;
+        border-top-left-radius: 7px;
+        border-top-right-radius: 7px;
+        border-bottom-right-radius: 7px;
+        border-bottom-left-radius: 7px;
+        margin-top: 5px;
+      }
+      #section {
+        box-sizing: border-box;
+        width: 420px;
+        height: 582px;
+        left: 1190px;
+        top: 340px;
+      }
+      #core_selector {
+        left: 1170px;
+        top: 400px;
+      }
+      #register-login{
+        position: absolute;
+
+
+      }
+      #map-spain{
+        position: absolute;
+        width: 100%;
+
+        margin-left: 30%;
+        margin-right: 10%;
+        margin-top:2%;
+      
+      }
+   
+  </style>
+
+</head>
+
+<body unresolved >
+ <core-scaffold id="core_scaffold">
+      <core-header-panel mode="seamed" id="core_header_panel" navigation flex>
+        <core-toolbar id="core_toolbar">
+          <div id="div" center tool horizontal layout center-justified wrap one flex>Menu</div>
+          </core-toolbar>
+        <core-menu  selectedindex="0" id="core_menu2">
+          <core-submenu id="core_submenu" label="Usuario" icon="account-circle">
+            <core-item id="core_item" label="Register/Login" layout center horizontal icon="add" onclick="shadow()"></core-item>
+            <core-item id="core_item" label="Mis libros" layout center horizontal icon="book"></core-item>
+            <core-item id="core_item1" label="Ajustes" layout center horizontal icon="settings"></core-item>
+            <core-item id="core_item1" label="Log out" layout center horizontal icon="close"></core-item>
+          </core-submenu>
+          <core-submenu id="core_submenu1" label="Libros" icon="book">
+            <core-item id="core_item2" icon="search" label="Buscar" layout center horizontal onclick="search()"></core-item>
+            <core-item id="core_item3" icon="shopping-cart" label="Comprar" layout center horizontal></core-item>
+            <core-item id="core_item4" icon="loyalty" label="Vender" layout center horizontal></core-item>
+            <core-item id="core_item4" icon="cached" label="Cambiar" layout center horizontal></core-item>
+            <core-item id="core_item4" icon="wallet-giftcard" label="Regalar" layout center horizontal></core-item>
+          </core-submenu>
+        </core-menu>
+        
+      </core-header-panel>
+      <div id="div" center tool horizontal layout center-justified wrap one flex onclick="index()">FastBook.com</div>
+        <register-login id="register-login" hidden ></register-login>
+         
+         <core-field center horizontal layout  id="core-field"theme="core-light-theme" >
+            <input id="buscar" placeholder="Buscar por palabra clave..." flex horizontal layout center >
+            
+        </core-field>
+        <map-spain id="map-spain" center horizontal layout flex></map-spain>
+       <span id="span" hidden>
+
+      <select class="select" >
+        <option class="sel" selected>
+              
+          Elegir categoria 
+       
+        </option>
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="vw">VW</option>
+        <option value="audi">Audi</option>
+      </select>
+      <select class="select">
+        <option class="sel" selected>
+              
+          Elegir categoria 
+       
+        </option>
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="vw">VW</option>
+        <option value="audi">Audi</option>
+      </select>
+      <select class="select">
+        <option class="sel" selected>
+              
+          Elegir categoria 
+       
+        </option>
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="vw">VW</option>
+        <option value="audi">Audi</option>
+      </select>
+      <select class="select">
+        <option class="sel" selected>
+              
+          Elegir categoria 
+       
+        </option>
+        <option value="volvo">Volvo</option>
+        <option value="saab">Saab</option>
+        <option value="vw">VW</option>
+        <option value="audi">Audi</option>
+      </select>
+      <paper-button label="Buscar" raised id="paper_button_2" class="colored"></paper-button>
+      </span>
+    </core-scaffold>
+  <script>
+     var s=document.querySelector("register-login");
+     var cf=document.querySelector("core-field");
+      var dv=document.querySelector("map-spain");
+      var span=document.querySelector("span");
+    function shadow(){
+     
+
+      clean();
+     s.hidden=!s.hidden;
+
+    }
+    function clean(){
+      
+      cf.hidden=true;
+     dv.hidden=true;
+     s.hidden=true;
+     span.hidden=true;
+
+
+    }
+    function search(){
+      clean();
+
+      cf.hidden=!cf.hidden;
+      span.hidden=!span.hidden;
+
+
+
+    }
+    function index(){
+      clean();
+      dv.hidden=false;
+      cf.hidden=false;
+    }
+
+  </script>
+</body>
+
+</html>
