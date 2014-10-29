@@ -5,12 +5,19 @@
 
   <title>FastBook.com</title>
   <link rel="shortcut icon" href="favicon.ico" />
+  <link rel="stylesheet" type="text/css" href="http://fonts.googleapis.com/css?family=Tangerine">
+  <link href="//fonts.googleapis.com/css?family=Lobster:400" rel="stylesheet" type="text/css">
+
+
+
+  
 
   <meta name="viewport" 
   content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
 
   <script src="../bower_components/platform/platform.js">
   </script>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
   <link rel="import" href="../bower_components/font-roboto/roboto.html">
   <link rel="import" href="../bower_components/core-scaffold/core-scaffold.html">
@@ -27,17 +34,52 @@
   <link rel="import" href="../bower_components/paper-button/paper-button.html">
  <link rel="import" href="./components/register-login/register-login.html">
  <link rel="import" href="./components/map-spain/map-spain.html">
+ <link rel="import" href="./components/index-libros/index-libros.html">
 
 
 
-  <style>
+ <style>
   html,body {
     height: 100%;
     margin: 0;
     background-color: #E5E5E5;
+    font-family: 'Lobster';
     
   }
+  core-submenu::shadow #submenu {
+      margin-left: 25px;
+    }
+    #index-libros{
+      position: absolute;
+      margin-top: 10%;
+      margin-left: 0.1%;
+      
+    }
+    #cont{
+      border: solid 3px;
+        border-radius: 5px;
+      background-color: #CCC362;
+      position: absolute;
+      margin-top: 11%;
+      margin-left: 15%;
+      width: 70%;
 
+    }
+    #cont2{
+      border: solid 3px;
+        border-radius: 5px;
+      background-color: #CCC362;
+      position: absolute;
+      margin-top: 11%;
+      margin-left: 15%;
+      width: 70%;
+
+    }
+     #res{
+          margin-left: 5%;
+          margin-top: 5%;
+          font-size: 30px;
+        }
   #core_scaffold {
         position: absolute;
         top: 0px;
@@ -57,7 +99,8 @@
       #core_toolbar {
         position:relative;
         color: rgb(255, 255, 255);
-        background-color: rgb(79, 125, 201);
+        background-color: white;
+        color:black;
       }
       #core_menu {
         font-size: 16px;
@@ -71,10 +114,13 @@
         border: 3px solid rgb(79, 125, 201);
         margin-top:5px;
       }
+
       #div {
+
         width: 20px;
         font-size: 28px;
-        font-family: 'RobotoDraft', sans-serif;
+        font-family: 'Lobster';
+
       }
       #div1 {
         height: 100%;
@@ -88,66 +134,51 @@
         left: 12px;
         top: 62px;
         position: absolute;
+        
       }
       #core_menu2 {
         font-size: 16px;
         left: 0px;
         top: 0px;
         position: absolute;
+        
+     
       }
       #core_submenu {
         position: relative;
+      
+        
       }
-      paper-button.colored {
-        color: rgb(66, 133, 244);
-      }
-      paper-button[raised].colored {
-        color: rgb(255, 255, 255);
-        background: rgb(66, 133, 244);
-      }
-      paper-button.custom > core-icon {
-        margin-right: 4px;
-      }
-      paper-button_2.custom > core-icon {
-        margin-left: 50%;
-      }
-      paper-button.hover:hover {
-        background: rgb(238, 238, 238);
-      }
-      paper-button.blue-ripple::shadow #ripple {
-        color: rgb(66, 133, 244);
-      }
-      #paper_button {
-        overflow: visible;
-      }
+     
       select.select {
         position: relative;
         opacity: 1;
-        border: 3px solid rgb(79, 125, 201);
+        border: 3px solid rgba(63, 64, 63, 0.8);
         width: 80%;
         height: 50px;
         margin-top:5px;
         margin-left: 10%;
         margin-right: 10%;
          border-radius: 7px;
-        -webkit-box-shadow: 6px 6px 13px -1px rgba(18,27,199,0.84);
-        -moz-box-shadow: 6px 6px 13px -1px rgba(18,27,199,0.84);
-        box-shadow: 6px 6px 13px -1px rgba(18,27,199,0.84);
+        -webkit-box-shadow: 6px 2px 5px 0px rgba(224,217,224,0.88);
+        -moz-box-shadow: 6px 2px 5px 0px rgba(224,217,224,0.88);
+        box-shadow: 6px 2px 5px 0px rgba(224,217,224,0.88)
 
               }
       #buscar {
         position: relative;
         opacity: 1;
-        border: 3px solid rgb(79, 125, 201);
+        border: 3px solid rgba(63, 64, 63, 0.8);
         width: 100%;
         height: 40px;
         margin-left: 10%;
         margin-right: 10%;
         margin-top:2%;
         border-radius: 7px;
-        -webkit-box-shadow: 6px 6px 13px -1px rgba(18,27,199,0.84);
-        -moz-box-shadow: 6px 6px 13px -1px rgba(18,27,199,0.84);
-        box-shadow: 6px 6px 13px -1px rgba(18,27,199,0.84);
+        -webkit-box-shadow: 6px 2px 5px 0px rgba(224,217,224,0.88);
+        -moz-box-shadow: 6px 2px 5px 0px rgba(224,217,224,0.88);
+        box-shadow: 6px 2px 5px 0px rgba(224,217,224,0.88);
+        background-color:white;
       }
 
       #core_icon1 {
@@ -178,6 +209,7 @@
       }
       #register-login{
         position: absolute;
+      margin-top: 5%;
 
 
       }
@@ -190,6 +222,12 @@
         margin-top:2%;
       
       }
+      #boton_buscar{
+        position: absolute;
+        width: 80%;
+        margin-left: 10%;
+      }
+   
    
   </style>
 
@@ -219,19 +257,70 @@
         
       </core-header-panel>
       <div id="div" center tool horizontal layout center-justified wrap one flex onclick="index()">FastBook.com</div>
-        <register-login id="register-login" hidden ></register-login>
+        <register-login id="register-login" hidden flex></register-login>
          
-         <core-field center horizontal layout  id="core-field"theme="core-light-theme" >
-            <input id="buscar" placeholder="Buscar por palabra clave..." flex horizontal layout center >
-            
+         <core-field center horizontal layout  id="core-field"theme="core-light-theme" icon="search" >
+            <input id="buscar" placeholder="  Buscar por palabra clave, titulo, autor, isbn ..." flex horizontal layout center>
         </core-field>
-        <map-spain id="map-spain" center horizontal layout flex></map-spain>
+        <paper-button label="Buscar" raised id="boton_buscar" class="colored" onclick="searchIndex()"></paper-button>
+                    
+
+                          
+
+
+
+        <!--<map-spain id="map-spain" center horizontal layout flex hidden></map-spain>-->
+        <div id="cont" >
+            <div id="res">Resultados</div>
+        </div>
+        <!--<paper-button label="Buscar" raised class="colored" onclick="aux()"></paper-button>-->
+
+
+
+
+
+
+        <div id="cont2">
+             <div style="font-size:50px;" id="titulo1" ></div><br>
+      <br>
+      <img style="float:left; margin-right:4%"id="imagen" src=""></img>
+      <br> 
+      <div id="autor" style="font-size:30px;"></div><br>
+      <div id="editorial" style="font-size:25px;"></div><br>
+      <div id="anio" style="font-size:25px;"></div><br>
+      <div id="otro" style="font-size:25px;"></div><br>
+      <div id="descripcion" style="font-size:20px;"></div>
+      <div id="cont" style="font-size:12px;">
+      </div>
+      <paper-button label="Regresar" raised id="boton_regresa" class="colored" onclick="regresa()"></paper-button>
+       </div> 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        <index-libros id="index-libros" flex></index-libros>
        <span id="span" hidden>
 
       <select class="select" >
         <option class="sel" selected>
               
-          Elegir categoria 
+          Buscar por Titulo 
        
         </option>
         <option value="volvo">Volvo</option>
@@ -242,7 +331,7 @@
       <select class="select">
         <option class="sel" selected>
               
-          Elegir categoria 
+          Buscar por Autor 
        
         </option>
         <option value="volvo">Volvo</option>
@@ -253,7 +342,7 @@
       <select class="select">
         <option class="sel" selected>
               
-          Elegir categoria 
+          Buscar por Categoria
        
         </option>
         <option value="volvo">Volvo</option>
@@ -264,7 +353,7 @@
       <select class="select">
         <option class="sel" selected>
               
-          Elegir categoria 
+          Buscar por ISBN
        
         </option>
         <option value="volvo">Volvo</option>
@@ -276,24 +365,41 @@
       </span>
     </core-scaffold>
   <script>
+    
      var s=document.querySelector("register-login");
      var cf=document.querySelector("core-field");
-      var dv=document.querySelector("map-spain");
+      var dv=document.querySelector("index-libros");
       var span=document.querySelector("span");
+      var cont = document.getElementById('cont');
+      var cont2 = document.getElementById('cont2');
+      var bb=document.getElementById('boton_buscar');
+      cont.hidden=true;
+      cont2.hidden=true;
+      //alert(cont.hidden);
+
+        
+      function resFalse(){
+        
+        cont.hidden=false;
+
+      }
+
     function shadow(){
      
 
       clean();
      s.hidden=!s.hidden;
+     bb.hidden=true;
+
 
     }
     function clean(){
-      
+      cont.hidden=true;
       cf.hidden=true;
      dv.hidden=true;
      s.hidden=true;
      span.hidden=true;
-
+     cont2.hidden=true;
 
     }
     function search(){
@@ -304,13 +410,118 @@
 
 
 
+
     }
     function index(){
       clean();
       dv.hidden=false;
       cf.hidden=false;
+      bb.hidden=false;
+      cont.hidden=true;
+      resFalse();
+      cont2.hidden=true;
+      cont.hidden=true;
     }
 
+    function searchIndex(){
+      clean();
+      bb.hidden=false;
+      cf.hidden=false;
+      resFalse();
+
+
+      var words=document.getElementById('buscar').value;
+      words= words.replace(/\s/g,"+");
+      alert(words);
+      var books="https://www.googleapis.com/books/v1/volumes?q="+words;
+
+                $.getJSON(books,function(result){
+        var res=result.items.length;
+       
+          for(var i=0;i<res;i++){
+                var id="dv"+i;
+                $('#cont').append('<div style="padding:2.3%; width:120px; height:230px;float:left;"id = "'+id+'"></div>');
+
+        var isbn=result.items[i].volumeInfo.industryIdentifiers[0].identifier;
+
+        $('#'+id).append('<a href="javascript:test('+isbn+');"><img id = "im'+id+'"></img></a>');
+        $('#'+id).append('<div id = "t'+id+'"></div>');  
+       /* $('#'+id).append('<button type="button" id = "a'+id+'">Ver mas</button>');   
+        /*$('#'+id).append('<div id = "e'+id+'"></div>');  
+        $('#'+id).append('<div id = "an'+id+'"></div>');  
+        $('#'+id).append('<div id = "d'+id+'"></div>');                    
+        $('#'+id).append('<div id = "i'+id+'"></div>'); */
+          $('#t'+id).text(result.items[i].volumeInfo.title);
+          $('#im'+id).attr({
+                            alt: "Beijing Brush Seller",
+                            title: "photo by Kelly Clark",
+                            src:""+result.items[i].volumeInfo.imageLinks.thumbnail+"",
+
+                          });
+     
+    
+        // $('#a'+id).click(test(result.items[i].volumeInfo.authors));
+         /* $('#e'+id).text("Editorial : \ "+result.items[i].volumeInfo.publisher);
+          $('#an'+id).text("Anio  : \ "+result.items[i].volumeInfo.publishedDate);
+          $('#d'+id).text("Descripcion : \ "+result.items[i].volumeInfo.description);*/
+         // $('#im'+id).attr("src",result.items[i].volumeInfo.imageLinks.thumbnail);
+         // $('#i'+id).text("ISBN : \ "+result.items[0].volumeInfo.industryIdentifiers[0].identifier);
+
+
+
+
+          } 
+
+       });
+
+
+
+
+    }
+
+
+
+
+
+       function test(data){
+
+        cont2.hidden=false;
+        cont.hidden=true;
+        bb.hidden=false;
+
+        var isbn=parseInt(data);
+        var book="https://www.googleapis.com/books/v1/volumes?q=isbn:"+isbn;
+        
+         $.getJSON(book,function(result){
+              var titulo=result.items[0].volumeInfo.title;
+              var autor=result.items[0].volumeInfo.authors;
+              var editorial=result.items[0].volumeInfo.publisher;
+              var anio=result.items[0].volumeInfo.publishedDate;  
+              var descripcion=result.items[0].volumeInfo.description;
+              var imagen=result.items[0].volumeInfo.imageLinks.thumbnail;
+              var isbn=result.items[0].volumeInfo.industryIdentifiers[0].identifier;           
+                
+
+              // Set the table td text
+                $('#titulo1').text("Titulo  :"+titulo);
+                $('#autor').text("Autor  :"+autor);
+                 $('#editorial').text("Editorial  :"+editorial);
+                $('#anio').text("Anio :"+anio);
+                $('#descripcion').text("Descripcion  :"+descripcion);
+                $("#imagen").attr("src",imagen);
+                $('#otro').text("ISBN  :"+isbn);
+        
+
+
+
+              });
+      }
+
+      function regresa(){
+        cont2.hidden=true;
+        cont.hidden=false;
+
+      }
   </script>
 </body>
 

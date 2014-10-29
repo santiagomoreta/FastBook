@@ -1,0 +1,34 @@
+<polymer-element name="greeting-tag">
+  <!-- outermost template defines the element's shadow DOM -->
+  <template>
+    <ul>
+      <template repeat="{{s in salutations}}">
+        <li>{{s.what}}: <input type="text" value="{{s.who}}"></li>
+      </template>
+    </ul>
+    <button on-click="{{updateModel}}">Update model</button>
+    <button on-tap="{{saludar}}">saluda ontap</button>
+  </template>
+  <script>
+  var saludo="wenas nocheees";
+    Polymer('greeting-tag', {
+      ready: function() {
+        this.salutations = [
+          {what: saludo, who: 'World'},
+          {what: 'Goodbye', who: 'DOM APIs'},
+          {what: 'Hello', who: 'Declarative'},
+          {what: 'Goodbye', who: 'Imperative'}
+        ];
+        this.alternates = ['Hello', 'Hola', 'Howdy'];
+        this.current = 0;
+      },     
+      updateModel: function() {
+        this.current = (this.current + 1) % this.alternates.length;
+        this.salutations[2].what = this.alternates[this.current];
+      },
+      saludar: function(){
+        alert("hola este es un alert");
+      }
+    });
+  </script>
+</polymer-element>

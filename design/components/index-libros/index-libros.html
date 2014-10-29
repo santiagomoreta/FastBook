@@ -1,0 +1,121 @@
+
+ 
+
+<link rel="import" href="../components/polymer/polymer.html">
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:200italic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+
+
+<polymer-element name="index-libros">
+  <template>
+    <style>
+     :host{
+      width:100%;
+     
+      color:#292215;
+      font-size: 30px;
+      background-color: white;
+       
+
+      }
+      .titulo{
+        font-size: 15px;
+        font-family: 'Lato';
+        margin-left: 15%;
+
+      }
+      .body{
+
+        position: absolute;
+        top:10px;
+        padding-bottom: 5%;
+        margin-left: 15%;
+        margin-right: 15%;
+        border: solid 3px;
+        border-radius: 5px;
+      background-color: #CCC362;
+      }
+      .portada{
+       margin-top: 15%;
+        margin-left: 15%;
+    
+
+
+
+      }
+        .libros{
+        /*  float:left;
+          padding: 2%;*/
+          padding:2.3%; width:120px; height:230px;float:left;
+        }
+        #reco{
+          margin-left: 5%;
+          margin-top: 5%;
+        }
+
+
+
+    </style>
+    <div class="body">
+      <div id="reco">Recomendados<br></div>
+      <div class="libros">
+        <a onclick="alert('EL arte de la guerra')"><img class="portada" src="http://bks7.books.google.es/books?id=qbfjn5VtQqgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img></a>
+        <div class="titulo">El arte de la guerra</div>
+      </div>  
+      <div class="libros">
+        <img class="portada" src="http://bks4.books.google.es/books?id=uFI8Kmx3a0oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
+        <div class="titulo">1984</div>
+      </div>  
+      <div class="libros">
+        <img class="portada" src="http://bks6.books.google.es/books?id=HBdZ2hC5vMwC&printsec=frontcover&img=1&zoom=1&source=gbs_api"></img>
+        <div class="titulo">La Divina Comedia</div>
+      </div>  
+      <div class="libros">
+        <img class="portada" src="http://bks6.books.google.es/books?id=mrg0btPfrFAC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
+        <div class="titulo">El Médico</div>
+       </div>  
+      <div class="libros"> 
+        <img class="portada" src="http://bks7.books.google.es/books?id=mKoInmOU130C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
+        <div class="titulo">Los Pilares de la tierra</div>
+      </div>  
+    
+      
+      <div class="libros">  
+        <img class="portada" src="http://bks5.books.google.es/books?id=JZDBXoSV5zoC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
+        <div class="titulo">Cien años de soledad</div>
+      </div>  
+      <div class="libros">  
+        <img class="portada" src="http://bks1.books.google.es/books?id=4RnSAQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
+        <div class="titulo">La odisea</div>
+      </div>  
+      <div class="libros">  
+        <img class="portada" src="http://bks5.books.google.es/books?id=OndVsK3zb4AC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
+        <div class="titulo">El nombre de la rosa</div>
+      </div>  
+      <div class="libros">  
+        <img class="portada" src="http://bks3.books.google.es/books?id=tKjAj5rDY0sC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
+        <div class="titulo">Ensayo sobre la ceguera</div>
+      </div> 
+      <div class="libros">  
+        <img class="portada" src="http://bks0.books.google.es/books?id=GjQDAwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
+        <div class="titulo">Biografia Keith Richards</div>
+      </div>
+
+    </div>
+
+  </template>
+  <script>
+
+
+    Polymer({
+      ready: function() {
+
+       // $('#titulo').text("hola");
+      }
+    });
+  </script>
+  <script type="text/javascript">
+   alert("hola");
+</script>
+</polymer-element>

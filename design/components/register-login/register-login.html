@@ -7,20 +7,34 @@
   <template>
     <style>
      :host {
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        box-sizing: border-box;
-        color:white;
+       width:100%;
+     
+      color:#292215;
+      font-size: 30px;
+      
 
       }
-      #core_input {
-        padding: 15px;
-        left: 70px;
-        top: 110px;
+      .body{
+
         position: absolute;
+        top:10px;
+        padding-bottom: 5%;
+        margin-left: 15%;
+        margin-right: 15%;
+        border: solid 3px;
+        border-radius: 5px;
+      background-color: #CCC362;
       }
-         #core_input1 {
+         #reco{
+          margin-left: 40%;
+          margin-top: 2%;
+        }
+
+      
+     .core_input {
+     border-bottom:dotted 1px;
+      }
+      /*   #core_input1 {
         padding: 15px;
         left: 70px;
         top: 150px;
@@ -48,36 +62,45 @@
         position: absolute;
       }
 
-        #paper_button_2 {
+    
+      div{
+        position: relative;
+      }
+*/
+         #paper_button_2 {
         overflow: visible;
         position: relative;
-        left: 35%;
+        left: 2%;
         border-top-left-radius: 7px;
         border-top-right-radius: 7px;
         border-bottom-right-radius: 7px;
         border-bottom-left-radius: 7px;
-        margin-top: 5px;
-      }
-      div{
-        position: relative;
-      }
+        margin-top: 10%px;
 
-      
+      }
+      #valid{
+        position: relative;
+        margin-top: 6%;
+        margin-left: 20%;
+      }
 
     </style>
 
-    <center><h1>Registrarse</h1></center>
-    <div>
-    <core-input willvalidate placeholder="Nombre..." id="core_input" ></core-input>
-    <core-input willvalidate placeholder="Apellido..." id="core_input1" ></core-input>
-    <core-input willvalidate placeholder="Email..." id="core_input2" type="email"></core-input>
-    <core-input willvalidate placeholder="Password..." id="core_input3" type="password"></core-input>
-    <core-input willvalidate placeholder="Repeat Password..." id="core_input4" type="password"></core-input>
-  </div>
-  <div>
-    <paper-button label="Aceptar" raised id="paper_button_2" class="colored"></paper-button>
-    <paper-button label="Cancelar" raised id="paper_button_2" class="colored"></paper-button>
-  </div>
+
+    <div class="body">
+      <div id="reco">Registrarse<br></div>
+                      <div>
+                      <core-input willvalidate placeholder="Nombre..." class="core_input" ></core-input>
+                      <core-input willvalidate placeholder="Apellido..." class="core_input" ></core-input>
+                      <core-input willvalidate placeholder="Email..." class="core_input" type="email"></core-input>
+                      <core-input willvalidate placeholder="Password..." class="core_input" type="password"></core-input>
+                      <core-input willvalidate placeholder="Repeat Password..." class="core_input" type="password"></core-input>
+                    </div>
+                    <div id="valid">
+                      <paper-button label="Aceptar" raised id="paper_button_2" class="colored"></paper-button>
+                      <paper-button label="Cancelar" raised id="paper_button_2" class="colored"></paper-button>
+                    </div>
+</div>
   </template>
   <script>
     Polymer({
