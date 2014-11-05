@@ -1,0 +1,101 @@
+
+
+<polymer-element name="menu-index" route="{{route}}">
+  <template >
+    <style>
+         core-toolbar#menu-bar{
+         background-color:transparent;
+        }
+         paper-item{
+        text-align: center;
+        margin-right: 2%;
+        border: solid 1px;
+        border-radius: 7px;
+        -webkit-box-shadow: 6px 8px 28px 0px rgba(0,0,0,0.88);
+        -moz-box-shadow: 6px 8px 28px 0px rgba(0,0,0,0.88);
+        box-shadow: 6px 8px 28px 0px rgba(0,0,0,0.88);
+         font-family: 'Fredericka the Great';
+   
+      }
+   
+
+     @media (max-width: 600px) {
+             :host([favorite]) paper-item::shadow #icon {
+      color: #3b5998;
+    }
+      core-toolbar#menu-bar{
+              border-bottom:solid 1px  grey;
+              height: 36px;
+        }
+            paper-item::shadow #icon {
+            color: grey;
+            }
+
+          #paper{
+          font-size: 0px;
+          border:none;
+           margin-right: 0%;
+           box-shadow: none;
+           border-radius: 0px;
+           height: 36px;
+           margin-top: -8%;
+  
+        }
+      }
+   
+    </style>
+    <div id="menu">
+<core-toolbar id="menu-bar">
+<core-menu horizontal center layout flex id="core-menu" valueattr="hash" selected="{{route}}">
+    <template repeat="{{page in pages}}">
+      <paper-item on-tap="{{favoriteTapped}}" center horizontal layout center-justified flex label="{{page.name}}" hash="{{page.hash}}" id="paper" icon="{{page.icon}}"title="{{page.name}}">
+        <a href="#{{page.hash}}"></a>
+      </paper-item>
+    </template>
+  </core-menu> 
+</core-toolbar>
+</div>
+
+    </template>
+   
+    
+    
+   <!-- <core-icon-button
+      id="favicon"
+      icon="favorite"
+      on-tap="{{favoriteTapped}}">
+        
+    </core-icon-button>-->
+
+ 
+  </template>
+  <script>
+       
+ 
+  Polymer({
+      ready: function() {
+        this.pages = [
+    {name: 'Search', hash: 'search', icon:'search'},
+    {name: 'Buy', hash: 'buy',icon:'shopping-cart'},
+    {name: 'Sell', hash: 'Sell',icon:'loyalty'},
+    {name: 'Account', hash: 'account',icon:'account-box'}
+  ];
+      }, 
+    publish: {
+      favorite: {
+        value: false,
+        reflect: true
+      }
+    },
+    favoriteTapped: function(event, detail, sender) {
+      this.favorite = !this.favorite;
+      this.fire('favorite-tap');
+     
+     
+      
+    }
+  });
+  
+
+  </script>
+</polymer-element>
