@@ -1,0 +1,291 @@
+@import '../../sass/_mediaqueries';
+
+$drawer-min-width: 320px;
+$drawer-transition-fx: transform .4s cubic-bezier(0.0, 0.0, 0.2, 1);
+$drawer-peek-width: 52px;
+$drawer-shadow: 0 0 20px rgba(0,0,0,.3);
+
+:unresolved {
+    opacity: 0;
+}
+
+#main {
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#overlay {
+    background: rgba(0,0,0,.2);
+    bottom: 0;
+    content: '';
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: opacity .6s cubic-bezier(0.0, 0.0, 0.2, 1), visibility 0 .6s cubic-bezier(0.0, 0.0, 0.2, 1);
+    visibility: hidden;
+    z-index: 100;
+}
+
+polyfill-next-selector { content: ':host [main]'; }
+::content [main] {
+  background: #fff;
+}
+
+#drawer {
+    overflow: auto;
+}
+
+@include from(phablet){
+    #drawer {
+        width: $drawer-min-width;
+    }
+}
+
+@include to(tablet){
+    :host {
+        bottom: 0;
+        display: block;
+        left: 0;
+        position: absolute;
+        right: 0;
+        top: 0;
+        overflow-x: hidden;
+    }
+
+    // make the [drawer] fill full content
+    polyfill-next-selector { content: ':host [drawer]'; }
+    ::content [drawer] {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      overflow: auto;
+    }
+
+    polyfill-next-selector { content: ':host [main]'; }
+    ::content [main] {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      overflow: auto;
+    }
+
+    #drawer {
+        bottom: 0;
+        box-sizing: border-box;
+        position: absolute;
+        top: 0;
+        transition: $drawer-transition-fx;
+
+        &[left] {
+            &[parallax],
+            &[reveal],
+            &[slide]{
+                left: 0;
+            }
+        }
+
+        &[right]{
+            &[parallax],
+            &[reveal],
+            &[slide]{
+                right: 0;
+            }
+        }
+
+        // slide
+        &[slide] {
+            box-shadow: $drawer-shadow;
+            z-index: 1;
+
+            &[left]{
+                transform: translate3d(-100%,0,0);
+            }
+
+            &[right]{
+                transform: translate3d(100%,0,0);
+            }
+
+            &[open]{
+                transform: translate3d(0,0,0);
+            }
+        }
+
+        // pan
+        &[pan] {
+            &[left]{
+                right: 100%; // place the drawer on the far left - including element size
+
+                &[open],
+                &[open] + #main {
+                    // main elements moves right the width of drawer
+                    transform: translate3d($drawer-min-width, 0, 0);
+                }
+            }
+
+            &[right]{
+                left: 100%; // place the drawer on the far right - including element size
+
+                &[open],
+                &[open] + #main {
+                    // main elements moves left the width of drawer
+                    transform: translate3d(-$drawer-min-width, 0, 0);
+                }
+            }
+
+            + #main {
+                transition: $drawer-transition-fx;
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        // parallax
+        &[parallax] {
+            &[left] {
+                transform: translate3d(-40%,0,0); // less to animate, makes it looks like parallax
+            }
+            &[right] {
+                transform: translate3d(40%,0,0); // less to animate, makes it looks like parallax
+            }
+        }
+
+        // parallax & parallax
+        &[parallax],
+        &[reveal] {
+
+            + #main {
+                box-shadow: $drawer-shadow;
+            }
+
+            &[left][open] + #main {
+                transition: $drawer-transition-fx;
+                // main elements moves right the width of drawer
+                transform: translate3d($drawer-min-width, 0, 0);
+            }
+
+            &[right][open] + #main {
+                transition: $drawer-transition-fx;
+                // main elements moves left the width of drawer
+                transform: translate3d(-($drawer-min-width), 0, 0);
+            }
+
+            &[open] {
+                transform: translate3d(0, 0, 0);
+            }
+        }
+
+        &[open] + #main #overlay{
+            opacity: 1;
+            transition: opacity .3s cubic-bezier(0.0, 0.0, 0.2, 1);
+            visibility: visible;
+        }
+
+        &[left] + #main #overlay {
+            cursor: e-resize;
+        }
+
+        &[right] + #main #overlay {
+            cursor: w-resize;
+        }
+
+
+        + #main {
+            transition: $drawer-transition-fx;
+            transform: translate3d(0, 0, 0);
+        }
+    }
+}
+
+@include from(desktop){
+    :host {
+        display: flex;
+        flex-direction: row;
+        margin: auto;
+        max-width: breakpoint-width-byName(hd);
+    }
+
+    #main {
+        flex-grow: 1;
+        order: 2;
+        position: static;
+    }
+
+    #drawer {
+        flex-grow: 0;
+        flex-shrink: 0;
+        position: relative;
+        width: $drawer-min-width;
+
+        &[left]{
+            order: 1;
+        }
+
+        &[right]{
+            order: 3;
+        }
+    }
+
+    #overlay {
+        visiblity: hidden;
+    }
+}
+
+@include at(phone){
+    #drawer {
+        &[left]{
+            right: $drawer-peek-width;
+
+            &[parallax][open] + #main,
+            &[reveal][open] + #main {
+                // main elements moves left the peeks size first, then right the width of drawer
+                transform: translate3d(-$drawer-peek-width, 0, 0) translate3d(100%, 0, 0);
+            }
+            &[pan] {
+                // makes the element 100% when coupled with right: 100%, then subtract the size of peek
+                left: calc(-100% + #{$drawer-peek-width});
+
+
+                &[open]{
+                    transform: translate3d(100%, 0, 0); // move drawer left width of drawer
+
+                    + #main {
+                        // main elements moves left the peeks size first, then right the width of drawer
+                        transform: translate3d(-$drawer-peek-width, 0,0) translate3d(100%, 0, 0);
+                    }
+                }
+            }
+        }
+
+        &[right]{
+            left: $drawer-peek-width;
+
+            &[parallax][open] + #main,
+            &[reveal][open] + #main {
+                // main elements moves right the peeks size first, then left the width of drawer
+                transform: translate3d($drawer-peek-width, 0, 0) translate3d(-100%, 0, 0);
+            }
+
+            &[pan] {
+                // makes the element 100% when coupled with left: 100%, then subtract the size of peek
+                right: calc(-100% + #{$drawer-peek-width});
+
+                &[open] {
+                    transform: translate3d(-100%, 0, 0); // move drawer left width of drawer
+
+                    + #main {
+                        // main elements moves right the peeks size first, then left the width of drawer
+                        transform: translate3d($drawer-peek-width, 0,0) translate3d(-100%, 0, 0);
+                    }
+                }
+            }
+        }
+    }
+}
