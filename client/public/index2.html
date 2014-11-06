@@ -24,6 +24,10 @@
     <link rel="import" href="pages/menu-index.html">
                
   <style>
+      #boton{
+        
+       
+      }
         menu-index{
             position: relative;
         }
@@ -34,16 +38,24 @@
       }
       core-toolbar#title-bar{
         background-color:transparent;
+
       }
 
       div#title{
+       
             text-shadow: 5px 3px 7px rgba(15, 13, 13, 0.7);
           color: #000000;
           font-size: 50px;
                font-family: 'Fredericka the Great';
+               width: 90%;
+               text-align: center;
+           
       }
 
       @media (max-width: 600px) {
+          core-icon-button{
+              color:white;
+          }
           core-toolbar#title-bar{
         background-color:#3b5998;
         height: 8%;
@@ -60,7 +72,11 @@
           color: #e9eaed;
           font-size: 30px;
                font-family: 'Fredericka the Great';
+               margin-top:-20px;
                
+            }
+            #boton{
+                margin-top:-20px;
             }
 
         html{
@@ -75,7 +91,12 @@
   
 </head>
 <body unresolved fullbleed>
-<core-toolbar center horizontal layout center-justified flex id="title-bar"> <div id="title">  FASTBOOK</div> </core-toolbar>
+<core-toolbar   id="title-bar"> 
+        <div id="title">  FASTBOOK</div>
+        <div id="boton"><core-icon-button onclick="color();"icon="menu"></core-icon-button></div>
+     
+
+</core-toolbar>
   <template is="auto-binding">
         <menu-index horizontal center layouy flex></menu-index>
 
@@ -84,6 +105,15 @@
 </body>
 </html>
 <script>
-
+function color(){
+    var i=document.querySelector('#title-bar');
+    var html=document.querySelector('body');
+    var menu=document.querySelector('menu-index');
+   
+    html.style.background="lightgreen";
+     i.style.background="green";
+    
+   
+}
   
 </script>
