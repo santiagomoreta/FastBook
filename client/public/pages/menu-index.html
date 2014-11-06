@@ -1,8 +1,11 @@
 
-
 <polymer-element name="menu-index" route="{{route}}">
   <template >
     <style>
+      div#main{
+        position:relative;
+        margin-top:5%;
+      }
          core-toolbar#menu-bar{
          background-color:transparent;
         }
@@ -44,6 +47,7 @@
       }
    
     </style>
+    <div>
     <div id="menu">
 <core-toolbar id="menu-bar">
 <core-menu horizontal center layout flex id="core-menu" valueattr="hash" selected="{{route}}">
@@ -55,7 +59,31 @@
   </core-menu> 
 </core-toolbar>
 </div>
+    
+    <div id="main">
 
+<core-animated-pages valueattr="hash" selected="{{route}}"
+                     transitions="slide-from-right" id="animated">
+     <section hash="#principal" layout vertical center-center>
+        <div>principal</div>
+    </section>
+    <section hash="search" layout vertical center-center>
+        <core-search></core-search>
+    </section>
+      <section hash="buy" layout vertical center-center>
+          <post-card></post-card>
+    </section>
+      <section hash="Sell" layout vertical center-center>
+      <div>Sell</div>
+    </section>
+      <section hash="account" layout vertical center-center>
+     
+      <fast-account></fast-account>
+    </section>
+
+</core-animated-pages>
+</div>
+</div>
     </template>
    
     
