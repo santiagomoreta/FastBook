@@ -6,6 +6,7 @@
   <title>Single page app using Polymer</title>
     <script src="../bower_components/platform/platform.js">
   </script>
+  <link id="theme" rel="stylesheet" type="text/css" href="#">
 <link href="//fonts.googleapis.com/css?family=Fredericka+the Great:400" rel="stylesheet" type="text/css">
 <link href="//fonts.googleapis.com/css?family=Playball:400" rel="stylesheet" type="text/css">
  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
@@ -13,8 +14,10 @@
 
   <link rel="import" href="../bower_components/polymer/polymer.html">
   <link rel="import" href="../bower_components/core-toolbar/core-toolbar.html">  
-  <link rel="import" href="../bower_components/core-menu/core-menu.html">  
-  <link rel="import" href="../bower_components/paper-item/paper-item.html">  
+  <link rel="import" href="../bower_components/core-menu/core-menu.html"> 
+    <link rel="import" href="../bower_components/core-menu-button/core-menu-button.html"> 
+  <link rel="import" href="../bower_components/paper-item/paper-item.html">
+    <link rel="import" href="../bower_components/core-item/core-item.html">  
     <link rel="import" href="../bower_components/core-animated-pages/core-animated-pages.html"> 
  <link rel="import" href="../bower_components/core-animated-pages/transitions/slide-from-right.html"> 
   <link rel="import" href="../bower_components/core-icon-button/core-icon-button.html">  
@@ -58,6 +61,7 @@
       }
 
       @media (max-width: 600px) {
+
           core-icon-button{
               color:white;
           }
@@ -96,13 +100,19 @@
   
 </head>
 <body unresolved fullbleed>
+     <template is="auto-binding">
 <core-toolbar   id="title-bar"> 
         <div id="title">  FASTBOOK</div>
-        <div id="boton"><core-icon-button onclick="color();"icon="menu"></core-icon-button></div>
+                <div id="boton"><core-menu-button icon="menu">
+                        <template repeat="{{page in pages}}">
+                        <core-item  onclick="color(this);" label="{{page.name}}"></core-item>
+                        </template>
+
+                 </core-menu-button></div>
      
 
 </core-toolbar>
-  <template is="auto-binding">
+ 
         <menu-index horizontal center layouy flex></menu-index>
 
 </template>
@@ -110,9 +120,27 @@
 </body>
 </html>
 <script>
-function color(){
+     var template = document.querySelector('template[is="auto-binding"]');
+ template.pages = [
+        {name:"candy"},
+        {name:"classical"},
+        {name:"dark"},
+        {name:"denim"},
+        {name:"everest"},
+        {name:"gelati"},
+        {name:"ice"},
+        {name:"resistance"},
+        {name:"melon"},
+        {name:"seven"},
+        {name:"skie"},
+        {name:"technology"}
+    ];
+
     
     
+function color(them){
+    
+    $("#theme").attr("href", "../bower_components/polymer-themes/"+them.label+"/theme.css");
    
 }
   

@@ -1,6 +1,6 @@
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 <polymer-element name="menu-index">
-  <template onload="{{clear}}">
+  <template >
     <style>
       div#main{
         position:relative;
@@ -29,15 +29,18 @@
                div#main{
                 position:relative;
                 margin-top:7%;
+                
               }
-             :host([favorite]) paper-item::shadow #icon {
-      color: #3b5998;
-    }
+              :host{
+                  background-color: grey;
+              }
+
       core-toolbar#menu-bar{
              border-bottom:solid 1px  grey;
               height: 34px;
         }
             paper-item::shadow #icon {
+                
             color: grey;
             }
 
