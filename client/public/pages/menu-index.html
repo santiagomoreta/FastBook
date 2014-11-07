@@ -1,10 +1,10 @@
-
-<polymer-element name="menu-index" route="{{route}}">
-  <template >
+<script src="//code.jquery.com/jquery-1.10.2.js"></script>
+<polymer-element name="menu-index">
+  <template onload="{{clear}}">
     <style>
       div#main{
         position:relative;
-        margin-top:5%;
+       margin-top:5%;
       }
          core-toolbar#menu-bar{
          background-color:transparent;
@@ -14,10 +14,13 @@
         margin-right: 2%;
         border: solid 1px;
         border-radius: 7px;
-        -webkit-box-shadow: 6px 8px 28px 0px rgba(0,0,0,0.88);
+        border-bottom-width: 3px;
+       /* -webkit-box-shadow: 6px 8px 28px 0px rgba(0,0,0,0.88);
         -moz-box-shadow: 6px 8px 28px 0px rgba(0,0,0,0.88);
         box-shadow: 6px 8px 28px 0px rgba(0,0,0,0.88);
-         font-family: 'Fredericka the Great';
+         font-family: 'Fredericka the Great';*/
+        
+         
    
       }
    
@@ -31,32 +34,38 @@
       color: #3b5998;
     }
       core-toolbar#menu-bar{
-              border-bottom:solid 1px  grey;
-              height: 36px;
+             border-bottom:solid 1px  grey;
+              height: 34px;
         }
             paper-item::shadow #icon {
             color: grey;
             }
 
-          #paper{
+          .paper{
           font-size: 0px;
-          border:none;
+      
+           border-right:none;
+           border-left: none;
+           border-top:none;
+           border-bottom: none;
            margin-right: 0%;
            box-shadow: none;
            border-radius: 0px;
            height: 36px;
-           margin-top: -8%;
+          margin-top: -8%;
+          
   
         }
-      }
+
    
     </style>
     <div>
     <div id="menu">
 <core-toolbar id="menu-bar">
-<core-menu horizontal center layout flex id="core-menu" valueattr="hash" selected="{{route}}">
+<core-menu horizontal center layout flex id="coremenu" valueattr="hash" selected="{{route}}">
     <template repeat="{{page in pages}}">
-      <paper-item on-tap="{{favoriteTapped}}" center horizontal layout center-justified flex label="{{page.name}}" hash="{{page.hash}}" id="paper" icon="{{page.icon}}"title="{{page.name}}">
+        <!---->
+      <paper-item  class="paper" on-tap="{{favoriteTapped }}"center horizontal layout center-justified flex label="{{page.name}}" hash="{{page.hash}}" id="{{hash}}" icon="{{page.icon}}"title="{{page.name}}">
         <a href="#{{page.hash}}"></a>
       </paper-item>
     </template>
@@ -68,6 +77,8 @@
 
 <core-animated-pages valueattr="hash" selected="{{route}}"
                      transitions="slide-from-right" id="animated">
+
+
      <section hash="#principal" layout vertical center-center>
            <div><paper-switch on=true></paper-switch></div>
   
@@ -82,15 +93,15 @@
       <section hash="Sell" layout vertical center-center>
           
       <div>Sell</div>    
-       <x-meme type="batmanslappingrobin" top="oh you know html?" bottom="that's so cute."></x-meme>
+       <x-meme type="yaoming" top="buuuuuuuuuuuuuuuu?" bottom="that's so cute."></x-meme>
       
     </section>
       <section hash="account" layout vertical center-center>
      
       <fast-account></fast-account>
     </section>
-
 </core-animated-pages>
+<core-pages>
 </div>
 </div>
     </template>
@@ -107,15 +118,19 @@
  
   </template>
   <script>
-       
+   
+ 
  
   Polymer({
       ready: function() {
+                  
+
         this.pages = [
     {name: 'Search', hash: 'search', icon:'search'},
     {name: 'Buy', hash: 'buy',icon:'shopping-cart'},
     {name: 'Sell', hash: 'Sell',icon:'loyalty'},
     {name: 'Account', hash: 'account',icon:'account-box'}
+
   ];
       }, 
     publish: {
@@ -123,13 +138,24 @@
         value: false,
         reflect: true
       }
+  
     },
-    favoriteTapped: function(event, detail, sender) {
-      this.favorite = !this.favorite;
-      this.fire('favorite-tap');
-     
-     
+    favoriteTapped: function(a,b,c) {
+
       
+   var t=document.querySelector('menu-index').shadowRoot.querySelectorAll('paper-item');
+    
+             console.log(c.style);
+        for(var i=0;i<t.length;i++){
+           
+            t[i].$.icon.style.color="grey";
+           // t[i].style.color="black";
+         
+            }
+            c.$.icon.style.color="#3b5998";
+    },
+    clean: function(a,b,c){
+        
     }
   });
   

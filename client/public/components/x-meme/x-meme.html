@@ -178,8 +178,10 @@ The meme element for modern web. [**Live demo**](../x-meme/demo.html)
 
       imageLoaded: function() {
         console.log(this.$.memeimg);
+        console.log(this);
+         console.log(this.$);
         var imgWidth = this.$.memeimg.width + "px";
-        console.log(imgWidth);
+      
 
         this.$.topCaption.setAttribute("style", "width:"+imgWidth);
         this.$.bottomCaption.setAttribute("style", "width:"+imgWidth);
