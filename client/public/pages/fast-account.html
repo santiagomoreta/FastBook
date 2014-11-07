@@ -13,27 +13,20 @@
       #core_pages {
         width: 100%;
         height: 100%;
-        /*border: 1px solid silver;*/
-        left: 0px;
-        top: 0px;
-        padding: 0px;
+        margin-top: -50px;
         position: absolute;
       }
       #section{
         width: 100%;
         height: 100%;
-        background-color: dodgerblue;
-
       }
       #button_enter{
-      /*margin-right: 20%;
-      margin-left: 20%;*/
-      background-color: white;
-      /*border: 1px solid*/      border-radius: 10px;
-      /*background-color: gainsboro;*/
-      background-image: url('../images/form.png');
-      background-size: 100% 100%;
-      background-repeat: no-repeat;
+        background-color: white;
+        border-radius: 10px;
+      
+        background-image: url('../images/form.png');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
       }
 
       label{
@@ -61,12 +54,20 @@
         font-weight: bold;
       }
 
+      paper-input {
+        background-color: white;
+        border: 2px solid dimgray;
+        border-radius: 5px;
+        padding-left: 10px;
+        padding-right: 10px;
+        box-shadow: blue 20px;
+        height: 25px;
+      }
+
     </style>
    
     <core-pages selected="0" selectedindex="0" notap id="page_account">
-      <section id="section" active>
-          <br><br>
-         
+      <section id="section" active>        
           <div id="button_enter" tool center center-justified vertical layout display:flex>
             <br>
             <h1>Your Data</h1>
