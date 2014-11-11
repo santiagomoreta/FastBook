@@ -11,8 +11,13 @@
 <link href="//fonts.googleapis.com/css?family=Playball:400" rel="stylesheet" type="text/css">
  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
  <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+ <!--//-------------------------------------------------->
+ <link rel="import" href="components/swipe-pages/swipe-pages.html">
+ <link rel="import" href="components/swipe-pages/swipe-page.html">
 
   <link rel="import" href="../bower_components/polymer/polymer.html">
+    <script src="../bower_components/swiper/dist/idangerous.swiper.min.js"></script>
+      <link rel="stylesheet" href="../bower_components/swiper/dist/idangerous.swiper.css">
   <link rel="import" href="../bower_components/core-toolbar/core-toolbar.html">  
   <link rel="import" href="../bower_components/core-menu/core-menu.html"> 
     <link rel="import" href="../bower_components/core-menu-button/core-menu-button.html"> 
@@ -34,10 +39,8 @@
             <link rel="import" href="components/x-rating/x-rating.html">
                
   <style>
-      #boton{
-        
-       
-      }
+
+      
         menu-index{
             position: relative;
         }
@@ -64,7 +67,7 @@
 
       @media (max-width: 600px) {
 
-          core-icon-button{
+          core-menu-button{
               color:white;
           }
           core-toolbar#title-bar{
@@ -122,19 +125,25 @@
 </body>
 </html>
 <script>
+    
+    
+   //+------------------------------------------------------- 
+
+  
+  //-----------------------------------------------------------------------------
      var template = document.querySelector('template[is="auto-binding"]');
  template.pages = [
         {name:"candy"},
         {name:"classical"},
-        {name:"dark"},
+        {name:"dark-side"},
         {name:"denim"},
         {name:"everest"},
         {name:"gelati"},
         {name:"ice"},
-        {name:"resistance"},
+        {name:"la-resistance"},
         {name:"melon"},
-        {name:"seven"},
-        {name:"skie"},
+        {name:"seven-seas"},
+        {name:"sky"},
         {name:"technology"}
     ];
 

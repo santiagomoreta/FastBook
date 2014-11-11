@@ -32,9 +32,9 @@
             float: left;
         }
         </style>
-        <section vertical layout center fit>
-            <core-input placeholder="Find a book..."></core-input>
-            <paper-button>Search</paper-button>
+        <section vertical layout center flex>
+            <core-input placeholder="Find a book..."id="buscar"></core-input>
+            <paper-button id="butt"on-tap="{{restful}}">Search</paper-button>
             <div id="advanced">
                 <a href="">Advanced search</a>
                 <core-icon alt="Advanced search" icon="search"></core-icon>
@@ -65,6 +65,53 @@
     </template>
     <script>
         Polymer({
+            
+            restful: function(){
+              var t = document.querySelector('menu-index').shadowRoot.querySelector('core-search').shadowRoot.querySelector('core-input').value;
+       
+            
+
+             alert(t);
+             
+             
+              $.getJSON(book,function(result){
+              var titulo=result._id;
+              alert(titulo);
+                     
+                
+
+             /* // Set the table td text
+                $('#titulo1').text("Titulo  :"+titulo);
+                $('#autor').text("Autor  :"+autor);
+                 $('#editorial').text("Editorial  :"+editorial);
+                $('#anio').text("Anio :"+anio);
+                $('#descripcion').text("Descripcion  :"+descripcion);
+                $("#imagen").attr("src",imagen);
+                $('#otro').text("ISBN  :"+isbn);*/
+        
+
+
+
+              });
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+             
+            
+            }
+            
         });
     </script>
 </polymer-element>

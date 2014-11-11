@@ -1,8 +1,10 @@
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+
 <polymer-element name="menu-index">
   <template >
     <style>
-            paper-progress {
+        
+   paper-progress {
       display: block;
       width: 100%;
       padding: 0px 0;
@@ -56,6 +58,7 @@
                 
             color: grey;
             }
+       
 
           .paper{
           font-size: 0px;
@@ -77,50 +80,60 @@
     </style>
     <div>
     <div id="menu">
+
 <core-toolbar id="menu-bar">
 <core-menu horizontal center layout flex id="coremenu" valueattr="hash" selected="{{route}}">
     <template repeat="{{page in pages}}">
         <!---->
+
+  
       <paper-item  class="paper" on-tap="{{favoriteTapped }}{{progress}}"center horizontal layout center-justified flex label="{{page.name}}" hash="{{page.hash}}" id="{{hash}}" icon="{{page.icon}}"title="{{page.name}}">
         <a href="{{page.hash}}"></a>
       </paper-item>
+
+        
     </template>
   </core-menu> 
 </core-toolbar>
 </div>
     
 <paper-progress ></paper-progress>
-    <div id="main">
-
+      
+        
+  <div id="main">       
+         
+      
+      
 <core-animated-pages valueattr="hash" selected="{{route}}"
                      transitions="slide-from-right" id="animated">
 
+    
+                <section hash="#Home" layout vertical center-center>
+                      <div><paper-switch on=true></paper-switch></div>
 
-     <section hash="#home" layout vertical center-center>
-           <div><paper-switch on=true></paper-switch></div>
-  
-    </section>
-    <section hash="#search" layout vertical center-center>
-      
+               </section>
  
+                    <section hash="#search" layout vertical center-center>
+                       <core-search></core-search>
+                     </section>
+ 
+                    <section hash="#buy" layout vertical center-center>
+                        <post-card></post-card>
+                        <div> <polymer-nooo-button></polymer-nooo-button></div>
+                  </section>
 
-       <core-search></core-search>
-      
-    </section>
-      <section hash="#buy" layout vertical center-center>
-          <post-card></post-card>
-          <div> <polymer-nooo-button></polymer-nooo-button></div>
-    </section>
-      <section hash="#Sell" layout vertical center-center>
-          
-      <div>Sell</div>    
-       <x-meme type="yaoming" top="buuuuuuuuuuuuuuuu?" bottom="that's so cute."></x-meme>
-      
-    </section>
-      <section hash="#account" layout vertical center-center>
+                    <section hash="#Sell" layout vertical center-center>
+
+                    <div>Sell</div>    
+                     <x-meme type="yaoming" top="buuuuuuuuuuuuuuuu?" bottom="that's so cute."></x-meme>
+
+                  </section>
+  
+                        <section hash="#account" layout vertical center-center>
+
+                        <fast-account></fast-account>
+                      </section>
      
-      <fast-account></fast-account>
-    </section>
 </core-animated-pages>
 <core-pages>
 </div>
@@ -142,8 +155,6 @@
    
 
  
- 
- 
   Polymer({
       ready: function() {
         
@@ -164,7 +175,7 @@
       
    var t=document.querySelector('menu-index').shadowRoot.querySelectorAll('paper-item');
     
-             console.log(c.style);
+            // console.log(c.style);
         for(var i=0;i<t.length;i++){
            
             t[i].$.icon.style.color="grey";
@@ -178,8 +189,6 @@
         var progress = document.querySelector('menu-index').shadowRoot.querySelector('paper-progress');
     
     
-    var repeat, maxRepeat = 5, animating = false;
-    console.log(progress.value);
      var val=10;
      var sec=20;
     var myVar=setInterval(function(){myTimer()},100);
@@ -195,7 +204,7 @@
                }else{
                  progress.value=val;
                    progress.secondaryProgress=sec;
-                   console.log(sec);
+                   //console.log(sec);
                    val=val+10;
                    sec=sec+10;
                }     
@@ -214,7 +223,7 @@
         
     }
   });
-  
+
 
   </script>
 </polymer-element>
