@@ -8,6 +8,11 @@
 <polymer-element name="sell-element">
     <template>
         <style>
+          
+          
+          
+          
+          
         :host {
             position: absolute;
             width: 100%;
@@ -30,19 +35,53 @@
             box-shadow: blue 20px;
             margin-top: 50px;
         }
-        #butt {
-            background-image: url('../images/log.jpg');
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
-            color: white;
-            font-weight: bold;
-            margin-top: 20px;
+        boton-continuar{
+             border-radius: 7px;
+            border:1px solid black;
         }
-        paper-dropdown-menu {
-            margin: 10px;
+        label{
+            font-size: 25px;
+           display: inline-block;
+            width: 150px;
+            margin-bottom: 10px;
+            margin-top: 2px;
+            color:black;
+            text-transform: ;
+            font-variant: small-caps;
+
         }
+        #autor ,#titulo ,#isbn ,#editorial ,#precio{
+            height: 28px;
+            border-radius: 7px;
+            border:1px solid black;
+            margin-bottom: 2%;
+        }
+        select{
+                height: 28px;
+            border-radius: 7px;
+            border:1px solid black;
+             margin-bottom: 2%;
+              width: 170px;
+        }
+        textarea{
+                     border-radius: 7px;
+            border:1px solid black;
+             margin-bottom: 1%;
+            width: 400px;
+        }
+        #contenido-izq{
+            margin-left: 50px;
+            
+        }
+         @media (max-width: 600px) {
+         
+             textarea{
+              width: 315px;
+             }
+         }
+         
         </style>
-        <section tool  center-justified vertical layout display:flex>
+        <section tool  center-justified vertical layout flex>
        
  
           
@@ -59,69 +98,111 @@
           
           
           
-          <div class="grid_9 alpha" id="contenido-izq">
+          <div  id="contenido-izq">
         
           
             
-            <form name="formu" id="formu" action="/vender-libros-texto/paso2de2" method="post" enctype="multipart/form-data">
+            <form name="formu" id="formu" action="#" method="post" enctype="multipart/form-data">
             
-            <fieldset id="formulario-publicacion">
-        	<legend>Pon un libro a la venta, gratis y en solo unos minutos</legend>
+           
+              <h1>Pon un libro a la venta, gratis y en solo unos minutos</h1>
             
-            <br>
+              <br>
             
-            <label for="categoria">nivel</label>
-            <select name="categoria" class="categoria" id="categoria" onchange="onChangeCategoria(this,this.options[this.selectedIndex].value);" tabindex="1">
-				<option value='1'>primaria</option><option value='2'>secundaria</option><option value='3'>bachiller</option><option value='4'>universidad</option><option value='5'>oposiciones</option><option value='6'>idiomas</option><option value='7'>formación profesional</option><option value='8'>Libros de lectura</option>            </select>
-            
-            <br>
-            
-            <label for="subcategoria">curso</label>
-            <select name='subcategoria' class='curso' id='subcategoria' tabindex='2'><option value='1'>primero</option><option value='2'>segundo</option><option value='3'>tercero</option><option value='4'>cuarto</option><option value='5'>quinto</option><option value='6'>sexto</option>            </select>
+                <label for="categoria">nivel</label>
+                <select name="categoria" class="categoria" id="categoria">
+                      <option value='1'>primaria</option>
+                      <option value='2'>secundaria</option>
+                      <option value='3'>bachiller</option>
+                      <option value='4'>universidad</option>
+                      <option value='5'>oposiciones</option>
+                      <option value='6'>idiomas</option>
+                      <option value='7'>formación profesional</option>
+                      <option value='8'>Libros de lectura</option>  
+                </select>
             
             <br>
             
             <label for="provincia">provincia</label>
-            <select name="provincia" class="provincia" id="provincia" onchange="onChangeProvincia(this,this.options[this.selectedIndex].value);" tabindex="3">
-				<option value='18'>A Coruña</option><option value='9'>Alacant</option><option value='5'>Albacete</option><option value='13'>Almería</option><option value='1'>Araba</option><option value='17'>Asturias</option><option value='21'>Ávila</option><option value='25'>Badajoz</option><option value='29'>Balears</option><option value='33'>Barcelona</option><option value='44'>Bizkaia</option><option value='37'>Burgos</option><option value='41'>Cáceres</option><option value='45'>Cádiz</option><option value='49'>Cantabria</option><option value='2'>Castelló</option><option value='6'>Ceuta</option><option value='10'>Ciudad Real</option><option value='14'>Córdoba</option><option value='22'>Cuenca</option><option value='26'>Girona</option><option value='30'>Granada</option><option value='34'>Guadalajara</option><option value='38'>Guipuzkoa</option><option value='42'>Huelva</option><option value='46'>Huesca</option><option value='50'>Jaén</option><option value='51'>La Rioja</option><option value='43'>Las Palmas</option><option value='3'>León</option><option value='7'>Lleida</option><option value='11'>Lugo</option><option value='15'>Madrid</option><option value='19'>Málaga</option><option value='23'>Melilla</option><option value='27'>Murcia</option><option value='31'>Navarra</option><option value='35'>Ourense</option><option value='39'>Palencia</option><option value='47'>Pontevedra</option><option value='24'>S.C. Tenerife</option><option value='4'>Salamanca</option><option value='8'>Segovia</option><option value='12'>Sevilla</option><option value='16'>Soria</option><option value='20'>Tarragona</option><option value='28'>Teruel</option><option value='32'>Toledo</option><option value='36'>Valencia</option><option value='40'>Valladolid</option><option value='48'>Zamora</option><option value='52'>Zaragoza</option> 
+            <select name="provincia" class="provincia" id="provincia" >
+                <option value='18'>A Coruña</option>
+                <option value='9'>Alacant</option>
+                <option value='5'>Albacete</option>
+                <option value='13'>Almería</option>
+                <option value='1'>Araba</option>
+                <option value='17'>Asturias</option>
+                <option value='21'>Ávila</option>
+                <option value='25'>Badajoz</option>
+                <option value='29'>Balears</option>
+                <option value='33'>Barcelona</option>
+                <option value='44'>Bizkaia</option>
+                <option value='37'>Burgos</option>
+                <option value='41'>Cáceres</option>
+                <option value='45'>Cádiz</option>
+                <option value='49'>Cantabria</option>
+                <option value='2'>Castelló</option>
+                <option value='6'>Ceuta</option>
+                <option value='10'>Ciudad Real</option>
+                <option value='14'>Córdoba</option>
+                <option value='22'>Cuenca</option>
+                <option value='26'>Girona</option>
+                <option value='30'>Granada</option>
+                <option value='34'>Guadalajara</option>
+                <option value='38'>Guipuzkoa</option>
+                <option value='42'>Huelva</option>
+                <option value='46'>Huesca</option>
+                <option value='50'>Jaén</option>
+                <option value='51'>La Rioja</option>
+                <option value='43'>Las Palmas</option>
+                <option value='3'>León</option>
+                <option value='7'>Lleida</option>
+                <option value='11'>Lugo</option>
+                <option value='15'>Madrid</option>
+                <option value='19'>Málaga</option>
+                <option value='23'>Melilla</option>
+                <option value='27'>Murcia</option>
+                <option value='31'>Navarra</option>
+                <option value='35'>Ourense</option>
+                <option value='39'>Palencia</option>
+                <option value='47'>Pontevedra</option>
+                <option value='24'>S.C. Tenerife</option>
+                <option value='4'>Salamanca</option>
+                <option value='8'>Segovia</option>
+                <option value='12'>Sevilla</option>
+                <option value='16'>Soria</option>
+                <option value='20'>Tarragona</option>
+                <option value='28'>Teruel</option>
+                <option value='32'>Toledo</option>
+                <option value='36'>Valencia</option>
+                <option value='40'>Valladolid</option>
+                <option value='48'>Zamora</option>
+                <option value='52'>Zaragoza</option> 
             </select>
             
             <br>
             
                         
-            <label for="poblacion">población</label>
-            <select name="poblacion" class="poblacion" id="poblacion" tabindex="4"> 
-				<option value='2143'>Abegondo</option><option value='2144'>Ames</option><option value='2145'>Aranga</option><option value='2146'>Ares</option><option value='2147'>Arteixo</option><option value='2148'>Arzúa</option><option value='2149'>Baña</option><option value='2150'>Bergondo</option><option value='2151'>Betanzos</option><option value='2152'>Boimorto</option><option value='2153'>Boiro</option><option value='2154'>Boqueixón</option><option value='2155'>Brión</option><option value='2156'>Cabana de Bergantiños</option><option value='2157'>Cabanas</option><option value='2158'>Camariñas</option><option value='2159'>Cambre</option><option value='2160'>Capela</option><option value='2161'>Carballo</option><option value='2162'>Cariño</option><option value='2163'>Carnota</option><option value='2164'>Carral</option><option value='2165'>Cedeira</option><option value='2166'>Cee</option><option value='2167'>Cerceda</option><option value='2168'>Cerdido</option><option value='2169'>Cesuras</option><option value='2170'>Coirós</option><option value='2171'>Corcubión</option><option value='2172'>Coristanco</option><option value='2173'>Coruña</option><option value='2174'>Culleredo</option><option value='2175'>Curtis</option><option value='2176'>Dodro</option><option value='2177'>Dumbría</option><option value='2178'>Fene</option><option value='2179'>Ferrol</option><option value='2180'>Fisterra</option><option value='2181'>Frades</option><option value='2182'>Irixoa</option><option value='2183'>Laracha</option><option value='2184'>Laxe</option><option value='2185'>Lousame</option><option value='2186'>Malpica de Bergantiños</option><option value='2187'>Maón</option><option value='2188'>Mazaricos</option><option value='2189'>Melide</option><option value='2190'>Mesía</option><option value='2191'>Miño</option><option value='2192'>Moeche</option><option value='2193'>Monfero</option><option value='2194'>Mugardos</option><option value='2195'>Muros</option><option value='2196'>Muxía</option><option value='2197'>Narón</option><option value='2198'>Neda</option><option value='2199'>Negreira</option><option value='2200'>Noia</option><option value='2201'>Oleiros</option><option value='2202'>Ordes</option><option value='2203'>Oroso</option><option value='2204'>Ortigueira</option><option value='2205'>Outes</option><option value='2206'>Oza dos Ríos</option><option value='2207'>Paderne</option><option value='2208'>Padrón</option><option value='2209'>Pino</option><option value='2210'>Pobra do Caramiñal</option><option value='2211'>Ponteceso</option><option value='2212'>Pontedeume</option><option value='2213'>Pontes de García Rodríguez</option><option value='2214'>Porto do Son</option><option value='2215'>Rianxo</option><option value='2216'>Ribeira</option><option value='2217'>Rois</option><option value='2218'>Sada</option><option value='2219'>San Sadurniño</option><option value='2220'>Santa Comba</option><option value='2221'>Santiago de Compostela</option><option value='2222'>Santiso</option><option value='2223'>Sobrado</option><option value='2224'>Somozas</option><option value='2225'>Teo</option><option value='2226'>Toques</option><option value='2227'>Tordoia</option><option value='2228'>Touro</option><option value='2229'>Trazo</option><option value='2230'>Val do Dubra</option><option value='2231'>Valdoviño</option><option value='2232'>Vedra</option><option value='2233'>Vilarmaior</option><option value='2234'>Vilasantar</option><option value='2235'>Vimianzo</option><option value='2236'>Zas</option>            </select>
             
-            <br>
+            
+           
                         
             <label for="isbn">isbn</label>
-            <input name="isbn" id="isbn" type="text" value="" tabindex="5" title="
-            El ISBN es el número identificador de cada libro. Es importante que lo introduzcas correctamente puesto que es el método más rápido y efectivo para que un usuario encuentre lo que busca.<br><br>
-			Podrás verlo en la parte superior del código de barras o en las primeras páginas de tu libro.<br><br>
-            <a href='http://es.wikipedia.org/wiki/ISBN' target='blanc'>VER MÁS INFORMACIÓN / EJEMPLOS</a> 
-            "/>
+            <input name="isbn" id="isbn" type="text" value=""  />
             
             <br>
             
             <label for="autor">autor</label>
-            <input name="autor" id="autor" type="text" value="" tabindex="6" title="
-            Nombre del autor o autores separados por comas 
-            "/>
+            <input name="autor" id="autor" type="text" value=""/>
             
             <br>
             
             <label for="editorial">editorial</label>
-            <input name="editorial" id="editorial" type="text" value="" tabindex="7" title="
-            Nombre de la editorial
-            "/>
+            <input name="editorial" id="editorial" type="text" value="" />
             
             <br>
             
             <label for="estado">estado</label>
-            <select name="estado" id="estado" tabindex="8" title="
-            Estado de conservación del libro 
-            "/> 
+            <select name="estado" id="estado" /> 
                 <option value='0'>Muy malo</option>
                 <option value='1'>Malo</option>
                 <option value='2'>Normal</option>
@@ -132,28 +213,23 @@
             <br>
             
             <label for="precio">precio*</label>
-            <input name="precio" id="precio" type="text" tabindex="9" class="required" value="€" onfocus="if (this.value == '€') {this.value = '';}" onblur="if (this.value == '') {this.value = '€';}" title="
-            Habitualmente el precio de segunda mano es del 60% del original si el libro está en buen estado, rebajándose según las marcas de uso que tenga.
-            "/>
+            <input name="precio" id="precio" type="text"  value="€" onfocus="if (this.value == '€') {this.value = '';}" onblur="if (this.value == '') {this.value = '€';}"/>
             
             <br>
             
             <label for="titulo">título*</label>
-            <input name="titulo" id="titulo" type="text" value="" tabindex="10" class="required" title="
-            Para una mejor venta recomendamos copiar el título que figura en la portada/lomo del libro.<br><br>
-            Por favor, NO incluyas palabras como 'se vende' ni introduzcas todo el texto en mayúsculas.
-            "/>
+            <input name="titulo" id="titulo" type="text" value=""/>
             
             <br>
             
-            <label for="descripcion">descripción*</label>
-            <textarea name="descripcion" id="descripcion" tabindex="11" class="required" rows="5" cols="80" title="
-            Puedes hablar sobre el estado de conservación, comentar detalles de las imágenes, información sobre la entrega, etc<br><br>
-            Por motivos de seguridad recomendamos evitar incluir detalles personales o de contacto. Los usuarios podrán escribirte utilizando el formulario habilitado para ello. 
-            "/></textarea>
+            <label for="descripcion">descripción*
+            <textarea name="descripcion" id="descripcion" tabindex="11" class="required" rows="5" cols="80"/>
+            </textarea></label>
+            
+            <br>
             
           
-            <span class="titulo">Añade algunas imágenes, ¡se venderá más rápido!</span>
+            <span class="titulo">Añade algunas imágenes, ¡se venderá más rápido!</span><br>
                             
                 <label for="img1">imagen #1</label>
                 <input type="file" name="img1" id="img1" tabindex="12"/>
@@ -176,7 +252,7 @@
                 <br>
                       
             <input type="submit" value="Continuar y publicar mi libro" class="boton-continuar" tabindex="16"/>
-            </fieldset>
+
             </form>
         </div>
 

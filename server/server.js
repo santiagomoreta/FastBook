@@ -43,6 +43,8 @@ router.get('/', function(req, res) {
 
 // on routes that end in /books
 // ----------------------------------------------------
+ 
+//-------------------------------------------------------------
 router.route('/books')
 
 	// create a book (accessed at POST http://localhost:8080/books)
@@ -78,7 +80,23 @@ router.route('/books')
 	});
 
 // on routes that end in /books/:book_id
+
 // ----------------------------------------------------
+ router.route('/books/isbn/:book_isbn')
+ .get(function(req, res) {
+    
+		Book.find(req.params.book_isbn,function(err, book) {
+			if (err)
+				res.send(err);
+                       
+			res.json(book);
+                        //console.log(books.length);
+                    
+		});
+	});
+//---------------------------------------------------------
+
+
 router.route('/books/:book_id')
 
 	// get the book with that id
