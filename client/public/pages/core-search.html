@@ -8,6 +8,9 @@
 <polymer-element name="core-search">
     <template>
         <style>
+          #cont2{
+              color:black;
+          }
         section {
             width: auto;
             height: auto;
@@ -62,6 +65,25 @@
             </paper-dropdown-menu>
             </div>
         </section>
+        
+        
+               <div id="cont2">
+             <div style="font-size:50px;" id="titulo1" ></div><br>
+      <br>
+      <img style="float:left; margin-right:4%"id="imagen" src=""></img>
+      <br> 
+      <div id="autor" style="font-size:30px;"></div><br>
+      <div id="editorial" style="font-size:25px;"></div><br>
+      <div id="anio" style="font-size:25px;"></div><br>
+      <div id="otro" style="font-size:25px;"></div><br>
+      <div id="descripcion" style="font-size:20px;"></div>
+      <div id="cont" style="font-size:12px;">
+      </div>
+      <paper-button label="Regresar" raised id="boton_regresa" class="colored" onclick="regresa()"></paper-button>
+       </div> 
+        
+        
+        
     </template>
     <script>
         Polymer({
@@ -71,25 +93,49 @@
        
             
 
-             alert(t);
+            
+             var books="http://localhost:8080/api/books/"+t;
+              alert(books);
+             $.getJSON(books,function(result){
+               
+               console.log(result);
+              var isbn=result.isbn;
+              var title=result.title;
+              var author=result.author;
+               var year=result.year;
+                var publisher=result.publisher;
+                 var description=result.description;
+                 var id=result._id;
+                 var genre=result.genre;
+              
+              console.log(isbn);
+        
+               
+                     // Set the table td text
+                $('#titulo1').text("Titulo  :"+title);
+                $('#autor').text("Autor  :"+author);
+                 $('#editorial').text("Editorial  :"+publisher);
+                $('#anio').text("Anio :"+year);
+                $('#descripcion').text("Descripcion  :"+description);
+                //$("#imagen").attr("src",imagen);
+                $('#otro').text("ISBN  :"+isbn);
+
+   
+     
+       
+  
+    
+               
+               
+               
+               
+               
+               
+               
+               
+             });
              
-             
-             
-         
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
-             
+   
              
             
             }
