@@ -1,5 +1,7 @@
 <link rel="import" href="../../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="components/facebook-login/facebook-login.html">
 
 <polymer-element name="fast-account">
   <template>
@@ -64,6 +66,13 @@
         height: 25px;
       }
 
+      .facebook{
+        border: 1px solid #4c69ba;
+        padding-top: 2px;
+        background-color: #4c69ba;
+        border-radius: 5px;
+      }
+
     </style>
    
     <core-pages selected="0" selectedindex="0" notap id="page_account">
@@ -92,6 +101,13 @@
                   CANCEL
                 </paper-button>
                 <br><br>
+            </div><br><br>
+
+
+            <div class="facebook">
+
+                <facebook-login appID="1503835363198599"></facebook-login>
+
             </div><br><br>
 
          </div>
