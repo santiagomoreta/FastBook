@@ -1,5 +1,5 @@
 <link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/core-input/core-input.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../../bower_components/paper-item/paper-item.html">
@@ -8,39 +8,51 @@
 <polymer-element name="core-search">
     <template>
         <style>
+        :host {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
         section {
-            width: auto;
-            height: auto;
-            padding: 0px;
+            background-color: white;
+            border-radius: 10px;
+            background-image: url('../images/form.png');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
         }
-        core-input {
-            width: auto;
-            background: #F1F1F1;
-            padding: 15px 15px 15px 15px;
-            border: 1px solid #CCC;
+        paper-input {
+            background-color: white;
+            border: 2px solid dimgray;
             border-radius: 5px;
-            box-shadow: 0px 1px 1px #CCC inset, 0px 1px 0px #FFF;
-            margin: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+            box-shadow: blue 20px;
+            margin-top: 50px;
         }
-        paper-button {
-            padding: 15px 15px 15px 15px;
-            border: 1px solid #CCC;
-            border-radius: 5px;
-            margin: 10px;
+        #butt {
+            background-image: url('../images/log.jpg');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            color: white;
+            font-weight: bold;
+            margin-top: 20px;
         }
-        core-icon {
-            float: left;
+        paper-dropdown-menu {
+            margin: 10px;
         }
         </style>
-        <section vertical layout center fit>
-            <core-input placeholder="Find a book..."></core-input>
-            <paper-button>Search</paper-button>
-            <div id="advanced">
-                <a href="">Advanced search</a>
-                <core-icon alt="Advanced search" icon="search"></core-icon>
+        <section vertical layout center flex>
+            <paper-input placeholder="Find a book..." id="buscar"></paper-input>
+            <paper-button id="butt" on-tap="{{restful}}">Search</paper-button>
+            <div id="advanced" on-tap="{{advanced}}">
+                <p>
+                    Advanced search
+                    <core-icon alt="Advanced search" icon="search"></core-icon>
+                </p>
             </div>
             <div>
-            <paper-dropdown-menu selected="Financier" valueattr="label">
+            <paper-dropdown-menu label="Categories" vertical layout>
                 <paper-item label="Arts and Photography"></paper-item>
                 <paper-item label="Biographies, diaries and facts"></paper-item>
                 <paper-item label="Science and Medicine"></paper-item>
@@ -53,18 +65,101 @@
                 <paper-item label="Children's Books"></paper-item>
                 <paper-item label="Computers and Digital Media"></paper-item>
                 <paper-item label="Law"></paper-item>
-                <paper-item label="Law"></paper-item>
-                <paper-item label="Law"></paper-item>
-                <paper-item label="Law"></paper-item>
-                <paper-item label="Law"></paper-item>
-                <paper-item label="Law"></paper-item>
-                <paper-item label="Law"></paper-item>
+            </paper-dropdown-menu>
+            
+            <paper-dropdown-menu label="Conditions" vertical layout>
+                <paper-item label="New books"></paper-item>
+                <paper-item label="Used books"></paper-item>
+                <paper-item label="In good condition"></paper-item>
+                <paper-item label="In poor condition"></paper-item>
+                <paper-item label="Old books"></paper-item>
             </paper-dropdown-menu>
             </div>
         </section>
+        
+        
+               <div id="cont2">
+             <div style="font-size:50px;" id="titulo1" ></div><br>
+      <br>
+      <img style="float:left; margin-right:4%"id="imagen" src=""></img>
+      <br> 
+      <div id="autor" style="font-size:30px;"></div><br>
+      <div id="editorial" style="font-size:25px;"></div><br>
+      <div id="anio" style="font-size:25px;"></div><br>
+      <div id="otro" style="font-size:25px;"></div><br>
+      <div id="descripcion" style="font-size:20px;"></div>
+      <div id="cont" style="font-size:12px;">
+      </div>
+      <paper-button label="Regresar" raised id="boton_regresa" class="colored" onclick="regresa()"></paper-button>
+       </div> 
+       <br>
+       <br>
+        
+        
+        
     </template>
     <script>
         Polymer({
+            
+            restful: function(){
+              var t = document.querySelector('menu-index').shadowRoot.querySelector('core-search').shadowRoot.querySelector('paper-input').value;
+       
+            
+
+            
+             var books="http://localhost:8080/api/books/"+t;
+              alert(books);
+             $.getJSON(books,function(result){
+               
+               console.log(result);
+              var isbn=result.isbn;
+              var title=result.title;
+              var author=result.author;
+               var year=result.year;
+                var publisher=result.publisher;
+                 var description=result.description;
+                 var id=result._id;
+                 var genre=result.genre;
+              
+              console.log(isbn);
+              console.log(title);
+              console.log(author);
+              console.log(year);
+              console.log(publisher);
+              console.log(description);
+               console.log(id);
+                console.log(genre);
+        
+               
+                     // Set the table td text
+                $('#titulo1').text("Titulo  :"+title);
+                $('#autor').text("Autor  :"+author);
+                 $('#editorial').text("Editorial  :"+publisher);
+                $('#anio').text("Anio :"+year);
+                $('#descripcion').text("Descripcion  :"+description);
+                //$("#imagen").attr("src",imagen);
+                $('#otro').text("ISBN  :"+isbn);
+
+   
+     
+       
+  
+    
+               
+               
+               
+               
+               
+               
+               
+               
+             });
+             
+   
+             
+            
+            }
+            
         });
     </script>
 </polymer-element>

@@ -2,6 +2,8 @@
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="../../bower_components/paper-button/paper-button.html">
 <link rel="import" href="components/facebook-login/facebook-login.html">
+<link rel="import" href="../../bower_components/core-icon/core-icon.html">
+<link rel="import" href="../../bower_components/topeka-elements/avatars.html">
 
 <polymer-element name="fast-account">
   <template>
@@ -24,11 +26,11 @@
       }
       #button_enter{
         background-color: white;
-        border-radius: 10px;
-      
+        border-radius: 2px;
         background-image: url('../images/form.png');
         background-size: 100% 100%;
         background-repeat: no-repeat;
+        border: 3px solid dimgray;
       }
 
       label{
@@ -36,16 +38,18 @@
        font-family: Verdana;   
       }
 
-      @media (max-width: 600px) {
-        paper-input {
-          width: 170px;
-        }
-        label{
-          visibility: hidden;
-        }
-        .accept, .cancel {
-          width: 50px;
-        }
+      h1, label {
+        color: dimgray;
+        font-family: Courier;
+        font-weight: bold;
+        text-shadow: #fff 0 0 4px, #fcffbb 0 0 20px;
+      }
+      label {
+        margin-top: 20px;
+        margin-bottom: 20px;
+      }
+      .accept {
+        margin-right: 20px;
       }
 
       .accept, .cancel {
@@ -55,6 +59,11 @@
         color: white;
         font-weight: bold;
       }
+      .accept:hover, .cancel:hover {
+        background-image: url('../images/log2.jpg');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+      }
 
       paper-input {
         background-color: white;
@@ -63,7 +72,7 @@
         padding-left: 10px;
         padding-right: 10px;
         box-shadow: blue 20px;
-        height: 25px;
+        height: 30px;
       }
 
       .facebook{
@@ -71,8 +80,29 @@
         padding-top: 2px;
         background-color: #4c69ba;
         border-radius: 5px;
-        text-shadow: #354c8c;
+        /*text-shadow: #fff 0 0 4px, #fcffbb 0 0 20px;*/
       }
+
+
+       @media (max-width: 600px) {
+
+        #button_enter {
+           border-radius: 0px;
+        }
+
+        paper-input {
+          width: 170px;
+        }
+        label{
+          visibility: hidden;
+          margin-top: 0px;
+          margin-bottom: 0px;
+        }
+        .accept, .cancel {
+          width: 50px;
+        }
+      }
+
 
     </style>
    
@@ -81,23 +111,25 @@
           <div id="button_enter" tool center center-justified vertical layout display:flex>
             <br>
             <h1>Your Data</h1>
+
+             <core-icon icon="avatars:avatar-1" id="core_icon" designmeta="topeka-avatar"></core-icon>
           
             <label> Name: </label>
-            <paper-input label="Name" willvalidate id="paper_input" layout vertical></paper-input></td>
+            <paper-input label="Name" type="text" willvalidate id="paper_input" layout vertical></paper-input></td>
             <label> LastName: </label>
-            <paper-input label="LastName" willvalidate id="paper_input2" layout vertical></paper-input></td>
+            <paper-input label="LastName" type="text" willvalidate id="paper_input2" layout vertical></paper-input></td>
             <label> NickName: </label>
             <paper-input label="Nick" willvalidate id="paper_input2" layout vertical></paper-input></td>
             <label> Password: </label>
             <paper-input label="Password" type="password" willvalidate id="paper_input" layout vertical></paper-input></td>
             <label> Email: </label>
-            <paper-input label="email@example.com" willvalidate id="paper_input2" layout vertical></paper-input></td>  
+            <paper-input label="email@example.com" type="email" willvalidate id="paper_input2" layout vertical></paper-input></td>  
             <br><br>
 
              <div id="button_e" tool center center-justified horizontal layout display:flex>
                 <paper-button raised="" class="accept" role="button" tabindex="0" style="overflow: visible;">
                   ACCEPT
-                </paper-button>
+                </paper-button> 
                 <paper-button raised="" class="cancel" role="button" tabindex="0" style="overflow: visible;">
                   CANCEL
                 </paper-button>

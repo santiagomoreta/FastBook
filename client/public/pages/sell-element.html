@@ -1,0 +1,268 @@
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+<link rel="import" href="../../bower_components/paper-input/paper-input.html">
+<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../../bower_components/core-icon/core-icon.html">
+
+<polymer-element name="sell-element">
+    <template>
+        <style>
+        :host {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+        }
+        section {
+            background-color: white;
+            border-radius: 10px;
+            background-image: url('../images/form.png');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            border: 3px solid dimgray;
+        }
+        paper-input {
+            background-color: white;
+            border: 2px solid dimgray;
+            border-radius: 5px;
+            padding-left: 10px;
+            padding-right: 10px;
+            box-shadow: blue 20px;
+            margin-top: 50px;
+        }
+        boton-continuar{
+             border-radius: 7px;
+            border:1px solid black;
+        }
+
+        h1 {
+            font-size: 20px;
+        }
+
+        h1, label {
+        color: dimgray;
+        font-family: Courier;
+        font-weight: bold;
+        text-shadow: #fff 0 0 4px, #fcffbb 0 0 20px;
+        }
+
+        label{
+
+            font-size: 25px;
+            display: inline-block;
+            width: 150px;
+            margin-bottom: 10px;
+            margin-top: 2px;
+            text-transform: ;
+            font-variant: small-caps;
+
+        }
+        #autor ,#titulo ,#isbn ,#editorial ,#precio{
+            height: 28px;
+            border-radius: 7px;
+            border:1px solid black;
+            margin-bottom: 2%;
+        }
+        select{
+                height: 28px;
+            border-radius: 7px;
+            border:1px solid black;
+             margin-bottom: 2%;
+              width: 170px;
+        }
+        textarea{
+            border-radius: 7px;
+            border:1px solid black;
+            margin-bottom: 1%;
+            width: 400px;
+            resize: none;
+        }
+        #contenido-izq{
+            margin-left: 50px;
+            
+        }
+
+         @media (max-width: 600px) {
+         
+             textarea{
+              width: 315px;
+             }
+         }
+         
+        </style>
+        <section tool  center-justified vertical layout flex>
+          
+          <div  id="contenido-izq">
+        
+          
+            
+            <form name="formu" id="formu" action="#" method="post" enctype="multipart/form-data">
+            
+           
+              <h1>Pon un libro a la venta, gratis y en solo unos minutos</h1>
+            
+              <br>
+            
+                <label for="categoria">Categoria</label>
+                <select name="categoria" class="categoria" id="categoria">
+                      <option value='1'>Primaria</option>
+                      <option value='2'>Secundaria</option>
+                      <option value='3'>Bachiller</option>
+                      <option value='4'>Universidad</option>
+                      <option value='5'>oposiciones</option>
+                      <option value='6'>Idiomas</option>
+                      <option value='7'>formación profesional</option>
+                      <option value='8'>Libros de lectura</option>  
+                </select>
+            
+            <br>
+            
+            <label for="provincia">provincia</label>
+            <select name="provincia" class="provincia" id="provincia" >
+                <option value='18'>A Coruña</option>
+                <option value='9'>Alacant</option>
+                <option value='5'>Albacete</option>
+                <option value='13'>Almería</option>
+                <option value='1'>Araba</option>
+                <option value='17'>Asturias</option>
+                <option value='21'>Ávila</option>
+                <option value='25'>Badajoz</option>
+                <option value='29'>Balears</option>
+                <option value='33'>Barcelona</option>
+                <option value='44'>Bizkaia</option>
+                <option value='37'>Burgos</option>
+                <option value='41'>Cáceres</option>
+                <option value='45'>Cádiz</option>
+                <option value='49'>Cantabria</option>
+                <option value='2'>Castelló</option>
+                <option value='6'>Ceuta</option>
+                <option value='10'>Ciudad Real</option>
+                <option value='14'>Córdoba</option>
+                <option value='22'>Cuenca</option>
+                <option value='26'>Girona</option>
+                <option value='30'>Granada</option>
+                <option value='34'>Guadalajara</option>
+                <option value='38'>Guipuzkoa</option>
+                <option value='42'>Huelva</option>
+                <option value='46'>Huesca</option>
+                <option value='50'>Jaén</option>
+                <option value='51'>La Rioja</option>
+                <option value='43'>Las Palmas</option>
+                <option value='3'>León</option>
+                <option value='7'>Lleida</option>
+                <option value='11'>Lugo</option>
+                <option value='15'>Madrid</option>
+                <option value='19'>Málaga</option>
+                <option value='23'>Melilla</option>
+                <option value='27'>Murcia</option>
+                <option value='31'>Navarra</option>
+                <option value='35'>Ourense</option>
+                <option value='39'>Palencia</option>
+                <option value='47'>Pontevedra</option>
+                <option value='24'>S.C. Tenerife</option>
+                <option value='4'>Salamanca</option>
+                <option value='8'>Segovia</option>
+                <option value='12'>Sevilla</option>
+                <option value='16'>Soria</option>
+                <option value='20'>Tarragona</option>
+                <option value='28'>Teruel</option>
+                <option value='32'>Toledo</option>
+                <option value='36'>Valencia</option>
+                <option value='40'>Valladolid</option>
+                <option value='48'>Zamora</option>
+                <option value='52'>Zaragoza</option> 
+            </select>
+            
+            <br>
+            
+                        
+            
+            
+           
+                        
+            <label for="isbn">isbn</label>
+            <input name="isbn" id="isbn" type="text" value=""  />
+            
+            <br>
+            
+            <label for="autor">autor</label>
+            <input name="autor" id="autor" type="text" value=""/>
+            
+            <br>
+            
+            <label for="editorial">editorial</label>
+            <input name="editorial" id="editorial" type="text" value="" />
+            
+            <br>
+            
+            <label for="estado">estado</label>
+            <select name="estado" id="estado" /> 
+                <option value='0'>Muy malo</option>
+                <option value='1'>Malo</option>
+                <option value='2'>Normal</option>
+                <option value='3'>Bueno</option>
+                <option value='4'>Muy bueno</option>
+            </select>
+            
+            <br>
+            
+            <label for="precio">precio*</label>
+            <input name="precio" id="precio" type="text"  value="€" onfocus="if (this.value == '€') {this.value = '';}" onblur="if (this.value == '') {this.value = '€';}"/>
+            
+            <br>
+            
+            <label for="titulo">título*</label>
+            <input name="titulo" id="titulo" type="text" value=""/>
+            
+            <br>
+            
+            <label for="descripcion">descripción*</label><br>
+            <textarea rows="4" cols="50" placeholder="Describe your book..." required></textarea>
+            
+            <br>
+            
+          
+            <span class="titulo">Añade algunas imágenes, ¡se venderá más rápido!</span><br><br>
+                            
+                <label for="img1">imagen #1</label>
+                <input type="file" name="img1" id="img1" tabindex="12"/>
+                                 
+                <br>
+                            
+                <label for="img2">imagen #2</label>
+                <input type="file" name="img2" id="img2" tabindex="13"/>
+                                 
+                <br>
+                            
+                <label for="img3">imagen #3</label>
+                <input type="file" name="img3" id="img3" tabindex="14"/>
+                                 
+                <br>
+                            
+                <label for="img4">imagen #4</label>
+                <input type="file" name="img4" id="img4" tabindex="15"/>
+                                 
+                <br>
+                      
+            <input type="submit" value="Continuar y publicar mi libro" class="boton-continuar" tabindex="16"/>
+
+            </form>
+            <br>
+            <br>
+        </div>
+
+          
+      
+
+
+        
+    </template>
+    <script>
+        Polymer({
+            
+   
+            
+        });
+    </script>
+</polymer-element>
