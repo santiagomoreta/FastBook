@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0, user-scalable=yes">
-  <title>Single page app using Polymer</title>
+  <title>Fast-Book</title>
     <script src="../bower_components/platform/platform.js">
   </script>
   <link id="theme" rel="stylesheet" type="text/css" href="#">
@@ -36,6 +36,8 @@
     <link rel="import" href="pages/post-card.html">
     <link rel="import" href="pages/menu-index.html">
      <link rel="import" href="components/index-libros/index-libros.html">
+      <link rel="import" href="components/book-animation/book-animation.html">
+     
  
             <link rel="import" href="components/x-rating/x-rating.html">
                
@@ -152,7 +154,7 @@
     
 function color(them){
     
-    $("#theme").attr("href", "../bower_components/polymer-themes/"+them.label+"/theme.css");
+    $("#theme").attr("href", "components/polymer-themes/"+them.label+"/theme.css");
    
 }
   

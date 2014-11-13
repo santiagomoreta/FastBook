@@ -71,30 +71,39 @@ router.route('/books')
 
 	// get all the books (accessed at GET http://localhost:8080/api/books)
 	.get(function(req, res) {
-		Book.find(function(err, books) {
+		Book.find(function(err, req) {
 			if (err)
 				res.send(err);
 
-			res.json(books);
+			res.json(req);
 		});
 	});
 
 // on routes that end in /books/:book_id
 
 // ----------------------------------------------------
+ router.route('/books/isbn/')
+ .get(function(req, res) {
+    
+		res.json({message: 'soy restful isbn¡¡¡¡¡'});
+                    
+	});
+//---------------------------------------------------------
  router.route('/books/isbn/:book_isbn')
  .get(function(req, res) {
     
-		Book.find(req.params.book_isbn,function(err, book) {
-			if (err)
-				res.send(err);
-                       
-			res.json(book);
-                        //console.log(books.length);
+		res.json({message: 'soy restful y busco libors por isbn¡¡¡¡¡'+req.params.book_isbn});
+                Book.findOne({'isbn':req.params.book_isbn},function(err,book){
+                    if(err){
+                        res.send(err);
+                        
+                    }
+                    res.json(book);
+                });
+               
                     
-		});
 	});
-//---------------------------------------------------------
+//----------
 
 
 router.route('/books/:book_id')
