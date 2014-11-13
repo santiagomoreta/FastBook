@@ -8,11 +8,6 @@
 <polymer-element name="sell-element">
     <template>
         <style>
-          
-          
-          
-          
-          
         :host {
             position: absolute;
             width: 100%;
@@ -25,6 +20,7 @@
             background-image: url('../images/form.png');
             background-size: 100% 100%;
             background-repeat: no-repeat;
+            border: 3px solid dimgray;
         }
         paper-input {
             background-color: white;
@@ -39,13 +35,25 @@
              border-radius: 7px;
             border:1px solid black;
         }
+
+        h1 {
+            font-size: 20px;
+        }
+
+        h1, label {
+        color: dimgray;
+        font-family: Courier;
+        font-weight: bold;
+        text-shadow: #fff 0 0 4px, #fcffbb 0 0 20px;
+        }
+
         label{
+
             font-size: 25px;
-           display: inline-block;
+            display: inline-block;
             width: 150px;
             margin-bottom: 10px;
             margin-top: 2px;
-            color:black;
             text-transform: ;
             font-variant: small-caps;
 
@@ -64,15 +72,17 @@
               width: 170px;
         }
         textarea{
-                     border-radius: 7px;
+            border-radius: 7px;
             border:1px solid black;
-             margin-bottom: 1%;
+            margin-bottom: 1%;
             width: 400px;
+            resize: none;
         }
         #contenido-izq{
             margin-left: 50px;
             
         }
+
          @media (max-width: 600px) {
          
              textarea{
@@ -82,21 +92,6 @@
          
         </style>
         <section tool  center-justified vertical layout flex>
-       
- 
-          
-  
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
-          
           
           <div  id="contenido-izq">
         
@@ -109,14 +104,14 @@
             
               <br>
             
-                <label for="categoria">nivel</label>
+                <label for="categoria">Categoria</label>
                 <select name="categoria" class="categoria" id="categoria">
-                      <option value='1'>primaria</option>
-                      <option value='2'>secundaria</option>
-                      <option value='3'>bachiller</option>
-                      <option value='4'>universidad</option>
+                      <option value='1'>Primaria</option>
+                      <option value='2'>Secundaria</option>
+                      <option value='3'>Bachiller</option>
+                      <option value='4'>Universidad</option>
                       <option value='5'>oposiciones</option>
-                      <option value='6'>idiomas</option>
+                      <option value='6'>Idiomas</option>
                       <option value='7'>formación profesional</option>
                       <option value='8'>Libros de lectura</option>  
                 </select>
@@ -222,14 +217,13 @@
             
             <br>
             
-            <label for="descripcion">descripción*
-            <textarea name="descripcion" id="descripcion" tabindex="11" class="required" rows="5" cols="80"/>
-            </textarea></label>
+            <label for="descripcion">descripción*</label><br>
+            <textarea rows="4" cols="50" placeholder="Describe your book..." required></textarea>
             
             <br>
             
           
-            <span class="titulo">Añade algunas imágenes, ¡se venderá más rápido!</span><br>
+            <span class="titulo">Añade algunas imágenes, ¡se venderá más rápido!</span><br><br>
                             
                 <label for="img1">imagen #1</label>
                 <input type="file" name="img1" id="img1" tabindex="12"/>
@@ -254,6 +248,8 @@
             <input type="submit" value="Continuar y publicar mi libro" class="boton-continuar" tabindex="16"/>
 
             </form>
+            <br>
+            <br>
         </div>
 
           
