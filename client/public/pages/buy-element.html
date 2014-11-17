@@ -20,43 +20,50 @@
         font-size: 15px;
         font-family: 'Lato';
         margin-left: 15%;
-              
-   
 
       }
       .body{
-
         position: absolute;
-          background-image: url('../images/bookshelves.png');
-          width: 100%;
-       
-        border-radius: 5px;
-       
-       
-      
+        /*background-image: url('../images/bookshelves.png');*/
+        width: 100%; 
+        border-radius: 5px;      
       }
+
       .portada{
-       margin-top: 0%;
+        margin-top: 0%;
         margin-left: 15%;
       }
-        .libros{
-        loat:left;
-          padding-right: 10%;
-     
-          width:10%; 
-          height: 150px;
-          float:left;
-         ;
-          padding-top: -25%;
-          margin-left: 4%;
-          margin-top: 1.8%;
-          margin-bottom: 3%;
-        
-         
+
+      .libros{
+
+        padding-right: 10%;
+        width:10%; 
+        height: 150px;
+        float:left;
+        padding-top: -25%;
+        margin-left: 5%;
+        margin-top: 1.8%;
+        margin-bottom: 1.5%;
+      }
+
+        #reco {
+          padding-left: 20px;
+          background-image: url('../images/bookshe_top.png');
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          height: 40px;
         }
-        #reco{
-          margin-left: 7%;
-          margin-top: 1%;
+        .content { /*se hara por cada fila de recomendados (solo haremos 3 filas o 4 como mucho)*/
+          padding-top: 1%;
+          height: 550px;
+          background-image: url('../images/bookshe.png');
+          background-size: 100% 32.59%;
+        }
+        .footer {
+          background-image: url('../images/bookshe_bottom.png');
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          height: 40px;
         }
         img{
             width: 100%;
@@ -64,71 +71,72 @@
            
         }
         @media (max-width: 600px) {
-              .libros{
-        loat:left;
+         .libros{
+          float:left;
           padding-right: 5%;
-     
           width:20%; 
           height: 150px;
           float:left;
-        
-         
-          margin-left: 4%;
           margin-top: 6%;
           margin-bottom: 4.5%;
-        
-         
         }
-            
+        .content {
+          height: 730px;
+          background-size: 100% 25%;	            
+        }
         }
 
     </style>
      <section tool  center-justified vertical layout flex>
     <div class="body">
-      <div class="shelv"></div>
+      <div class="shelv"> </div>
       <div id="reco">Recomendados<br></div>
-      <div class="libros">
-        <a onclick=""><img class="portada" src="http://bks7.books.google.es/books?id=qbfjn5VtQqgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img></a>
-        <div class="titulo"></div>
-      </div>  
-      <div class="libros">
-        <img class="portada" src="http://bks4.books.google.es/books?id=uFI8Kmx3a0oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
-        <div class="titulo"></div>
-      </div>  
-      <div class="libros">
-        <img class="portada" src="http://bks6.books.google.es/books?id=HBdZ2hC5vMwC&printsec=frontcover&img=1&zoom=1&source=gbs_api"></img>
-        <div class="titulo"></div>
-      </div>  
-      <div class="libros">
-        <img class="portada" src="http://bks6.books.google.es/books?id=mrg0btPfrFAC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
-        <div class="titulo"></div>
-       </div>  
-      <div class="libros"> 
-        <img class="portada" src="http://bks7.books.google.es/books?id=mKoInmOU130C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
-        <div class="titulo"></div>
-      </div>  
-    
-      
-      <div class="libros">  
-        <img class="portada" src="http://bks5.books.google.es/books?id=JZDBXoSV5zoC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
-        <div class="titulo"></div>
-      </div>  
-      <div class="libros">  
-        <img class="portada" src="http://bks1.books.google.es/books?id=4RnSAQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
-        <div class="titulo"></div>
-      </div>  
-      <div class="libros">  
-        <img class="portada" src="http://bks5.books.google.es/books?id=OndVsK3zb4AC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
-        <div class="titulo"></div>
-      </div>  
-      <div class="libros">  
-        <img class="portada" src="http://bks3.books.google.es/books?id=tKjAj5rDY0sC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
-        <div class="titulo"></div>
-      </div> 
-      <div class="libros">  
-        <img class="portada" src="http://bks0.books.google.es/books?id=GjQDAwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
-        <div class="titulo"></div>
-      </div>
+      <div class="content">
+	      <div class="libros">
+	        <a onclick=""><img class="portada" src="http://bks7.books.google.es/books?id=qbfjn5VtQqgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img></a>
+	        <div class="titulo"></div>
+	      </div>  
+	      <div class="libros">
+	        <img class="portada" src="http://bks4.books.google.es/books?id=uFI8Kmx3a0oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
+	        <div class="titulo"></div>
+	      </div>  
+	      <div class="libros">
+	        <img class="portada" src="http://bks6.books.google.es/books?id=HBdZ2hC5vMwC&printsec=frontcover&img=1&zoom=1&source=gbs_api"></img>
+	        <div class="titulo"></div>
+	      </div>  
+	      <div class="libros">
+	        <img class="portada" src="http://bks6.books.google.es/books?id=mrg0btPfrFAC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
+	        <div class="titulo"></div>
+	       </div>  
+	      <div class="libros"> 
+	        <img class="portada" src="http://bks7.books.google.es/books?id=mKoInmOU130C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
+	        <div class="titulo"></div>
+	      </div>  
+	    
+	      
+	      <div class="libros">  
+	        <img class="portada" src="http://bks5.books.google.es/books?id=JZDBXoSV5zoC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
+	        <div class="titulo"></div>
+	      </div>  
+	      <div class="libros">  
+	        <img class="portada" src="http://bks1.books.google.es/books?id=4RnSAQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
+	        <div class="titulo"></div>
+	      </div>  
+	      <div class="libros">  
+	        <img class="portada" src="http://bks5.books.google.es/books?id=OndVsK3zb4AC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
+	        <div class="titulo"></div>
+	      </div>  
+	      <div class="libros">  
+	        <img class="portada" src="http://bks3.books.google.es/books?id=tKjAj5rDY0sC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
+	        <div class="titulo"></div>
+	      </div> 
+	      <div class="libros">  
+	        <img class="portada" src="http://bks0.books.google.es/books?id=GjQDAwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"></img>
+	        <div class="titulo"></div>
+	      </div>
+	   </div>
+	   <div class="footer"> </div>
+
         
     </div>
     

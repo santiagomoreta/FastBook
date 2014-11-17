@@ -45,6 +45,10 @@
         text-shadow: #fff 0 0 4px, #fcffbb 0 0 20px;
       }
       label {
+      	clear: both;
+      	display: block;
+      	
+      	text-align: left;
         margin-top: 20px;
         margin-bottom: 20px;
       }
@@ -63,6 +67,7 @@
         background-image: url('../images/log2.jpg');
         background-size: 100% 100%;
         background-repeat: no-repeat;
+        color: dimgray;
       }
 
       paper-input {
@@ -110,36 +115,31 @@
       <section id="section" active>        
           <div id="button_enter" tool center center-justified vertical layout display:flex>
             <br>
-            <h1>Your Data</h1>
+            <h1>My Account</h1>
 
              <core-icon icon="avatars:avatar-1" id="core_icon" designmeta="topeka-avatar"></core-icon>
           	
-          	<form action="fast-account-html" method="post">
-
           		<label> Name: </label>
-	            <paper-input label="Name" type="text" willvalidate id="paper_input" layout vertical></paper-input></td>
+	            <paper-input label="Name" type="text" willvalidate id="name" layout vertical ></paper-input></td><br>
 	            <label> LastName: </label>
-	            <paper-input label="LastName" type="text" willvalidate id="paper_input2" layout vertical></paper-input></td>
+	            <paper-input label="LastName" type="text" willvalidate id="lname" layout vertical ></paper-input></td><br>
 	            <label> NickName: </label>
-	            <paper-input label="Nick" willvalidate id="paper_input2" layout vertical></paper-input></td>
+	            <paper-input label="Nick" type="text" willvalidate id="nname" layout vertical ></paper-input></td><br>
 	            <label> Password: </label>
-	            <paper-input label="Password" type="password" willvalidate id="paper_input" layout vertical></paper-input></td>
+	            <paper-input label="Password" type="password" willvalidate id="pass" layout vertical ></paper-input></td><br>
 	            <label> Email: </label>
-	            <paper-input label="email@example.com" type="email" willvalidate id="paper_input2" layout vertical></paper-input></td>  
+	            <paper-input label="email@example.com" type="email" willvalidate id="email" layout vertical ></paper-input></td>  
 	            <br><br>
 
 	             <div id="button_e" tool center center-justified horizontal layout display:flex>
-	                <paper-button raised="" class="accept" role="button" tabindex="0" style="overflow: visible;">
+	                <paper-button raised="" class="accept" onclick="accept();">
 	                  ACCEPT
 	                </paper-button> 
-	                <paper-button raised="" class="cancel" role="button" tabindex="0" style="overflow: visible;">
+	                <paper-button raised="" class="cancel">
 	                  CANCEL
 	                </paper-button>
 	                <br><br>
-	            </div><br><br>
-
-          	</form>
-            
+	            </div><br><br>         
 
 
             <div class="facebook">
@@ -158,6 +158,13 @@
 </core-pages>
   </template>
   <script>
+
+  	function accept(){
+  		var name = document.getElementById("#name").value;
+   		
+  		alert(name);
+  	}
+
     Polymer({
     });
   </script>
