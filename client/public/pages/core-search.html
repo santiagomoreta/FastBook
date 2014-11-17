@@ -4,6 +4,8 @@
 <link rel="import" href="../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../../bower_components/paper-item/paper-item.html">
 <link rel="import" href="../../bower_components/core-icon/core-icon.html">
+<link rel="import" href="../../bower_components/paper-radio-button/paper-radio-button.html">
+<link rel="import" href="../../bower_components/paper-radio-group/paper-radio-group.html">
 
 <polymer-element name="core-search">
     <template>
@@ -15,20 +17,19 @@
             box-sizing: border-box;
         }
         section {
-            background-color: white;
-            border-radius: 10px;
-            background-image: url('../images/form.png');
-            background-size: 100% 100%;
-            background-repeat: no-repeat;
+            margin: 20px;
+            border-radius: 6px;
+            background: rgba(72, 35, 7, 0.6);
+            padding: 20px;
         }
         paper-input {
+            width: 300px;
             background-color: white;
             border: 2px solid dimgray;
             border-radius: 5px;
             padding-left: 10px;
             padding-right: 10px;
             box-shadow: blue 20px;
-            margin-top: 50px;
         }
         #butt {
             background-image: url('../images/log.jpg');
@@ -40,67 +41,70 @@
         }
         paper-dropdown-menu {
             margin: 10px;
+            border: 2px solid dimgray;
+            border-radius: 5px;
+            padding-left: 10px;
+        }
+        #advanced {
+            background-image: url('../images/log.jpg');
+            background-size: 100% 100%;
+            margin: 10px;
+            color: white;
+            font-weight: bold;
+        }
+        .check {
+            border-radius: 6px;
+            padding: 10px;
+            display: inline;
+            background: rgba(255, 255, 255, 0.6);
+        }
+        paper-radio-button::shadow #onRadio {
+            background-color: #4285f4;
+        }
+        paper-radio-button::shadow #offRadio {
+            border-color: white;
         }
         </style>
         <section vertical layout center flex>
             <paper-input placeholder="Find a book..." id="buscar"></paper-input>
             <paper-button id="butt" on-tap="{{restful}}">Search</paper-button>
-            <div id="advanced" on-tap="{{advanced}}">
-                <p>
-                    Advanced search
-                    <core-icon alt="Advanced search" icon="search"></core-icon>
-                </p>
-            </div>
-            <div>
+            <paper-button id="advanced" on-tap="{{show}}">Advanced search</paper-button>
+            <div id="options" hidden>
             <paper-dropdown-menu label="Categories" vertical layout>
-                <paper-item label="Arts and Photography"></paper-item>
-                <paper-item label="Biographies, diaries and facts"></paper-item>
-                <paper-item label="Science and Medicine"></paper-item>
-                <paper-item label="Consultation"></paper-item>
-                <paper-item label="Sport"></paper-item>
-                <paper-item label="Law"></paper-item>
-                <paper-item label="Business and economics"></paper-item>
-                <paper-item label="History"></paper-item>
-                <paper-item label="Home, crafts and lifestyles"></paper-item>
-                <paper-item label="Children's Books"></paper-item>
-                <paper-item label="Computers and Digital Media"></paper-item>
-                <paper-item label="Law"></paper-item>
+                <paper-item label="Primaria"></paper-item>
+                <paper-item label="Segundaria"></paper-item>
+                <paper-item label="Bachillerato"></paper-item>
+                <paper-item label="Universidad"></paper-item>
+                <paper-item label="Oposiciones"></paper-item>
+                <paper-item label="Idiomas"></paper-item>
+                <paper-item label="Formación profesional"></paper-item>
+                <paper-item label="Libros de lectura"></paper-item>
             </paper-dropdown-menu>
             
             <paper-dropdown-menu label="Conditions" vertical layout>
-                <paper-item label="New books"></paper-item>
-                <paper-item label="Used books"></paper-item>
-                <paper-item label="In good condition"></paper-item>
-                <paper-item label="In poor condition"></paper-item>
-                <paper-item label="Old books"></paper-item>
+                <paper-item label="Muy bueno"></paper-item>
+                <paper-item label="Bueno"></paper-item>
+                <paper-item label="Normal"></paper-item>
+                <paper-item label="Malo"></paper-item>
+                <paper-item label="Muy malo"></paper-item>
             </paper-dropdown-menu>
-            </div>
+                
+            <paper-radio-group class="check">
+                <paper-radio-button name="isbn" label="ISBN" toggles="true"></paper-radio-button>
+                <paper-radio-button name="author" label="Author" toggles="true"></paper-radio-button>
+                <paper-radio-button name="titulo" label="Title" toggles="true"></paper-radio-button>
+            </paper-radio-group>
+                
+            </div>            
         </section>
-        
-        
-               <div id="cont2">
-             <div style="font-size:50px;" id="titulo1" ></div><br>
-      <br>
-      <img style="float:left; margin-right:4%"id="imagen" src=""></img>
-      <br> 
-      <div id="autor" style="font-size:30px;"></div><br>
-      <div id="editorial" style="font-size:25px;"></div><br>
-      <div id="anio" style="font-size:25px;"></div><br>
-      <div id="otro" style="font-size:25px;"></div><br>
-      <div id="descripcion" style="font-size:20px;"></div>
-      <div id="cont" style="font-size:12px;">
-      </div>
-      <paper-button label="Regresar" raised id="boton_regresa" class="colored" onclick="regresa()"></paper-button>
-       </div> 
-       <br>
-       <br>
-        
-        
-        
     </template>
     <script>
+      
         Polymer({
-            
+            show: function() {
+                var options = this.$.options;
+                options.hidden =!options.hidden;
+            },
             restful: function(){
               var t = document.querySelector('menu-index').shadowRoot.querySelector('core-search').shadowRoot.querySelector('paper-input').value;
        
