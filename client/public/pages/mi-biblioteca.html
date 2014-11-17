@@ -1,0 +1,98 @@
+
+<link rel="import" href="../../../bower_components/polymer/polymer.html">
+<link href='http://fonts.googleapis.com/css?family=Titillium+Web:200italic' rel='stylesheet' type='text/css'>
+<link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+
+
+
+<polymer-element name="mi-biblioteca">
+  <template>
+    <style>
+     :host{
+      width:100%;
+     
+      color:#292215;
+      font-size: 30px;
+
+      }
+
+
+      .body{
+        
+        background-image: url('../images/bookshelves.png');
+        position: absolute;
+       // 
+        width: 100%;
+        height:520px;
+        
+        border-radius: 5px;
+ 
+      }
+      
+        .libros{
+          padding-top: 60px;
+          margin-left: 10%;
+          
+        }
+        .lib {
+          float: left;
+          margin-right: 20px;
+          padding-top: 20px;
+        }
+      
+        #reco{
+          margin-left: 7%;
+          margin-top: 1%;
+        }
+        
+        @media (max-width: 600px) {
+            
+             .libros{
+                 
+             }
+             .lib {
+                padding-top: 10%;
+                margin-bottom: -4%;
+                 
+             }
+             .body{
+                background-image: url('../images/bookshelvesmov.png');
+                background-size: 100% 100%;
+                background-repeat: no-repeat;
+             }
+            
+  
+
+    </style>
+     <section>
+    <div class="body">
+      <!--<div id="reco">Biblioteca<br></div>-->
+      <div class="libros">
+        <template repeat="{{libro in libros}}">
+          <mi-libro class="lib" titulo="{{libro.titulo}}" imagen="{{libro.imagen}}"></mi-libro>
+        </template>
+      </div> 
+    </div>
+    
+    </section>
+  </template>
+  <script>
+
+
+    Polymer({
+        	ready: function () {
+	           this.libros=[
+               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=uFI8Kmx3a0oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
+               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=uFI8Kmx3a0oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
+               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=uFI8Kmx3a0oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
+	            {titulo:"kfc" , imagen:"http://bks7.books.google.es/books?id=qbfjn5VtQqgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
+              {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=uFI8Kmx3a0oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
+              {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=uFI8Kmx3a0oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
+              {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=uFI8Kmx3a0oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
+              {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=uFI8Kmx3a0oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"}
+	            ];
+	        }
+    });
+  </script>
+
+</polymer-element>
