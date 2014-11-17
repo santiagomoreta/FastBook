@@ -1,6 +1,6 @@
 var express=require('express');
 var bodyParser=require('body-parser');
-mongoose = require('mongoose');
+//mongoose = require('mongoose');
 
 var app=express();
 //----
@@ -10,13 +10,13 @@ app.use(bodyParser.urlencoded({extended: false}));
 routes = require('./routes/book')(app);
 //--------------conexion a mongoosee---------
 // Conexión
-mongoose.connect('mongodb://localhost/books', function(err, res) {
+/*mongoose.connect('mongodb://localhost/books', function(err, res) {
   if(err) {
     console.log('ERROR: connecting to Database. ' + err);
   } else {
     console.log('Connected to Database');
   }
-});
+});*/
 
 
 
