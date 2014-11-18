@@ -22,18 +22,23 @@
           /*margin-top:5%;*/
       }
       core-toolbar#menu-bar{
-          background-color:transparent;
+         background: linear-gradient(black,#085461);
       }
       paper-item{
           text-align: center;
+  
           margin-right: 2%;
-          border: solid 1px;
-          border-radius: 7px;
-          border-bottom-width: 3px;
-          /* -webkit-box-shadow: 6px 8px 28px 0px rgba(0,0,0,0.88);
+         // border: solid 1px;
+         // border-radius: 7px;
+         // border-bottom-width: 3px;
+         /* -webkit-box-shadow: 6px 8px 28px 0px rgba(0,0,0,0.88);
            -moz-box-shadow: 6px 8px 28px 0px rgba(0,0,0,0.88);
-           box-shadow: 6px 8px 28px 0px rgba(0,0,0,0.88);
-            font-family: 'Fredericka the Great';*/
+           box-shadow: 6px 8px 28px 0px rgba(0,0,0,0.88);*/
+            //font-family: 'Fredericka the Great';
+            color:white;
+            background-image: url('../images/butt.png');
+            background-size: 100% 150%;
+            background-position: center;
 
 
 
@@ -52,11 +57,12 @@
 
           core-toolbar#menu-bar{
               border-bottom:solid 1px  grey;
-              height: 34px;
+              height: 39px;
           }
           paper-item::shadow #icon {
 
-              color: grey;
+              color: white;
+              margin-left: 10px;
           }
 
 
@@ -71,7 +77,10 @@
               box-shadow: none;
               border-radius: 0px;
               height: 36px;
-              margin-top: -8%;
+              margin-top: -5%;
+                  background-image: url('../images/icon.png');
+             background-size:100% 110%;
+              background-repeat: no-repeat;
 
 
           }
@@ -118,7 +127,8 @@
             </section>
 
             <section hash="#buy" layout vertical center-center>
-              <buy-element></buy-element>
+              <!--<buy-element></buy-element>-->
+              <mi-biblioteca></mi-biblioteca>
             </section>
 
             <section hash="#Sell" layout vertical center-center>
@@ -174,7 +184,7 @@ Polymer({
       // console.log(c.style);
       for (var i = 0; i < t.length; i++) {
 
-          t[i].$.icon.style.color = "grey";
+          t[i].$.icon.style.color = "white";
           // t[i].style.color="black";
 
       }

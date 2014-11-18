@@ -6,7 +6,7 @@ module.exports = function(app) {
 
  
   var Book = require('../model/book.js');
- var id=1;
+ 
   //GET - Return all books in the DB
   findAllBooks = function(req, res) {
         console.log("GET - /books");
@@ -41,27 +41,6 @@ module.exports = function(app) {
       }
     });
   };
- //--------------------buscar por isbn------------
-   findByIsbn = function(req, res) {
-        console.log("GET - /book/:isbn");
-        console.log(req.params.isbn);
-        Book.findOne({isbn: req.params.isbn}, function(err,book) { 
-
-            if(!book) {
-              res.statusCode = 404;
-             res.send({ error: 'Not found' });
-            }
-            if(!err) {
-             res.send({ status: 'OK', book:book });
-            } else {
-              res.statusCode = 500;
-              console.log('Internal error(%d): %s',res.statusCode,err.message);
-            res.send({ error: 'Server error' });
-            }
-          });
-  };
-  
-  
  
   //POST - Insert a new Book in the DB
   addBook = function(req, res) {
@@ -75,8 +54,7 @@ module.exports = function(app) {
                 publisher : req.body.publisher,
                 isbn : req.body.isbn,
                 genre : req.body.genre,
-                description : req.body.description,
-              
+                description : req.body.description
     });
  
     book.save(function(err) {
@@ -97,17 +75,16 @@ module.exports = function(app) {
     });
  
     res.send(book);
-    id++;
   };
  
   //PUT - Update a register already exists
   updateBook = function(req, res) {
     console.log("PUT - /book/:id");
     console.log(req.body);
-     Book.findById(req.params.id, function(err, book) {
+    return Book.findById(req.params.id, function(err, book) {
       if(!book) {
         res.statusCode = 404;
-        res.send({ error: 'Not found' });
+        return res.send({ error: 'Not found' });
       }
  
       if (req.body.author !== null) book.author = req.body.author;
@@ -118,10 +95,10 @@ module.exports = function(app) {
       if (req.body.description !== null) book.description = req.body.description;
       if (req.body.title !== null) book.title = req.body.title;
  
-     book.save(function(err) {
+      return book.save(function(err) {
         if(!err) {
           console.log('Updated');
-          res.send({ status: 'OK', book:book });
+          return res.send({ status: 'OK', book:book });
         } else {
           if(err.name === 'ValidationError') {
             res.statusCode = 400;
@@ -163,7 +140,7 @@ module.exports = function(app) {
  
   //Link routes and functions
   app.get('/books', findAllBooks);
-  app.get('/book/:isbn', findByIsbn);
+  app.get('/book/:id', findById);
   app.post('/book', addBook);
   app.put('/book/:id', updateBook);
   app.delete('/book/:id', deleteBook);
