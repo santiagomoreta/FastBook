@@ -22,7 +22,7 @@
           /*margin-top:5%;*/
       }
       core-toolbar#menu-bar{
-          background-color:transparent;
+         background: linear-gradient(black,#085461);
       }
       paper-item{
           text-align: center;
@@ -57,11 +57,12 @@
 
           core-toolbar#menu-bar{
               border-bottom:solid 1px  grey;
-              height: 34px;
+              height: 39px;
           }
           paper-item::shadow #icon {
 
-              color: grey;
+              color: white;
+              margin-left: 10px;
           }
 
 
@@ -76,9 +77,9 @@
               box-shadow: none;
               border-radius: 0px;
               height: 36px;
-              margin-top: -8%;
-                  background-image: url('../images/btn.png');
-             background-size:80% 100%;
+              margin-top: -5%;
+                  background-image: url('../images/icon.png');
+             background-size:100% 110%;
               background-repeat: no-repeat;
 
 
@@ -183,7 +184,7 @@ Polymer({
       // console.log(c.style);
       for (var i = 0; i < t.length; i++) {
 
-          t[i].$.icon.style.color = "grey";
+          t[i].$.icon.style.color = "white";
           // t[i].style.color="black";
 
       }

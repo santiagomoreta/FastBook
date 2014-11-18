@@ -9,6 +9,8 @@ var Images = new Schema({
     url: { type: String, required: true }
 });
 
+
+
 var Book   = new Schema({
 	author: String,
         images:    [Images],
