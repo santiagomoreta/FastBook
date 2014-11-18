@@ -4,6 +4,8 @@
 <link rel="import" href="components/facebook-login/facebook-login.html">
 <link rel="import" href="../../bower_components/core-icon/core-icon.html">
 <link rel="import" href="../../bower_components/topeka-elements/avatars.html">
+<link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
+<link rel="import" href="../../bower_components/paper-item/paper-item.html">
 
 <polymer-element name="fast-account">
   <template>
@@ -13,6 +15,7 @@
         width: 100%;
         height: 100%;
         box-sizing: border-box;
+        padding: 0.75em 0;
          
       }
       #core_pages {
@@ -28,12 +31,12 @@
       }
       #button_enter{
         background: rgba(8,46,64, 0.6);
-       
-       // background-image: url('../images/form.png');
+      //background-image: url('../images/form.png');
         background-size: 100% 100%;
         background-repeat: no-repeat;
         border: 3px solid dimgray;
-         border-radius: 10px;
+        border-radius: 10px;
+        height: 700px;
       }
 
       label{
@@ -50,10 +53,9 @@
       label {
       	clear: both;
       	display: block;
-      	
       	text-align: left;
         margin-top: 20px;
-        margin-bottom: 20px;
+       
       }
       .accept {
         margin-right: 20px;
@@ -76,11 +78,12 @@
       paper-input {
         background-color: white;
         border: 2px solid dimgray;
-        border-radius: 5px;
-        padding-left: 10px;
-        padding-right: 10px;
+        border-top-right-radius: 5px;
+		border-bottom-right-radius: 5px;
+        padding: 5px 10px 8px 10px;
         box-shadow: blue 20px;
         height: 30px;
+        margin-left: -2px;
       }
 
       .facebook{
@@ -110,53 +113,112 @@
           width: 50px;
         }
       }
-
+      #core_pages1 {
+      	background-color: white;
+      	margin-right: 50px;
+      	width: 50%;
+      	height: 500px;
+      	border: 5px solid;
+      	margin-bottom: 190px;
+      }
+      #core_pages2 {
+      	background-color: white;
+      	width: 50%;
+      	border: 5px solid;
+      	height: 690px;
+      }
+      #section2, #section3 {
+      	padding-left: 8%;
+      }
+      paper-checkbox {
+      	padding: 0px 20px 0px 0px;
+      	float: left;
+      }
+       
+      paper-checkbox.blue::shadow #ink[checked] {
+      	color: #4285f4;
+      } 
+    
+      paper-checkbox.blue::shadow #checkbox.checked {
+      	border-color: #4285f4;
+      }
+    a {
+      	color: blue;
+      	text-decoration: none;
+    }
+    .icon{
+		margin-left: -25px;
+		float: left;
+		clear: both;
+		border: 2px solid dimgray;
+		border-top-left-radius: 5px;
+		border-bottom-left-radius: 5px;
+		height: 43px;
+	}
 
     </style>
    
     <core-pages selected="0" selectedindex="0" notap id="page_account">
       <section id="section" active>        
-          <div id="button_enter" tool center center-justified vertical layout display:flex>
-            <br>
-            <h1>My Account</h1>
+          <div id="button_enter" tool center center-justified horizontal layout display:flex>
+	          <core-pages selected="0" selectedindex="0" notap id="core_pages1">
 
-             <core-icon icon="avatars:avatar-1" id="core_icon" designmeta="topeka-avatar"></core-icon>
-          	
-          		<label> Name: </label>
-	            <paper-input label="Name" type="text" willvalidate id="name" layout vertical ></paper-input></td><br>
-	            <label> LastName: </label>
-	            <paper-input label="LastName" type="text" willvalidate id="lname" layout vertical ></paper-input></td><br>
-	            <label> NickName: </label>
-	            <paper-input label="Nick" type="text" willvalidate id="nname" layout vertical ></paper-input></td><br>
-	            <label> Password: </label>
-	            <paper-input label="Password" type="password" willvalidate id="pass" layout vertical ></paper-input></td><br>
-	            <label> Email: </label>
-	            <paper-input label="email@example.com" type="email" willvalidate id="email" layout vertical ></paper-input></td>  
-	            <br><br>
+	          	<section id="section2" active>
 
-	             <div id="button_e" tool center center-justified horizontal layout display:flex>
-	                <paper-button raised="" class="accept" onclick="accept();">
-	                  ACCEPT
-	                </paper-button> 
-	                <paper-button raised="" class="cancel">
-	                  CANCEL
-	                </paper-button>
-	                <br><br>
-	            </div><br><br>         
+	          		<h1> Sign In </h1><br>
+	          		<label> Name: </label>
+	          		<img class="icon" src="../images/login1.jpg">
+		            <paper-input label="Name" type="text" willvalidate id="name" layout vertical ></paper-input><br>
+		            <label> Password: </label>
+		            <img class="icon" src="../images/pass.jpg">
+		            <paper-input label="Password" type="password" willvalidate id="pass" layout vertical ></paper-input><br>
+		           	
+		           	<div id="button_e" tool center center-justified horizontal layout display:flex>
+		                <paper-button raised="" class="accept" onclick="accept();"> LOGIN >> </paper-button> 
+		              
+		            </div><br><br> 
 
+		                <paper-checkbox for> </paper-checkbox><div vertical layout flex > Remember me </div>
+		               	<br><br>
 
-            <div class="facebook">
+		               	<paper-item noink><a href="http://www.google.es" layout horizontal center>Lost your Password?</a> </paper-item>
+		               	
 
-                <facebook-login appID="1503835363198599"></facebook-login>
+	          	</section>
+	         <br><br><br>
+	          </core-pages>
+	          <core-pages selected="0" selectedindex="0" notap id="core_pages2">
+	          	<section id="section3" active>
+	          		<h1>Register</h1>
 
-            </div><br><br>
+	             	<core-icon icon="avatars:avatar-1" id="core_icon" designmeta="topeka-avatar"></core-icon>
+	          	
+	          		<label> Name: </label>
+		            <paper-input label="Name" type="text" willvalidate id="name" layout vertical ></paper-input></td><br>
+		            <label> LastName: </label>
+		            <paper-input label="LastName" type="text" willvalidate id="lname" layout vertical ></paper-input></td><br>
+		            <label> NickName: </label>
+		            <paper-input label="Nick" type="text" willvalidate id="nname" layout vertical ></paper-input></td><br>
+		            <label> Password: </label>
+		            <paper-input label="Password" type="password" willvalidate id="pass" layout vertical ></paper-input></td><br>
+		            <label> Email: </label>
+		            <paper-input label="email@example.com" type="email" willvalidate id="email" layout vertical ></paper-input></td>  
+		            <br><br>
 
-         </div>
+		             <div id="button_e" tool center center-justified horizontal layout display:flex>
+		                <paper-button raised="" class="accept" onclick="accept();"> ACCEPT
+		                </paper-button> 
+		                <paper-button raised="" class="cancel"> CANCEL </paper-button>
+		                <br><br>
+		            </div><br><br>   	
 
-        
-         </section>
-    
+	          	</section>
+	          
+	        </core-pages>
+        </div>
       </section>
+    
+    
      
 </core-pages>
   </template>
