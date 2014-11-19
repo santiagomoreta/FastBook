@@ -15,63 +15,90 @@
       font-size: 30px;
 
       }
- 
 
-      .body{
-        
-        background-image: url('../images/bookshelves.png');
-        position: absolute;
-       // 
-        width: 100%;
-        height:520px;
-        
-        border-radius: 5px;
- 
+      .titulo{
+        font-size: 15px;
+        font-family: 'Lato';
+        margin-left: 15%;
+
       }
-      
-        .libros{
-          padding-top: 60px;
-          margin-left: 10%;
-          
+      .body{
+        position: absolute;
+        /*background-image: url('../images/bookshelves.png');*/
+        width: 100%; 
+        border-radius: 5px;      
+      }
+
+      .portada{
+        margin-top: 0%;
+        margin-left: 15%;
+      }
+
+      .libros{
+
+        padding-right: 10%;
+        width:10%; 
+        height: 150px;
+        float:left;
+        padding-top: -25%;
+        margin-left: 5%;
+        margin-top: 1.8%;
+        margin-bottom: 1.5%;
+      }
+
+        #reco {
+          padding-left: 20px;
+          background-image: url('../images/bookshe_top.png');
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          height: 40px;
         }
-        .lib {
-          float: left;
-          margin-right: 20px;
-          padding-top: 20px;
+        .content { /*se hara por cada fila de recomendados (solo haremos 3 filas o 4 como mucho)*/
+          padding-top: 1%;
+          height: 550px;
+          background-image: url('../images/bookshe.png');
+          background-size: 100% 32.59%;
         }
-      
-        #reco{
-          margin-left: 7%;
-          margin-top: 1%;
+        .footer {
+          background-image: url('../images/bookshe_bottom.png');
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          height: 40px;
         }
-        
+        img{
+            width: 100%;
+            height: 100%;
+           
+        }
         @media (max-width: 600px) {
-            
-             .libros{
-                 
-             }
-             .lib {
-                padding-top: 10%;
-                margin-bottom: -4%;
-                 
-             }
-             .body{
-                background-image: url('../images/bookshelvesmov.png');
-                background-size: 100% 100%;
-                background-repeat: no-repeat;
-             }
-            
-  
+         .libros{
+          float:left;
+          padding-right: 5%;
+          width:20%; 
+          height: 150px;
+          float:left;
+          margin-top: 6%;
+          margin-bottom: 4.5%;
+        }
+        .content {
+          height: 730px;
+          background-size: 100% 25%;              
+        }
+    }
 
     </style>
      <section>
     <div class="body">
-      <!--<div id="reco">Biblioteca<br></div>-->
-      <div class="libros">
-        <template repeat="{{libro in libros}}">
-          <mi-libro class="lib" titulo="{{libro.titulo}}" imagen="{{libro.imagen}}"></mi-libro>
-        </template>
-      </div> 
+      <div id="reco">Recomendados<br></div>
+        <div class="content">
+          <div class="libros">
+            <template repeat="{{libro in libros}}">
+              <mi-libro class="lib" titulo="{{libro.titulo}}" imagen="{{libro.imagen}}"></mi-libro>
+            </template>
+          </div> 
+        </div>
+         <div class="footer"> </div>
+      </div>  
     </div>
     
     </section>
