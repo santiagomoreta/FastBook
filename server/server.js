@@ -10,18 +10,13 @@ var app        = express();
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-var port     = process.env.PORT || 8080; // set our port
+var port     = process.env.PORT || 8081; // set our port
 
-app.all("/api/*", function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Headers", "Cache-Control, Pragma, Origin, Authorization, Content-Type, X-Requested-With");
-  res.header("Access-Control-Allow-Methods", "GET, PUT, POST");
-  return next();
-});
+
 
 var mongoose   = require('mongoose');
 mongoose.connect('mongodb://fastbook:123456@proximus.modulusmongo.net:27017/oT3uwysa'); // connect to our database
-var Book     = require('./app/models/book');
+var Book     = require('./model/book');
 
 // ROUTES FOR OUR API
 // =============================================================================

@@ -130,7 +130,7 @@ module.exports = function(app) {
       if (req.body.title !== null) book.title = req.body.title;
       if (req.body.status !== null) book.status=req.body.status;
       if (req.body.province !== null) book.province=req.body.province;
-      if (req.body.price !== null) book.price=req.body.price;
+      if (!req.body.price) book.price=req.body.price;
  
      book.save(function(err) {
         if(!err) {
@@ -177,7 +177,7 @@ module.exports = function(app) {
  
   //Link routes and functions
   app.get('/books', findAllBooks);
-  app.get('/book/:isbn', findByIsbn);
+  app.get('/book/:id', findById);
   app.post('/book', addBook);
   app.put('/book/:id', updateBook);
   app.delete('/book/:id', deleteBook);
