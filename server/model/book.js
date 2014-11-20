@@ -20,6 +20,9 @@ var Book   = new Schema({
         isbn:  Number ,
         genre: String,
         description:  String ,
+        status:String,
+        province:String,
+         price: Number,
         modified: { type: Date, default: Date.now }    
 });
 

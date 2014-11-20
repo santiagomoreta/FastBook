@@ -10,6 +10,9 @@ module.exports = function(app) {
   //GET - Return all books in the DB
   findAllBooks = function(req, res) {
         console.log("GET - /books");
+        res.header('Access-Control-Allow-Origin', "*");     // TODO - Make this more secure!!
+        res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
+        res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
       return Book.find(function(err, books) {
           if(!err) {
               return res.send(books);
@@ -66,6 +69,11 @@ module.exports = function(app) {
   //POST - Insert a new Book in the DB
   addBook = function(req, res) {
         console.log('POST - /book');
+        //-------------------
+        res.header('Access-Control-Allow-Origin', "*");     // TODO - Make this more secure!!
+        res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
+        res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
+        //----------------------------------------
     console.log(req.body);
  
     var book = new Book({
@@ -76,6 +84,9 @@ module.exports = function(app) {
                 isbn : req.body.isbn,
                 genre : req.body.genre,
                 description : req.body.description,
+                status:req.body.status,
+                province:req.body.province,
+                price: req.body.price
               
     });
  
@@ -117,6 +128,9 @@ module.exports = function(app) {
       if (req.body.genre !== null) book.genre  = req.body.genre;
       if (req.body.description !== null) book.description = req.body.description;
       if (req.body.title !== null) book.title = req.body.title;
+      if (req.body.status !== null) book.status=req.body.status;
+      if (req.body.province !== null) book.province=req.body.province;
+      if (req.body.price !== null) book.price=req.body.price;
  
      book.save(function(err) {
         if(!err) {
