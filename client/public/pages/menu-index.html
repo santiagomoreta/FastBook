@@ -1,7 +1,7 @@
 <script src="//code.jquery.com/jquery-1.10.2.js"></script>
 
 <polymer-element name="menu-index">
-  <template >
+  <template>
     <style>
 
       paper-progress {
@@ -21,12 +21,16 @@
           position:relative;
           /*margin-top:5%;*/
       }
+
+      core-animated-pages {
+        //background-color: yellow; 
+      }
+
       core-toolbar#menu-bar{
          background: linear-gradient(black,#085461);
       }
       paper-item{
           text-align: center;
-  
           margin-right: 2%;
          // border: solid 1px;
          // border-radius: 7px;
@@ -39,17 +43,13 @@
             background-image: url('../images/butt.png');
             background-size: 100% 150%;
             background-position: center;
-
-
-
       }
-
-
+      
       @media (max-width: 600px) {
           div#main{
               position:relative;
               margin-top:7%;
-
+              margin-bottom: 100px;
           }
           :host{
               background-color: grey;
@@ -78,15 +78,25 @@
               border-radius: 0px;
               height: 36px;
               margin-top: -5%;
-                  background-image: url('../images/icon.png');
-             background-size:100% 110%;
+              background-image: url('../images/icon.png');
+              background-size:100% 110%;
               background-repeat: no-repeat;
-
-
           }
 
-
+      }
+      .footer {
+        height: 80px;
+        background-color: white;
+      }
+      #main {
+        //border: 5px solid red;
+      }
+      section {
+        border: 1px solid yellow;
+        height: auto;
+      }
       </style>
+      
       <div>
         <div id="menu">
 
@@ -94,8 +104,6 @@
             <core-menu horizontal center layout flex id="coremenu" valueattr="hash" selected="{{route}}">
               <template repeat="{{page in pages}}">
                 <!---->
-
-
                 <paper-item  class="paper" on-tap="{{favoriteTapped }}{{progress}}"center horizontal layout center-justified flex label="{{page.name}}" hash="{{page.hash}}" id="{{hash}}" icon="{{page.icon}}"title="{{page.name}}">
                   <a href="{{page.hash}}"></a>
                 </paper-item>
@@ -108,10 +116,8 @@
 
         <paper-progress ></paper-progress>
 
-
+        
         <div id="main">       
-
-
 
           <core-animated-pages valueattr="hash" selected="{{route}}"
                                transitions="slide-from-right" id="animated">
@@ -142,11 +148,23 @@
               <fast-account></fast-account>
             </section>
 
+
+
           </core-animated-pages>
           <core-pages>
+
         </div>
+
+        
+       
       </div>
+      <div class="footer">
+      NO TOCAR ESTOY PROBANDO QUE EL DISEÑO DE SANTIAGO ESTA COMO EL OJETE.... PRUEBA DE ELLO ESTO....
+      </div>
+    
     </template>
+
+    
 
 
 
@@ -158,7 +176,7 @@
      </core-icon-button>-->
 
 
-  </template>
+
   <script>
 
 
