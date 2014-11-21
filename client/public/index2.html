@@ -31,22 +31,13 @@
   <link rel="import" href="../bower_components/paper-progress/paper-progress.html">
   <link rel="import" href="pages/fast-account.html"> 
   <link rel="import" href="pages/core-search.html">
-  
- <!----------------------fastbookacoount--------------->
- <link rel="import" href="../../bower_components/paper-input/paper-input.html">
-<link rel="import" href="../../bower_components/paper-button/paper-button.html">
-<link rel="import" href="../../bower_components/paper-button/paper-button.html">
-
-<link rel="import" href="../../bower_components/core-icon/core-icon.html">
-<link rel="import" href="../../bower_components/topeka-elements/avatars.html">
-<link rel="import" href="../../bower_components/paper-checkbox/paper-checkbox.html">
-<link rel="import" href="../../bower_components/paper-item/paper-item.html">
- <!----------------------fastbookacoount fin--------------->
 
   <link rel="import" href="pages/post-card.html">
   <link rel="import" href="pages/menu-index.html">
   <link rel="import" href="components/x-meme/x-meme.html">
-
+  <link rel="import" href="components/paper-switch/elements/paper-switch.html">
+  <link rel="import" href="components/polymer-nooo-button/polymer-nooo-button.html">
+  <link rel="import" href="components/x-rating/x-rating.html">
   <link rel="import" href="components/facebook-login/facebook-login.html">
   
   <link rel="import" href="pages/sell-element.html">
@@ -141,17 +132,16 @@
           }
       }
       .header {
-        
         height: 100%;
       }
       .menu {
          background-image: url('./images/steel.jpg');
          background-size: 100% 100%;
          min-height: 600px;
-         height: 800px;
-         max-height: 900px;
-         
+         height: 1000px;
+         max-height: 1100px;
       }
+      /*.header, .menu { box-shadow: -10px 0px 10px -5px #888888; }*/
       .footer {
         height: 100px;
         background: linear-gradient(to bottom, rgba(0,0,0,1) 1%,rgba(0,0,0,0.68) 62%,rgba(0,0,0,0.65) 67%,rgba(0,0,0,0.2) 90%,rgba(0,0,0,0) 100%);
@@ -161,7 +151,7 @@
         font-size: 15px;
         border-bottom-right-radius: 20px; 
         border-bottom-left-radius: 20px;
-        box-shadow: 0px 5px 6px white;
+        box-shadow: 0px 2px 0.5px white;
       }
 
       core-item {
@@ -191,7 +181,7 @@
 
       <div class="header">
         <core-toolbar id="title-bar"> 
-                <div id="title" flex > titulo </div> <!-- aqui va fastbook -->
+                <div id="title" flex > FASTBOOK </div> <!-- aqui va fastbook -->
                         <div id="boton" horizontal end-justified layout>
                           <core-menu-button>
 
@@ -210,7 +200,14 @@
           <menu-index horizontal center layouy flex></menu-index>
 
       </div> 
-
+      <div class="footer">
+        &copy; Copyright 2014 <br>
+        Fast-book <br>
+        Politica de Privacidad  <br>
+        Reservados todos los derechos <br>
+        Siguenos en nuestras redes sociales  <br>
+        Facebook, Twitter <br>
+      </div>
 
     </template>
     
