@@ -1,9 +1,5 @@
-<link rel="import" href="../../bower_components/polymer/polymer.html">
-<link rel="import" href="../../bower_components/paper-input/paper-input.html">
-<link rel="import" href="../../bower_components/paper-button/paper-button.html">
-<link rel="import" href="../../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
-<link rel="import" href="../../bower_components/paper-item/paper-item.html">
-<link rel="import" href="../../bower_components/core-icon/core-icon.html">
+
+>
 
 <polymer-element name="sell-element">
     <template>
@@ -288,7 +284,7 @@
                   
                   //------------apiss/////
                   
-                  $.post("http://localhost:8080/book",
+                  $.post("http://172.16.100.72:8080/book",
                     {
                      genre : genre,
                     province : province,
@@ -313,7 +309,7 @@
                   
                 },
                 getdata:function(){
-                      var libros="http://localhost:8080/books";
+                      var libros="http://172.16.100.72:8080/books";
                       $.getJSON(libros,function(result){
                         alert(result);
                         console.log(result);
