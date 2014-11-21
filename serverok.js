@@ -4,7 +4,7 @@ mongoose = require('mongoose');
 
 var app=express();
 //----estaticoo-----------
-app.use(express.static(__dirname + '/client'));
+app.use(express.static(__dirname + '/client/public'));
 
 
 app.use(bodyParser.json());
