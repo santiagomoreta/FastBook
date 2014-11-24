@@ -157,10 +157,10 @@
 	          		<h1> Sign In </h1><br>
 	          		<label> Name: </label>
 	          		<img class="icon" src="../images/login1.jpg">
-		            <paper-input label="Name" type="text" willvalidate id="name" layout vertical ></paper-input><br>
+		            <paper-input label="Name" type="text" id="name" layout vertical></paper-input><br>
 		            <label> Password: </label>
 		            <img class="icon" src="../images/pass.jpg">
-		            <paper-input label="Password" type="password" willvalidate id="pass" layout vertical ></paper-input><br>
+		            <paper-input label="Password" type="password" id="pass" layout vertical></paper-input><br>
 		           	
 		           	<div id="button_e" tool center center-justified horizontal layout display:flex>
 		                <paper-button raised="" class="accept" onclick="accept();"> LOGIN >> </paper-button> 
@@ -214,9 +214,8 @@
   <script>
 
   	function accept(){
-  		var name = document.getElementById("#name").value;
-   		
-  		alert(name);
+  		var t = document.querySelector('menu-index').shadowRoot.querySelector('fast-account').shadowRoot.querySelector('#name').value;
+      alert(t);
   	}
 
     Polymer({
