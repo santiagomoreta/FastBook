@@ -8,7 +8,9 @@
   <template>
     <style>
      :host{
-      width:100%;
+      position: absolute;
+      width: 100%;
+      height: 100%;
       color:#292215;
       font-size: 30px;
 
@@ -20,11 +22,27 @@
         margin-left: 15%;
 
       }
+      section {
+        background: rgba(8,46,64, 0.6);
+        border-radius: 10px;
+        // background-image: url('../images/oscuro.jpg');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        border: 3px solid dimgray;
+        margin: 20px;
+        height: 700px;
+      }
+
+      .page {
+        
+        height: 800px;
+        padding: 3%;
+      }
       .body{
-        position: absolute;
         /*background-image: url('../images/bookshelves.png');*/
         width: 100%; 
-        border-radius: 5px;      
+        border-radius: 5px;
+        
       }
 
       .libros{
@@ -62,9 +80,9 @@
         	height: 130px;
         	border: 5px solid whitesmoke;
         	-webkit-transition: all 1s ease;
-			-moz-transition: all 1s ease;
-			-ms-transition: all 1s ease;
-			transition: all 1s ease;
+    			-moz-transition: all 1s ease;
+    			-ms-transition: all 1s ease;
+    			transition: all 1s ease;
         }
         
         mi-libro /deep/ img:hover {
@@ -79,42 +97,55 @@
         }
        
         @media (max-width: 600px) {
+          section, .page {
+            margin: 0px;
+            padding: 0px;
+          }
+          .page {
+            height: 0px;
+          }
+          section {
+            border: 0px;
+          }
+
          .libros{
-          float:left;
           padding-right: 5%;
           width:20%; 
           height: 150px;
           float:left;
-          margin-top: 13%;
-          margin-bottom: -2.5%;
+          margin-top: 16%;
+          margin-bottom: -4.5%;
         }
         .content {
           height: 730px;
-          background-size: 100% 25%;              
+          background-size: 100% 25%; 
+          padding-left: 3%;             
         }
 
         mi-libro /deep/ img {
-        	width: 80px;
+        	width: 70px;
         	height: 120px;
-        	border: 5px solid whitesmoke;
+        	border: 2px solid whitesmoke;
+
         }
        
     }
 
     </style>
-     <section>
-    <div class="body">
-      <div id="reco">Recomendados<br></div>
-        <div class="content">
-            <template repeat="{{libro in libros}}">
-	            <div class="libros">
-	              <mi-libro class="lib" titulo="{{libro.titulo}}" imagen="{{libro.imagen}}"></mi-libro>
-	          	</div> 
-            </template>
-          
-        </div>
-         <div class="footer"> </div>
-      </div>  
+    <section tool center-justified vertical layout flex>
+      <div class="page" center-justified layout flex>
+        <div class="body">
+          <div id="reco">Recomendados<br></div>
+            <div class="content" center-justified layout flex>
+                <template repeat="{{libro in libros}}">
+    	            <div class="libros">
+    	              <mi-libro class="lib" titulo="{{libro.titulo}}" imagen="{{libro.imagen}}"></mi-libro>
+    	          	</div> 
+                </template>
+              
+            </div>
+            <div class="footer"> </div>
+        </div>  
     </div>
     
     </section>
