@@ -28,26 +28,18 @@
         padding: 3%;
       }
 
-      label{
-       font-weight: bold;
-       font-family: Verdana;   
-      }
-
       h1, label {
         color: dimgray;
         font-family: Courier;
         font-weight: bold;
         text-shadow: #fff 0 0 4px, #fcffbb 0 0 20px;
       }
-      h3 {
-        color: red;
-        font-size: 15px;
       
-        
-      }
       label {
+        font-weight: bold;
+        font-family: Verdana;   
       	clear: both;
-      	display: block;
+      	
       	text-align: left;
         margin-top: 20px;
        
@@ -58,31 +50,27 @@
         margin-bottom: 15px;
       }
 
-      .accept, .cancel {
+      .accept {
         background-image: url('../images/log.jpg');
         background-size: 100% 100%;
         background-repeat: no-repeat;
         color: white;
         font-weight: bold;
       }
-      .accept:hover, .cancel:hover {
+      .accept:hover {
         background-image: url('../images/log2.jpg');
         background-size: 100% 100%;
         background-repeat: no-repeat;
         color: dimgray;
       }
 
-      paper-input, paper-input-decorator {
-        //background-color: white;
-        //border: 2px solid dimgray;
-        //border-top-right-radius: 5px;
-		    //border-bottom-right-radius: 5px;
-        padding: 0px 10px 0px 10px;
+      paper-input-decorator {
+        padding: 0px 0px 0px 7px;
         box-shadow: blue 20px;
         margin-left: -2px;
-        width: 80%;
+        
+        margin-bottom: 30px;
       }
-
       .facebook{
         border: 1px solid #4c69ba;
         padding-top: 2px;
@@ -91,165 +79,166 @@
         /*text-shadow: #fff 0 0 4px, #fcffbb 0 0 20px;*/
       }
 
+      #core_pages1, #core_pages2 {
+        background-color: azure;
+        border: 5px solid;
+      }
 
-       @media (max-width: 600px) {
+      #core_pages1 {
+        width: 40%;
+        height: 500px;
+        margin-right: 2%;
+        padding-left: 4%;
+        padding-right: 4%;
+        float: left;
+      }
+      #core_pages2 {
+        height: 690px;
+        margin-left: 50%;
+        padding-left: 4%;
+        padding-right: 4%;
+      }
+      
+      paper-checkbox {
+        padding: 0px 20px 0px 0px;
+        float: left;
+      }
+       
+      paper-checkbox.blue::shadow #ink[checked] {
+        color: #4285f4;
+      } 
+    
+      paper-checkbox.blue::shadow #checkbox.checked {
+        border-color: #4285f4;
+      }
+      a {
+        color: blue;
+        text-decoration: none;
+      }
+      .comment {
+        color: dimgray; font-family: arial; font-size: 12px;
+      }
+      .icon{
+        margin-left: -5%;
+        float: left;
+        clear: both;
+        border: 2px solid dimgray;
+        border-top-left-radius: 5px;
+        border-bottom-left-radius: 5px;
+        height: 43px;
+        width: 12%;
+      }
+      #core_icon { margin-bottom: 10%; }
 
-        #core_pages1 /deep/ [layout][vertical] {
+      @media (max-width: 600px) {
+        #section { margin: 0px;}
+        h1 { margin-bottom: -10px; font-size: 20px;}
 
+        #core_pages1, #core_pages2 {
+          border-radius: 10px;
+          width: 88%;
+          background-color: yellow;
+          height: auto;
         }
 
-        paper-input {
+        #core_pages1 {
+          float: none;
+          margin-right: 40%;
+        }
+        #core_pages2{
+          margin-top: 1%;
+          margin-left: 0px;
+        }
+        paper-input-decorator {
           width: 100%;
+          padding: 0px 0px 0px 0px;
+          margin-bottom: 0px;
         }
+
+        #button_e { margin-top: 5%; }
+        .icon, label, paper-checkbox, .remember { display: none; }
+
         label{
           visibility: hidden;
           margin-top: 0px;
           margin-bottom: 0px;
         }
-        .accept, .cancel {
-          width: 50px;
+        paper-item {
+          margin-top: -40px;
         }
+        #core_icon { margin-top: 8%; margin-bottom: 8%;}
       }
-      #core_pages1 {
-      	background-color: white;
-      	width: 47%;
-      	height: 500px;
-      	border: 5px solid;
-      	margin-bottom: 190px;
-        float: left;
-        
-      }
-      #core_pages2 {
-      	background-color: white;
-      	width: 47%;
-      	border: 5px solid;
-      	height: 690px;
-        margin-left: 51%;
-      }
-      #section2, #section3 {
-      	padding-left: 8%;
-
-      }
-      paper-checkbox {
-      	padding: 0px 20px 0px 0px;
-      	float: left;
-      }
-       
-      paper-checkbox.blue::shadow #ink[checked] {
-      	color: #4285f4;
-      } 
-    
-      paper-checkbox.blue::shadow #checkbox.checked {
-      	border-color: #4285f4;
-      }
-    a {
-      	color: blue;
-      	text-decoration: none;
-    }
-    .icon{
-		margin-left: -5%;
-		float: left;
-		clear: both;
-		border: 2px solid dimgray;
-		border-top-left-radius: 5px;
-		border-bottom-left-radius: 5px;
-		height: 43px;
-    width: 12%;
-	}
-
+         
     </style>
    
     <core-pages selected="0" selectedindex="0" notap id="page_account">
       <section id="section" active>        
-          <div id="button_enter" tool center center-justified  layout display:flex>
-	          <core-pages selected="0" selectedindex="0" notap id="core_pages1">
+          <div id="button_enter">
+	          <div id="core_pages1">
+              
+                <h1> Sign In </h1><br>
 
-	          	<section id="section2" active center center-justified layout flex>
-
-	          		<h1> Sign In </h1><br>
-	          		<label> Name: </label>
-	          		<!--<img class="icon" src="../images/login1.jpg">
-		            <!--<paper-input label="Name" type="text" id="name_user" validate="^[A-Za-z'\s-]*$" layout vertical></paper-input>-->
-                
-                <paper-input-decorator id="decorator" label="Name" error="Name is Required">
-                <input id="name_user" is="core-input" required>
+                <label> Name: </label>
+                <!-- <img class="icon" src="../images/login1.jpg"> -->
+                <paper-input-decorator id="decorator" label="Name" error="Name is Required" >
+                <input id="name_user" is="core-input" required  title="El formato no es valido">
                 </paper-input-decorator>
                
-		            <label> Password: </label>
-		            <!--<img class="icon" src="../images/pass.jpg"> -->
-		            <paper-input label="Password" type="password" id="pass" layout vertical></paper-input>
-		           	 <h3 hidden id="error2">Write the password of your account</h3>
-		           	<div id="button_e" tool center-justified horizontal layout display:flex><br><br> 
-		            <paper-button id="ok" on-tap="{{ validateAll }}" class="accept" showing> LOGIN >> </paper-button> 
-		              
-		            </div><br>
+                <label> Password: </label>
+                <!--<img class="icon" src="../images/pass.jpg">-->
+                <paper-input-decorator id="decorator2" label="Password" error="Password is Required">
+                <input id="password" is="core-input" type="password" required>
+                </paper-input-decorator>
+               
+                <div id="button_e" tool center-justified horizontal layout display:flex>
+                  <paper-button id="ok" on-tap="{{ validateAll }}" class="accept" showing> LOGIN >> </paper-button> 
+                </div><br>
 
-		                <paper-checkbox for> </paper-checkbox><div vertical layout flex > Remember me </div>
-		               	<br>
+                <paper-checkbox for> </paper-checkbox> <div class="remember"> Remember me </div>
+                    <br>
 
-		               	<paper-item noink><a href="http://www.google.es" layout horizontal center>Lost your Password?</a> </paper-item>
-      	
+                <paper-item noink><a href="http://www.google.es" layout horizontal center>Lost your Password?</a> </paper-item>
 
-	          	</section>
-	         <br><br><br>
-	          </core-pages>
-	          
-            <core-pages selected="0" selectedindex="0" notap id="core_pages2">
-	          	<section id="section3" active>
-	          		<h1>Register</h1>
+            </div>
+            <div id="core_pages2">
+              
+                <h1>Register</h1>
 
-	             	<core-icon icon="avatars:avatar-1" id="core_icon" designmeta="topeka-avatar"></core-icon>
-	          	
-	          		<label> Name: </label>
-                <img class="icon" src="../images/name.png">
-		            <paper-input label="Name" type="text" willvalidate id="name" layout vertical ></paper-input></td><br>
-		            <label> LastName: </label>
-                <img class="icon" src="../images/lastname.png">
-		            <paper-input label="LastName" type="text" willvalidate id="lname" layout vertical ></paper-input></td><br>
-		            <label> NickName: </label>
-                <img class="icon" src="../images/nickname.png">
-		            <paper-input label="Nick" type="text" willvalidate id="nname" layout vertical ></paper-input></td><br>
-		            <label> Password: </label>
-                <img class="icon" src="../images/pass.png">
-		            <paper-input label="Password" type="password" willvalidate id="passw" layout vertical ></paper-input></td><br>
-		            <label> Email: </label>
-                <img class="icon" src="../images/email.png">
-		            <paper-input label="email@example.com" type="email" willvalidate id="email" layout vertical ></paper-input></td>  
-		            <br><br>
+                <core-icon icon="avatars:avatar-1" id="core_icon" designmeta="topeka-avatar"></core-icon>
+                <br>
+              
+                <label> Name: </label>
+            
+                <paper-input-decorator id="name_register" label="Name & Lastname" error="Name & LastName is Required">
+                <input id="r_name" is="core-input" required>
+                </paper-input-decorator>
+                <label> Create Password: </label>
+             
+                <paper-input-decorator id="pass_register" label="Password" error="Password is Required">
+                <input id="r_pass" is="core-input" type="password" required>
+                </paper-input-decorator>
+                 <label> Reenter Password: </label>
+           
+                <paper-input-decorator id="repass_register" label="Reenter Password" error="Password is Required">
+                <input id="repass" is="core-input" type="password" required>
+                </paper-input-decorator>
+                <label> Email: </label>
 
-		             <div id="button_e" tool center center-justified horizontal layout display:flex>
-		                <paper-button raised="" class="accept" onclick="accept();"> ACCEPT
-		                </paper-button> 
-		                <paper-button raised="" class="cancel"> CANCEL </paper-button>
-		                <br><br>
-		            </div><br><br>   	
+                <paper-input-decorator id="email_register" label="example@example.com" error="Email is Required">
+                <input id="email" is="core-input" type="email" required>
+                </paper-input-decorator>
 
-	          	</section>
-	          
-	        </core-pages>
+                <br><br>
 
-          <core-pages>
+                <div class="comment" center-justified horizontal layout>
+                Click Create account to agree to the Fastbook Services Agreement and privacy and cookies statement.</div><br>
 
-          <section id="validate">
-
-            <div>Validation</div>
-
-            <button on-tap="{{ validateAll }}">click me to validate all</button>
-
-            <paper-input-decorator id="decorator2" label="required" floatingLabel error="input is required!">
-              <input is="core-input" required id="ip">
-            </paper-input-decorator>
-
-            </section>
-          </core-pages>
+                <div id="button_register" tool center center-justified horizontal layout display:flex>
+                  <paper-button  class="accept" on-tap="{{ accept }}"> CREATE ACCOUNT </paper-button> 
+                </div>
 
         </div>
       </section>
-
-
-    
-    
-     
 </core-pages>
   </template>
   <script>
@@ -257,40 +246,81 @@
     Polymer({
 
       accept: function(){
-        var name_login = this.$.name_user.value;
-        var pass= this.$.pass.value;
-        var error1 = this.$.error1;
-        var error2 = this.$.error2;
-
-        console.log(name_login.length == 0);
-        if (name_login.length === 0) {
-
-          error1.hidden=false;
-          //this.$.name_user.focus();
-          //console.log(this.$.name_user);
-         
-        }
-        if (pass.length === 0)  {
-           error2.hidden=false;
-        }
+        var decorator_name = this.$.name_register; //decorator name
+        var decorator_pass = this.$.pass_register; //decorator pass
+        var decorator_repas = this.$.repass_register; //decorator repass
+        var decorator_email = this.$.email_register; //decorator mail
+        var user = this.$.r_name; //input
+        var pass = this.$.r_pass;
+        var repas = this.$.repass;
+        var mail = this.$.email;
         
-        if (name_login.length !== 0 && pass.length !== 0) {
-          alert('datos: '+ name_login + ' ' + pass);
-        };
-        
+        if ((!user.validity.valid) && (!pass.validity.valid) && (!repas.validity.valid) && (!mail.validity.valid)) {
+          decorator_name.isInvalid=true;
+          decorator_pass.isInvalid=true;
+          decorator_repas.isInvalid=true;
+          decorator_email.isInvalid=true;
+        }
+        else {
+          decorator_name.isInvalid=false;
+          decorator_pass.isInvalid=false;
+          decorator_repas.isInvalid=false;
+          decorator_email.isInvalid=false;
+
+          if (!user.validity.valid) { decorator_name.isInvalid=true; }
+          else { decorator_name.isInvalid=false; }
+
+          if (!pass.validity.valid) { decorator_pass.isInvalid=true; }
+          else { decorator_pass.isInvalid=false; }
+
+          if (!repas.validity.valid) { decorator_repas.isInvalid=true; }
+          else { decorator_repas.isInvalid=false; }
+
+          if (!mail.validity.valid) { decorator_email.isInvalid=true; }
+          else { decorator_email.isInvalid=false; }
+          
+        }
+
+        if ((user.validity.valid) && (pass.validity.valid) && (repas.validity.valid) && (mail.validity.valid)) {
+            alert("los datos recibidos son:" + user.value + ' '+ pass.value+ ' '+ repas.value+ ' '+ mail.value);
+        }
 
       
       },
 
       validateAll: function(){
-        var n = this.$.decorator; //input
-        var m = this.$.name_user; //decorator
+        var m = this.$.decorator2; //decorator pass
+        var n = this.$.decorator; //decorator user
+        var user = this.$.name_user; //input
+        var pass = this.$.password;
+
+        console.log(n);
+        console.log(m);
         
-        if (!m.validity.valid) {
+        if ((!user.validity.valid) && (!pass.validity.valid) ) {
           n.isInvalid=true;
+          m.isInvalid=true;
         }
         else {
           n.isInvalid=false;
+          m.isInvalid=false;
+          if (!user.validity.valid) {
+             n.isInvalid=true;
+          }
+          else {
+            n.isInvalid=false;
+          }
+          if (!pass.validity.valid) {
+             m.isInvalid=true;
+          }
+          else {
+             m.isInvalid=false;
+          }
+          
+        }
+
+        if ((user.validity.valid) && (pass.validity.valid) ) {
+            alert("los datos recibidos son:" + user.value + ' '+ pass.value);
         }
         
 
