@@ -1,5 +1,4 @@
 
-
 <polymer-element name="fast-account">
   <template>
       <style>    
@@ -19,13 +18,14 @@
       #section{
       
          margin: 20px;
-         
+
       }
       #button_enter{
         background: rgba(8,46,64, 0.6);
         border: 3px solid dimgray;
         border-radius: 10px;
         height: 700px;
+        padding: 3%;
       }
 
       label{
@@ -39,6 +39,12 @@
         font-weight: bold;
         text-shadow: #fff 0 0 4px, #fcffbb 0 0 20px;
       }
+      h3 {
+        color: red;
+        font-size: 15px;
+      
+        
+      }
       label {
       	clear: both;
       	display: block;
@@ -47,7 +53,9 @@
        
       }
       .accept {
+        margin-top: 10px;
         margin-right: 20px;
+        margin-bottom: 15px;
       }
 
       .accept, .cancel {
@@ -64,15 +72,15 @@
         color: dimgray;
       }
 
-      paper-input {
-        background-color: white;
-        border: 2px solid dimgray;
-        border-top-right-radius: 5px;
-		border-bottom-right-radius: 5px;
-        padding: 5px 10px 8px 10px;
+      paper-input, paper-input-decorator {
+        //background-color: white;
+        //border: 2px solid dimgray;
+        //border-top-right-radius: 5px;
+		    //border-bottom-right-radius: 5px;
+        padding: 0px 10px 0px 10px;
         box-shadow: blue 20px;
-        height: 30px;
         margin-left: -2px;
+        width: 80%;
       }
 
       .facebook{
@@ -86,12 +94,12 @@
 
        @media (max-width: 600px) {
 
-        #button_enter {
-           border-radius: 0px;
+        #core_pages1 /deep/ [layout][vertical] {
+
         }
 
         paper-input {
-          width: 170px;
+          width: 100%;
         }
         label{
           visibility: hidden;
@@ -104,20 +112,23 @@
       }
       #core_pages1 {
       	background-color: white;
-      	margin-right: 50px;
-      	width: 50%;
+      	width: 47%;
       	height: 500px;
       	border: 5px solid;
       	margin-bottom: 190px;
+        float: left;
+        
       }
       #core_pages2 {
       	background-color: white;
-      	width: 50%;
+      	width: 47%;
       	border: 5px solid;
       	height: 690px;
+        margin-left: 51%;
       }
       #section2, #section3 {
       	padding-left: 8%;
+
       }
       paper-checkbox {
       	padding: 0px 20px 0px 0px;
@@ -136,61 +147,73 @@
       	text-decoration: none;
     }
     .icon{
-		margin-left: -25px;
+		margin-left: -5%;
 		float: left;
 		clear: both;
 		border: 2px solid dimgray;
 		border-top-left-radius: 5px;
 		border-bottom-left-radius: 5px;
 		height: 43px;
+    width: 12%;
 	}
 
     </style>
    
     <core-pages selected="0" selectedindex="0" notap id="page_account">
       <section id="section" active>        
-          <div id="button_enter" tool center center-justified horizontal layout display:flex>
+          <div id="button_enter" tool center center-justified  layout display:flex>
 	          <core-pages selected="0" selectedindex="0" notap id="core_pages1">
 
-	          	<section id="section2" active>
+	          	<section id="section2" active center center-justified layout flex>
 
 	          		<h1> Sign In </h1><br>
 	          		<label> Name: </label>
-	          		<img class="icon" src="../images/login1.jpg">
-		            <paper-input label="Name" type="text" id="name" layout vertical></paper-input><br>
+	          		<!--<img class="icon" src="../images/login1.jpg">
+		            <!--<paper-input label="Name" type="text" id="name_user" validate="^[A-Za-z'\s-]*$" layout vertical></paper-input>-->
+                
+                <paper-input-decorator id="decorator" label="Name" error="Name is Required">
+                <input id="name_user" is="core-input" required>
+                </paper-input-decorator>
+               
 		            <label> Password: </label>
-		            <img class="icon" src="../images/pass.jpg">
-		            <paper-input label="Password" type="password" id="pass" layout vertical></paper-input><br>
-		           	
-		           	<div id="button_e" tool center center-justified horizontal layout display:flex>
-		                <paper-button raised="" class="accept" onclick="accept();"> LOGIN >> </paper-button> 
+		            <!--<img class="icon" src="../images/pass.jpg"> -->
+		            <paper-input label="Password" type="password" id="pass" layout vertical></paper-input>
+		           	 <h3 hidden id="error2">Write the password of your account</h3>
+		           	<div id="button_e" tool center-justified horizontal layout display:flex><br><br> 
+		            <paper-button id="ok" on-tap="{{ validateAll }}" class="accept" showing> LOGIN >> </paper-button> 
 		              
-		            </div><br><br> 
+		            </div><br>
 
 		                <paper-checkbox for> </paper-checkbox><div vertical layout flex > Remember me </div>
-		               	<br><br>
+		               	<br>
 
 		               	<paper-item noink><a href="http://www.google.es" layout horizontal center>Lost your Password?</a> </paper-item>
-		               	
+      	
 
 	          	</section>
 	         <br><br><br>
 	          </core-pages>
-	          <core-pages selected="0" selectedindex="0" notap id="core_pages2">
+	          
+            <core-pages selected="0" selectedindex="0" notap id="core_pages2">
 	          	<section id="section3" active>
 	          		<h1>Register</h1>
 
 	             	<core-icon icon="avatars:avatar-1" id="core_icon" designmeta="topeka-avatar"></core-icon>
 	          	
 	          		<label> Name: </label>
+                <img class="icon" src="../images/name.png">
 		            <paper-input label="Name" type="text" willvalidate id="name" layout vertical ></paper-input></td><br>
 		            <label> LastName: </label>
+                <img class="icon" src="../images/lastname.png">
 		            <paper-input label="LastName" type="text" willvalidate id="lname" layout vertical ></paper-input></td><br>
 		            <label> NickName: </label>
+                <img class="icon" src="../images/nickname.png">
 		            <paper-input label="Nick" type="text" willvalidate id="nname" layout vertical ></paper-input></td><br>
 		            <label> Password: </label>
-		            <paper-input label="Password" type="password" willvalidate id="pass" layout vertical ></paper-input></td><br>
+                <img class="icon" src="../images/pass.png">
+		            <paper-input label="Password" type="password" willvalidate id="passw" layout vertical ></paper-input></td><br>
 		            <label> Email: </label>
+                <img class="icon" src="../images/email.png">
 		            <paper-input label="email@example.com" type="email" willvalidate id="email" layout vertical ></paper-input></td>  
 		            <br><br>
 
@@ -204,21 +227,77 @@
 	          	</section>
 	          
 	        </core-pages>
+
+          <core-pages>
+
+          <section id="validate">
+
+            <div>Validation</div>
+
+            <button on-tap="{{ validateAll }}">click me to validate all</button>
+
+            <paper-input-decorator id="decorator2" label="required" floatingLabel error="input is required!">
+              <input is="core-input" required id="ip">
+            </paper-input-decorator>
+
+            </section>
+          </core-pages>
+
         </div>
       </section>
+
+
     
     
      
 </core-pages>
   </template>
   <script>
-
-  	function accept(){
-  		var t = document.querySelector('menu-index').shadowRoot.querySelector('fast-account').shadowRoot.querySelector('#name').value;
-      alert(t);
-  	}
-
+  
     Polymer({
+
+      accept: function(){
+        var name_login = this.$.name_user.value;
+        var pass= this.$.pass.value;
+        var error1 = this.$.error1;
+        var error2 = this.$.error2;
+
+        console.log(name_login.length == 0);
+        if (name_login.length === 0) {
+
+          error1.hidden=false;
+          //this.$.name_user.focus();
+          //console.log(this.$.name_user);
+         
+        }
+        if (pass.length === 0)  {
+           error2.hidden=false;
+        }
+        
+        if (name_login.length !== 0 && pass.length !== 0) {
+          alert('datos: '+ name_login + ' ' + pass);
+        };
+        
+
+      
+      },
+
+      validateAll: function(){
+        var n = this.$.decorator; //input
+        var m = this.$.name_user; //decorator
+        
+        if (!m.validity.valid) {
+          n.isInvalid=true;
+        }
+        else {
+          n.isInvalid=false;
+        }
+        
+
+
+      }
+
+
     });
   </script>
 </polymer-element>
