@@ -1,5 +1,5 @@
 
->
+
 
 <polymer-element name="sell-element">
     <template>
@@ -10,7 +10,8 @@
             height: 100%;
             box-sizing: border-box;
         }
-        section {
+        section#main {
+          
             background: rgba(8,46,64, 0.6);
             border-radius: 10px;
            // background-image: url('../images/oscuro.jpg');
@@ -18,17 +19,13 @@
             background-repeat: no-repeat;
             border: 3px solid dimgray;
             margin: 20px;
-            height: 800px;
+            height: 620px;
         }
         paper-input {
-            background-color: white;
-            border: 2px solid dimgray;
-            border-radius: 5px;
-            padding-left: 10px;
-            padding-right: 10px;
-            box-shadow: blue 20px;
-            margin-top: 50px;
+              color:white;
+              
         }
+   
         boton-continuar{
              border-radius: 7px;
             border:1px solid black;
@@ -47,27 +44,22 @@
 
         label{
 
-            font-size: 25px;
             display: inline-block;
-            width: 150px;
-            margin-bottom: 10px;
-            margin-top: 2px;
-            text-transform: ;
-            font-variant: small-caps;
+            width:100px;
+        
 
         }
-        #autor ,#titulo ,#isbn ,#editorial ,#precio{
-            height: 28px;
-            border-radius: 7px;
-            border:1px solid black;
-            margin-bottom: 2%;
+             #butt {
+            background-image: url('../images/log.jpg');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            color: white;
+            font-weight: bold;
+            margin-top: 20px;
         }
-        select{
-                height: 28px;
-            border-radius: 7px;
-            border:1px solid black;
-             margin-bottom: 2%;
-              width: 170px;
+   
+        paper-dropdown-menu{
+      background-color: transparent;
         }
         textarea{
             border-radius: 7px;
@@ -77,10 +69,26 @@
             resize: none;
         }
         #contenido-izq{
-            margin-left: 50px;
+            position:relative;
+            width:40%;
+            margin-left: 20px;
+            float:left;
             
         }
-
+        #right{
+            position:relative;
+            float:right;
+            width:50%;
+            margin-right: 20px;
+            margin-top: 8.5%;
+        }
+        #foo{
+            position:relative;
+            float:right;
+            width: 100%;
+            text-align: center;
+            
+        }
          @media (max-width: 600px) {
          
              textarea{
@@ -89,168 +97,140 @@
          }
          
         </style>
-        <section tool  center-justified vertical layout flex>
+        <section id="main" >
           
           <div  id="contenido-izq">
-        
-          
             
-            <form name="formu" id="formu" action="#" method="post" enctype="multipart/form-data">
             
-           
+
               <h1>Pon un libro a la venta, gratis y en solo unos minutos</h1>
             
-              <br>
+
+         
             
+             <paper-input-decorator label="Titulo" floatingLabel error="Titulo is required!">
+              <input is="core-input" required>
+             </paper-input-decorator>
+             
+              <paper-input-decorator label="Autor" floatingLabel error="Autor is required!">
+              <input is="core-input" required>
+             </paper-input-decorator>
+              
+             <paper-input-decorator label="ISBN" floatingLabel error="ISBN is required!">
+              <input is="core-input" required>
+             </paper-input-decorator>
+
+             <paper-input-decorator label="Editorial" floatingLabel error="Editorial is required!">
+              <input is="core-input" >
+             </paper-input-decorator>
+              
+            <paper-input-decorator label="Precio" floatingLabel error="Precio is required!">
+              <input is="core-input" required>
+             </paper-input-decorator>
+
+            
+          </div>
+          <div id="right">
+   
                 <label for="categoria">Categoria</label>
-                <select name="categoria" class="categoria" id="categoria">
-                      <option value='primaria'>Primaria</option>
-                      <option value='secundaria'>Secundaria</option>
-                      <option value='bachillerato'>Bachiller</option>
-                      <option value='universidad'>Universidad</option>
-                      <option value='oposiciones'>oposiciones</option>
-                      <option value='idiomas'>Idiomas</option>
-                      <option value='formacion profesional'>formación profesional</option>
-                      <option value='lectura'>Libros de lectura</option>  
-                </select>
+              <paper-dropdown-menu id="cat" >
+                   <paper-dropdown class="dropdown"label="{{route}}" >
+                    <core-menu >
+                      <template repeat="{{category in categories}}">
+                        <paper-item label='{{category.name}}'></paper-item>
+                      </template>
+                    </core-menu>
+                   </paper-dropdown>
+               </paper-dropdown-menu>       
             
             <br>
-            
-            <label for="provincia">provincia</label>
-            <select name="provincia" class="provincia" id="provincia" >
-                <option value='A Coruña'>A Coruña</option>
-                <option value='Alicante'>Alacant</option>
-                <option value='Albacete'>Albacete</option>
-                <option value='Almeria'>Almería</option>
-                <option value='Araba'>Araba</option>
-                <option value='Asturias'>Asturias</option>
-                <option value='Avila'>Ávila</option>
-                <option value='Badajoz'>Badajoz</option>
-                <option value='Balearres'>Balears</option>
-                <option value='Barcelona'>Barcelona</option>
-                <option value='Bizcaya'>Bizkaia</option>
-                <option value='Burgos'>Burgos</option>
-                <option value='Caceres'>Cáceres</option>
-                <option value='Cadiz'>Cádiz</option>
-                <option value='Cantabria'>Cantabria</option>
-                <option value='Castellon'>Castelló</option>
-                <option value=Ceuta>Ceuta</option>
-                <option value='Ciudad Real'>Ciudad Real</option>
-                <option value='Cordoba'>Córdoba</option>
-                <option value='Cuenca'>Cuenca</option>
-                <option value='Girona'>Girona</option>
-                <option value='Granada'>Granada</option>
-                <option value='Guadalajara'>Guadalajara</option>
-                <option value='Guipuzkoa'>Guipuzkoa</option>
-                <option value='Huelva'>Huelva</option>
-                <option value='Huesca'>Huesca</option>
-                <option value='Jaen'>Jaén</option>
-                <option value='La Rioja'>La Rioja</option>
-                <option value='Las Palmas'>Las Palmas</option>
-                <option value='Leon'>León</option>
-                <option value='Lleida'>Lleida</option>
-                <option value='Lugo'>Lugo</option>
-                <option value='Madrid'>Madrid</option>
-                <option value='Malaga'>Málaga</option>
-                <option value='Melilla'>Melilla</option>
-                <option value='Murcia'>Murcia</option>
-                <option value='Navarra'>Navarra</option>
-                <option value='Ourense'>Ourense</option>
-                <option value='Palencia'>Palencia</option>
-                <option value='Pontevedra'>Pontevedra</option>
-                <option value='Tenerife'>S.C. Tenerife</option>
-                <option value='Salamanca'>Salamanca</option>
-                <option value='Segovia'>Segovia</option>
-                <option value='Sevilla'>Sevilla</option>
-                <option value='Soria'>Soria</option>
-                <option value='Tarragona'>Tarragona</option>
-                <option value='Teruel'>Teruel</option>
-                <option value='Toledo'>Toledo</option>
-                <option value='Valencia'>Valencia</option>
-                <option value='Valladolid'>Valladolid</option>
-                <option value='Zamora'>Zamora</option>
-                <option value='Zaragoza'>Zaragoza</option> 
-            </select>
-            
+             <label for="provincia">provincia</label>
+            <paper-dropdown-menu label="Seleccione provincia">
+                <paper-item label='A Coruña'>A Coruña</paper-item>
+                <paper-item label='Alicante'>Alacant</paper-item>
+                <paper-item label='Albacete'>Albacete</paper-item>
+                <paper-item label='Almeria'>Almería</paper-item>
+                <paper-item label='Araba'>Araba</paper-item>
+                <paper-item label='Asturias'>Asturias</paper-item>
+                <paper-item label='Avila'>Ávila</paper-item>
+                <paper-item label='Badajoz'>Badajoz</paper-item>
+                <paper-item label='Balearres'>Balears</paper-item>
+                <paper-item label='Barcelona'>Barcelona</paper-item>
+                <paper-item label='Bizcaya'>Bizkaia</paper-item>
+                <paper-item label='Burgos'>Burgos</paper-item>
+                <paper-item label='Caceres'>Cáceres</paper-item>
+                <paper-item label='Cadiz'>Cádiz</paper-item>
+                <paper-item label='Cantabria'>Cantabria</paper-item>
+                <paper-item label='Castellon'>Castelló</paper-item>
+                <paper-item label=Ceuta>Ceuta</paper-item>
+                <paper-item label='Ciudad Real'>Ciudad Real</paper-item>
+                <paper-item label='Cordoba'>Córdoba</paper-item>
+                <paper-item label='Cuenca'>Cuenca</paper-item>
+                <paper-item label='Girona'>Girona</paper-item>
+                <paper-item label='Granada'>Granada</paper-item>
+                <paper-item label='Guadalajara'>Guadalajara</paper-item>
+                <paper-item label='Guipuzkoa'>Guipuzkoa</paper-item>
+                <paper-item label='Huelva'>Huelva</paper-item>
+                <paper-item label='Huesca'>Huesca</paper-item>
+                <paper-item label='Jaen'>Jaén</paper-item>
+                <paper-item label='La Rioja'>La Rioja</paper-item>
+                <paper-item label='Las Palmas'>Las Palmas</paper-item>
+                <paper-item label='Leon'>León</paper-item>
+                <paper-item label='Lleida'>Lleida</paper-item>
+                <paper-item label='Lugo'>Lugo</paper-item>
+                <paper-item label='Madrid'>Madrid</paper-item>
+                <paper-item label='Malaga'>Málaga</paper-item>
+                <paper-item label='Melilla'>Melilla</paper-item>
+                <paper-item label='Murcia'>Murcia</paper-item>
+                <paper-item label='Navarra'>Navarra</paper-item>
+                <paper-item label='Ourense'>Ourense</paper-item>
+                <paper-item label='Palencia'>Palencia</paper-item>
+                <paper-item label='Pontevedra'>Pontevedra</paper-item>
+                <paper-item label='Tenerife'>S.C. Tenerife</paper-item>
+                <paper-item label='Salamanca'>Salamanca</paper-item>
+                <paper-item label='Segovia'>Segovia</paper-item>
+                <paper-item label='Sevilla'>Sevilla</paper-item>
+                <paper-item label='Soria'>Soria</paper-item>
+                <paper-item label='Tarragona'>Tarragona</paper-item>
+                <paper-item label='Teruel'>Teruel</paper-item>
+                <paper-item label='Toledo'>Toledo</paper-item>
+                <paper-item label='Valencia'>Valencia</paper-item>
+                <paper-item label='Valladolid'>Valladolid</paper-item>
+                <paper-item label='Zamora'>Zamora</paper-item>
+                <paper-item label='Zaragoza'>Zaragoza</paper-item> 
+            </paper-dropdown-menu>
             <br>
-            
-                        
-            
-            
-           
-                        
-            <label for="isbn">isbn</label>
-            <input name="isbn" id="isbn" type="text" value=""  />
-            
-            <br>
-            
-            <label for="autor">autor</label>
-            <input name="autor" id="autor" type="text" value=""/>
-            
-            <br>
-            
-            <label for="editorial">editorial</label>
-            <input name="editorial" id="editorial" type="text" value="" />
-            
-            <br>
-            
-            <label for="estado">estado</label>
-            <select name="estado" id="estado" /> 
-                <option value='Muy malo'>Muy malo</option>
-                <option value='Malo'>Malo</option>
-                <option value='Normal'>Normal</option>
-                <option value='Bueno'>Bueno</option>
-                <option value='Muy bueno'>Muy bueno</option>
-            </select>
-            
-            <br>
-            
-            <label for="precio">precio*</label>
-            <input name="precio" id="precio" type="text"/>
-            
-            <br>
-            
-            <label for="titulo">título*</label>
-            <input name="titulo" id="titulo" type="text" value=""/>
-            
-            <br>
+             <label for="estado">estado</label>
+            <paper-dropdown-menu label="Seleccione estado" /> 
+                <paper-item label='Muy malo'>Muy malo</paper-item>
+                <paper-item label='Malo'>Malo</paper-item>
+                <paper-item label='Normal'>Normal</paper-item>
+                <paper-item label='Bueno'>Bueno</paper-item>
+                <paper-item label='Muy bueno'>Muy bueno</paper-item>
+            </paper-dropdown-menu><br>
             
             <label for="descripcion">descripción*</label><br>
             <textarea id="descripcion"rows="4" cols="50" placeholder="Describe your book..." required></textarea>
-            
-            <br>
-            
-          
+
             <span class="titulo">Añade algunas imágenes, ¡se venderá más rápido!</span><br><br>
                             
                 <label for="img1">imagen #1</label>
                 <input type="file" name="img1" id="img1" tabindex="12"/>
-                                 
-                <br>
-                            
+      
                 <label for="img2">imagen #2</label>
                 <input type="file" name="img2" id="img2" tabindex="13"/>
                                  
-                <br>
-                            
-                <label for="img3">imagen #3</label>
-                <input type="file" name="img3" id="img3" tabindex="14"/>
-                                 
-                <br>
-                            
-                <label for="img4">imagen #4</label>
-                <input type="file" name="img4" id="img4" tabindex="15"/>
-                                 
-                <br>
-                      
-            <input type="button"on-tap="{{validates}}"value="Continuar y publicar mi libro" class="boton-continuar" tabindex="16"/>
+  
+            
 
-            </form>
-            <br>
-            <br>
+        
+              
         </div>
-
-          
+          <div id="foo">
+            <paper-button id="butt" on-tap="{{valid}}">Continuar y publicar</paper-button>
+          </div>
+        
+        </section>     
       
 
 
@@ -258,6 +238,18 @@
     </template>
     <script>
         Polymer({
+          
+                ready:function(){
+                  this.categories=[
+                    {name :'Primaria'},
+                    {name :'Secundaria'},
+                    {name :'Bachillerato'},
+                    {name :'Universidad'},
+                    {name :'Oposiciones'},
+                    {name :'formacion rofesional'}
+                  ];
+                  
+                },
             
                 validates: function(){
                  
@@ -315,6 +307,16 @@
                         console.log(result);
                       });
                      
+                },
+                valid:function(){
+                  
+                  var $d=this.$.main.querySelectorAll('paper-input-decorator');
+                 // console.log(decorator);
+                   Array.prototype.forEach.call($d, function(d) {
+                    d.isInvalid = !d.querySelector('input').validity.valid;
+                    });
+                 var $f=this.$.main.querySelectorAll('paper-dropdown-menu');
+                  console.log($f[0].isSelected);
                 }
             
         });
