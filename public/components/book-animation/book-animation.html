@@ -254,11 +254,52 @@ Media Queries
 	}
 }
 
-      
-      
+core-input {
+    color: black;
+    width: 100%;
+    background: #F1F1F1;
+    padding: 15px 15px 15px 0px;
+    margin-top: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+}
+
+#butt {
+    padding-top: 15px;
+    vertical-align: middle;
+    background-image: url('../../images/log.jpg');
+    border-radius: 0px 5px 5px 0px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-left: 0px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+#icon_search {
+    border-radius: 5px 0px 0px 5px;
+    background: #F1F1F1;
+    margin: 10px;
+    width: 51px;
+    height: auto;
+    padding: 15px 0px 15px 15px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    color: rgba(8,46,64, 0.6);
+}      
       
       
 		</style>
+    <section horizontal layout flex>
+        <core-icon id="icon_search" icon="search"></core-icon>
+        <core-input placeholder="Find a book..."></core-input>
+        <paper-button id="butt">Search</paper-button>
+    </section>
     <section horizontal layout flex >
 		<div class="container">
 			<!-- Top Navigation -->
