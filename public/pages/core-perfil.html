@@ -1,0 +1,183 @@
+<polymer-element name="core-perfil">
+	<template>
+		<style>
+		:host {
+			position: absolute;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+		}
+		section {
+			margin: 20px;
+			background: rgba(8,46,64, 0.6);
+			padding: 20px;
+			border: 3px solid dimgray;
+			border-radius: 10px;
+        }
+		paper-button {
+	        padding-top: 15px;
+	        background-image: url('../../../images/log.jpg');
+	        background-size: 100% 100%;
+	        background-repeat: no-repeat;
+	        color: white;
+	        font-weight: bold;
+	        margin-top: 20px;
+		}
+		#mi_perfil {
+            margin: 20px;
+            border-radius: 6px;
+            background: #fff;
+            width: 100%;
+		}
+		article {
+			width: 128px;
+			height: auto;
+			float: right;
+		}
+		figure {
+		}
+		.campos {
+			padding: 10px;
+		}
+		.icon {
+			height: 61px;
+			width: 61px;
+			border-radius: 0px 5px 5px 0px;
+			background: #F1F1F1;
+			margin-top: 10px;
+			margin-left: 0px;
+			margin-right: 10px;
+			margin-bottom: 10px;
+			color: rgba(8,46,64, 0.6);
+		}
+		.icon:hover {
+			background: rgba(8,46,64, 0.6);
+		}
+		paper-input {
+			border-radius: 5px 0px 0px 5px;
+			color: black;
+			width: 100%;
+			background: #F1F1F1;
+			padding: 15px 15px 15px 15px;
+			margin-top: 10px;
+			margin-left: 10px;
+			margin-right: 0px;
+			margin-bottom: 10px;
+		}
+		#butt {
+			width: 200px;
+			padding: 15px;
+			background-image: url('../../../images/log.jpg');
+			background-size: 100% 100%;
+			background-repeat: no-repeat;
+			color: white;
+			font-weight: bold;
+			margin: 20px;
+		}
+		#actualizar {
+			margin: 0 auto;
+			width: 200px;
+		}
+		h3 {
+			padding: 10px;
+			font-size: 26px;
+			text-align: center;
+			color: rgba(8,46,64, 0.6);
+		}
+		#avatar {
+			width: 230px;
+			margin: 0 auto;
+		}
+		#photo {
+			width: 150px;
+			height: 150px;
+			border-radius: 75px;
+		}
+		#icon-edit {
+			padding: 10px;
+			border-radius: 25px;
+			float: right;
+			height: 20px;
+			width: 20px;
+			color: rgba(8,46,64, 0.6);
+			background: #F1F1F1;
+		}
+		#photo:hover {
+			opacity: 0.8;
+		}
+		#icon-edit:hover {
+			background: rgba(8,46,64, 0.6);
+		}
+		</style>
+
+		<section vertical layout center flex>
+
+			<div id="mi_perfil">
+			<h3>Hello {{perfil.name}}!</h3>
+				<div id="avatar">
+					<img id="photo" src="https://lh5.googleusercontent.com/-GiF-k96QJZ0/Uk28qg27t-I/AAAAAAAAACE/JBQBACxCsLw/w561-h560-no/RSCN0370.JPG">
+					<core-icon id="icon-edit" icon="delete"></core-icon>
+					<core-icon id="icon-edit" icon="create"></core-icon>
+				</div>
+
+				<div horizontal layout center flex class="campos">
+					<paper-input id="name" placeholder="{{perfil.name}}" disabled="true"></paper-input>
+					<core-icon class="icon" class="icon" icon="create" on-tap="{{edit}}"></core-icon>
+				</div>
+				<div horizontal layout center flex class="campos">
+					<paper-input placeholder="{{perfil.lastName}}" disabled="true"></paper-input>
+					<core-icon class="icon" icon="create" on-tap="{{edit}}"></core-icon>
+				</div>
+				<div horizontal layout center flex class="campos">
+					<paper-input placeholder="{{perfil.email}}" disabled="true"></paper-input>
+					<core-icon class="icon" icon="create" on-tap="{{edit}}"></core-icon class="icon">
+				</div>
+				<div horizontal layout center flex class="campos">
+					<paper-input placeholder="{{perfil.userName}}" disabled="true"></paper-input>
+					<core-icon class="icon" icon="create" on-tap="{{edit}}"></core-icon class="icon">
+				</div>
+				<div horizontal layout center flex class="campos">
+					<paper-input placeholder="{{perfil.password}}" disabled="true"></paper-input>
+					<core-icon class="icon" icon="create" on-tap="{{edit}}"></core-icon class="icon">
+				</div>
+				<div id="actualizar">
+					<paper-button id="butt">Actualizar</paper-button>
+				</div>
+			</div>		
+		</section>
+		<mi-biblioteca>
+			<template repeat="{{libro in libros}}">
+    	            <div class="libros">
+    	              <mi-libro class="lib" titulo="{{libro.titulo}}" imagen="{{libro.imagen}}"></mi-libro>
+    	          	</div> 
+                </template>
+		</mi-biblioteca>
+	</template>
+	<script>
+	Polymer({
+		ready: function () {
+			this.perfil = {name: 'Carlos Andrés', lastName: 'García Maldonado', email: 'carlos@gmail.com', userName: 'charlie', password: '12345'};
+			this.libros=[
+
+               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=uFI8Kmx3a0oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
+               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=di-5bhX94zwC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
+               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=PgNbEmEhXewC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
+               {titulo:"kfc" , imagen:"http://bks7.books.google.es/books?id=qbfjn5VtQqgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
+               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=uFI8Kmx3a0oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
+               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=1EwPAwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
+               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=uFI8Kmx3a0oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
+               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=2mhNrHch2pYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
+               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=NynQQGQbglYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
+               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=hwDKc6ocEt0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"}
+
+
+               
+	            ];
+		},
+		edit: function() {
+			var edit = this.$.name;
+			edit.disabled = false;
+		}
+	});
+	</script>
+</polymer-element>
