@@ -145,39 +145,63 @@
 				</div>
 			</div>		
 		</section>
-		<mi-biblioteca>
+
 			<template repeat="{{libro in libros}}">
     	            <div class="libros">
     	              <mi-libro class="lib" titulo="{{libro.titulo}}" imagen="{{libro.imagen}}"></mi-libro>
     	          	</div> 
                 </template>
-		</mi-biblioteca>
+			
 	</template>
 	<script>
-	Polymer({
-		ready: function () {
-			this.perfil = {name: 'Carlos Andrés', lastName: 'García Maldonado', email: 'carlos@gmail.com', userName: 'charlie', password: '12345'};
-			this.libros=[
+	(function() {
+		function getGoogleImage(isbn) {
+		
+			var that=this;
 
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=uFI8Kmx3a0oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=di-5bhX94zwC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=PgNbEmEhXewC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks7.books.google.es/books?id=qbfjn5VtQqgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=uFI8Kmx3a0oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=1EwPAwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=uFI8Kmx3a0oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=2mhNrHch2pYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=NynQQGQbglYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=hwDKc6ocEt0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"}
+        	var book="https://www.googleapis.com/books/v1/volumes?q=isbn:"+isbn;
+
+  
+        
+         $.getJSON(book,function(result){
+         		var img =result.items[0].volumeInfo.imageLinks.thumbnail;
+         		var title=result.items[0].volumeInfo.title;
+         		that.img=[];
+
+        	that.libros=[
+         	{titulo:title,imagen:img}];
 
 
-               
-	            ];
-		},
-		edit: function() {
-			var edit = this.$.name;
-			edit.disabled = false;
-		}
-	});
+         		
+         		console.log("imagen   "+img+"     titulo   "+title);
+
+         		
+		});
+     }
+
+		Polymer({
+			ready: function () {
+				/*this.perfil = {name: 'Carlos Andrés', lastName: 'García Maldonado', email: 'carlos@gmail.com', userName: 'charlie', password: '12345'};*/
+				var that=this;
+	
+
+				$.get("http://172.16.100.72:8080/books",function(data){
+					
+					that.lib=data;
+			
+					for(var i=0;i<data.length;i++){
+					getGoogleImage.bind(that)(data[i].isbn);
+			
+					}
+							
+
+				});
+			},
+			edit: function() {
+				var edit = this.$.name;
+				edit.disabled = false;
+			}
+		});
+	}());
 	</script>
 </polymer-element>
