@@ -4,7 +4,7 @@
 
 
 
-<polymer-element name="mi-libro" attributes="titulo imagen ">
+<polymer-element name="mi-libro" attributes="titulo imagen">
   <template>
     <style>
 
@@ -32,7 +32,7 @@
       
     
       <div class="libros">
-        <a onclick=""><img class="portada" src="{{imagen}}" title="{{titulo}}"></img></a>
+        <a onclick=""><img class="portada" src="{{imagen}}" title="{{titulo}}" ></img></a>
         <div class="titulo"></div>
       
       </div>     
@@ -43,11 +43,12 @@
 
 
     Polymer({
-     
+   
       ready: function() {
 
-       
+   
       }
+      
       
     });
   </script>

@@ -1,0 +1,451 @@
+<polymer-element name="biblio-user">
+	<template>
+		<style>
+		:host {
+			position: absolute;
+            width: 100%;
+            height: 100%;
+            box-sizing: border-box;
+		}
+		section {
+			margin: 20px;
+			background: rgba(8,46,64, 0.6);
+			padding: 20px;
+			border: 3px solid dimgray;
+			border-radius: 10px;
+        }
+		paper-button {
+	        padding-top: 15px;
+	        background-image: url('../../../images/log.jpg');
+	        background-size: 100% 100%;
+	        background-repeat: no-repeat;
+	        color: white;
+	        font-weight: bold;
+	        margin-top: 20px;
+		}
+		#mi_perfil {
+            margin: 20px;
+            border-radius: 6px;
+            background: #fff;
+            width: 100%;
+		}
+		article {
+			width: 128px;
+			height: auto;
+			float: right;
+		}
+		figure {
+		}
+		.campos {
+			padding: 10px;
+		}
+		.icon {
+			height: 61px;
+			width: 61px;
+			border-radius: 0px 5px 5px 0px;
+			background: #F1F1F1;
+			margin-top: 10px;
+			margin-left: 0px;
+			margin-right: 10px;
+			margin-bottom: 10px;
+			color: rgba(8,46,64, 0.6);
+		}
+		.icon:hover {
+			background: rgba(8,46,64, 0.6);
+		}
+		paper-input {
+			border-radius: 5px 0px 0px 5px;
+			color: black;
+			width: 100%;
+			background: #F1F1F1;
+			padding: 15px 15px 15px 15px;
+			margin-top: 10px;
+			margin-left: 10px;
+			margin-right: 0px;
+			margin-bottom: 10px;
+		}
+		#butt {
+			width: 200px;
+			padding: 15px;
+			background-image: url('../../../images/log.jpg');
+			background-size: 100% 100%;
+			background-repeat: no-repeat;
+			color: white;
+			font-weight: bold;
+			margin: 20px;
+		}
+		#actualizar {
+			margin: 0 auto;
+			width: 200px;
+		}
+		h3 {
+			padding: 10px;
+			font-size: 26px;
+			text-align: center;
+			color: rgba(8,46,64, 0.6);
+		}
+		#avatar {
+			width: 230px;
+			margin: 0 auto;
+		}
+		#photo {
+			width: 150px;
+			height: 150px;
+			border-radius: 75px;
+		}
+		#icon-edit {
+			padding: 10px;
+			border-radius: 25px;
+			float: right;
+			height: 20px;
+			width: 20px;
+			color: rgba(8,46,64, 0.6);
+			background: #F1F1F1;
+		}
+		#photo:hover {
+			opacity: 0.8;
+		}
+		#icon-edit:hover {
+			background: rgba(8,46,64, 0.6);
+		}
+         .libros{
+        padding-right: 10%;
+        width:10%; 
+        height: 150px;
+        float:left;
+        margin-left: 5%;
+        margin-top: 2.8%;
+        margin-bottom: 1.5%;
+        
+      }
+           .content { /*se hara por cada fila de recomendados (solo haremos 3 filas o 4 como mucho)*/
+          padding-top: 1%;
+          height: 550px;
+          background-image: url('../images/bookshe.png');
+          background-size: 100% 32.59%;
+        }
+        #dialog{
+            position: absolute;
+            width: 80%;
+            height: 500px;
+            border: 1px solid black;
+          	background: rgba(8,46,64, 0.98);
+            border-radius: 7px;
+          
+            margin-left: 10%;
+            
+        }
+        paper-input.modify{
+            background-color: transparent;
+            color:white;
+            margin:0px;
+            padding: 0px;
+        }
+        #izq{
+       position:relative;
+       width:40%;
+     
+       float:left;
+       margin-left: 2%;
+            
+        }
+        #der{
+            position:relative;
+            float:left;
+            width:50%;
+            margin-left: 5%;
+         
+         
+        }
+        #optionButtons{
+            position:relative;
+        }
+          select{
+          height: 50px;
+          width: 100%;
+          margin-bottom: 3px;
+        }
+		</style>
+
+
+ 
+    <div class="content" center-justified layout flex>
+			<template repeat="{{libro in libros}}">
+    	            <div class="libros">
+    	              <mi-libro  class="lib" titulo="{{libro.titulo}}" imagen="{{libro.imagen}}" on-tap="{{bookDetail}}"></mi-libro>
+    	          	</div> 
+      </template>
+		
+      
+      
+      
+     <div id="dialog" hidden>
+                 <div id="optionButtons">
+                  <paper-button on-tap="{{closeDialog}}">regresar</paper-button>
+              </div>
+      
+          <div id="izq">
+             <div id="dialog2" >
+            </div>
+            
+             <paper-input class="modify"  id="tisbn" disabled></paper-input>
+             <paper-input class="modify" id="ttitulo" disabled></paper-input>
+             <paper-input class="modify" id="tautor" disabled></paper-input>
+              <paper-input class="modify" id="teditorial" disabled></paper-input>
+               <paper-input class="modify"  id="tprecio" disabled></paper-input>
+        
+          </div>
+       <div id="der">
+          <paper-input class="modify"  id="tdescription" disabled></paper-input>
+          <table border="0">
+            <tr>
+              <td>
+                <paper-input class="modify"  id="tcategoria" disabled></paper-input>
+              </td>
+              <td>
+                <select id="cat" disabled>
+                  <option value="0"> Seleccione Categoria</option>          
+                  <option >primaria </option>
+                  <option> secundaria</option>
+                  <option > bachillerato</option>
+                  <option> universidad</option>
+                  <option> formacion profesional</option>
+                  <option > oposiciones</option>
+                  <option  >lectura</option>
+                </select> 
+               </td> 
+            </tr> 
+            <tr>
+              <td >
+                <paper-input class="modify"  id="tprovincia" disabled></paper-input>
+              </td>
+              <td>
+                <select  disabled>
+                  <option value="0"> Seleccione Provincia</option>      
+                  <option> A Coruña</option>
+                  <option> Alicante</option>
+                  <option>Albacete</option>
+                  <option>Almería</option>
+                  <option>Araba</option>
+                  <option >Asturias</option>
+                  <option>Ávila</option>
+                  <option >Badajoz</option>
+                  <option >Balears</option>
+                  <option>Barcelona</option>
+                  <option >Bizkaia</option>
+                  <option >Burgos</option>
+                  <option >Cáceres</option>
+                  <option >Cádiz</option>
+                  <option >Cantabria</option>
+                  <option >Castelló</option>
+                  <option >Ceuta</option>
+                  <option >Ciudad Real</option>
+                  <option >Córdoba</option>
+                  <option>Cuenca</option>
+                  <option >Girona</option>
+                  <option>Granada</option>
+                  <option >Guadalajara</option>
+                  <option >Guipuzkoa</option>
+                  <option >Huelva</option>
+                  <option>Huesca</option>
+                  <option >Jaén</option>
+                  <option>La Rioja</option>
+                  <option >Las Palmas</option>
+                  <option >León</option>
+                  <option >Lleida</option>
+                  <option >Lugo</option>
+                  <option>Madrid</option>
+                  <option >Málaga</option>
+                  <option >Melilla</option>
+                  <option>Murcia</option>
+                  <option >Navarra</option>
+                  <option >Ourense</option>
+                  <option >Palencia</option>
+                  <option >Pontevedra</option>
+                  <option >S.C. Tenerife</option>
+                  <option >Salamanca</option>
+                  <option>Segovia</option>
+                  <option >Sevilla</option>
+                  <option >Soria</option>
+                  <option >Tarragona</option>
+                  <option>Teruel</option>
+                  <option >Toledo</option>
+                  <option >Valencia</option>
+                  <option >Valladolid</option>
+                  <option >Zamora</option>
+                  <option >Zaragoza</option> 
+              </select>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                   <paper-input class="modify"  id="testado" disabled></paper-input>
+              </td>
+              <td>
+                <select disabled> 
+                     <option value="0"> Seleccione estado</option>    
+                    <option >Muy malo</option>
+                    <option>Malo</option>
+                    <option>Normal</option>
+                    <option>Bueno</option>
+                    <option >Muy bueno</option>
+                </select>
+              </td>
+            </tr>
+           </table> 
+          
+                     <paper-button on-tap="{{modifyBooK}}">Modificar</paper-button>
+             
+                  
+                     <paper-button on-tap="{{updateBook}}">Guardar</paper-button>
+           
+                     <paper-button on-tap="{{deleteBook}}">Borrar</paper-button>
+        
+         
+       </div>
+    
+        </div>  
+    </div>
+
+      
+  
+
+	</template>
+	<script>
+	(function() {
+		function getGoogleImage(isbn) {
+		
+			var that=this;
+
+        	var book="https://www.googleapis.com/books/v1/volumes?q=isbn:"+isbn;
+
+      
+        that.libros=[];
+         $.getJSON(book,function(result){
+         		var img =result.items[0].volumeInfo.imageLinks.thumbnail;
+
+        	that.libros.push(
+         	{titulo:isbn,imagen:img});
+     		
+        });
+     };
+ 
+         
+         
+       
+ 
+
+		Polymer({
+			ready: function () {
+				/*this.perfil = {name: 'Carlos Andrés', lastName: 'García Maldonado', email: 'carlos@gmail.com', userName: 'charlie', password: '12345'};*/
+				var that=this;
+	
+
+				$.get("http://localhost:8080/books",function(data){
+					
+					that.lib=data;
+			
+					for(var i=0;i<data.length;i++){
+					getGoogleImage.bind(that)(data[i].isbn);
+			
+					}
+							
+
+				});
+			},
+			edit: function() {
+				var edit = this.$.name;
+				edit.disabled = false;
+			},
+      bookDetail:function(a,e,i){ 
+      
+        var d=this.$.dialog;
+        var d2=this.$.dialog2;
+        d.hidden=false;      
+     $(d2).append('<mi-libro  imagen='+i.imagen+'>  </mi-libro');
+     
+      var book="http://localhost:8080/book/"+i.titulo;
+      
+      console.log(book);
+      
+      var that=this;
+      $.get(book,function(data){
+        
+        console.log(data);
+       that.$.ttitulo.value=data.book.title;
+       that.$.tautor.value=data.book.author;
+        that.$.tisbn.value=data.book.isbn;
+        that.$.teditorial.value=data.book.publisher;
+        that.$.tprecio.value=data.book.price+"$";
+        that.$.tdescription.value=data.book.description;
+        that.$.tcategoria.value=data.book.genre;
+        that.$.tprovincia.value=data.book.province;
+        that.$.testado.value=data.book.status;
+        
+        
+      });
+   
+        
+
+        
+      },
+      closeDialog:function(){
+         var d=this.$.dialog;
+          var d2=this.$.dialog2;
+        d.hidden=true;
+          $(d2).empty();
+          
+      
+  
+       
+      },
+     
+      modifyBooK:function(a,e,i){
+        //alert("soy modifyBook");
+       var inn=this.shadowRoot.querySelectorAll('paper-input');
+       var sel=this.shadowRoot.querySelectorAll('select');
+
+        for(var i=0;i<6;i++){
+          inn[i].disabled=false;
+        }
+          for(var i=6;i<inn.length;i++){
+          inn[i].hidden=true;
+        }
+         for(var i=0;i<sel.length;i++){
+          sel[i].disabled=false;
+        }
+        
+        
+      },
+      updateBook:function(){
+        alert("holaaa updateee");
+      },
+       deleteBook:function(){
+         var titulo=this.$.tisbn;
+
+          var answer = confirm("esta seguro qu quiere borrar el libro?"+titulo.value);
+            if (answer){
+              
+              var book="http://localhost:8080/book/"+titulo.value;
+              
+              
+                          $.ajax({
+                          type: 'DELETE',
+                          url: book,
+                          data: { isbn: titulo.value },
+                          success: function() {
+                               alert("libro borrado!!     "+titulo.value);
+                                location.reload();
+                          }
+                      });
+             
+             
+            }
+            else{
+              
+            }
+      }
+		});
+	}());
+	</script>
+</polymer-element>

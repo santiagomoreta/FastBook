@@ -48,6 +48,9 @@ module.exports = function(app) {
    findByIsbn = function(req, res) {
         console.log("GET - /book/:isbn");
         console.log(req.params.isbn);
+         res.header('Access-Control-Allow-Origin', "*");     // TODO - Make this more secure!!
+        res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
+        res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
         Book.findOne({isbn: req.params.isbn}, function(err,book) { 
 
             if(!book) {
@@ -156,20 +159,20 @@ module.exports = function(app) {
   //DELETE - Delete a Book with specified ID
   deleteBook = function(req, res) {
        console.log("DELETE - /book/:id");
-    return Book.findById(req.params.id, function(err, book) {
+     Book.findOne({isbn: req.params.isbn}, function(err,book) {
       if(!book) {
         res.statusCode = 404;
-        return res.send({ error: 'Not found' });
+      res.send({ error: 'Not found' });
       }
  
-      return book.remove(function(err) {
+     book.remove(function(err) {
         if(!err) {
           console.log('Removed book');
-          return res.send({ status: 'OK' });
+          res.send({ status: 'OK' });
         } else {
           res.statusCode = 500;
           console.log('Internal error(%d): %s',res.statusCode,err.message);
-          return res.send({ error: 'Server error' });
+          res.send({ error: 'Server error' });
         }
       });
     });
@@ -177,10 +180,10 @@ module.exports = function(app) {
  
   //Link routes and functions
   app.get('/books', findAllBooks);
-  app.get('/book/:id', findById);
+  app.get('/book/:isbn', findByIsbn);
   app.post('/book', addBook);
   app.put('/book/:id', updateBook);
-  app.delete('/book/:id', deleteBook);
+  app.delete('/book/:isbn', deleteBook);
  
 };
 
