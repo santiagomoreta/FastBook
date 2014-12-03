@@ -108,6 +108,22 @@
 		#icon-edit:hover {
 			background: rgba(8,46,64, 0.6);
 		}
+         .libros{
+        padding-right: 10%;
+        width:10%; 
+        height: 150px;
+        float:left;
+        margin-left: 5%;
+        margin-top: 2.8%;
+        margin-bottom: 1.5%;
+        
+      }
+           .content { /*se hara por cada fila de recomendados (solo haremos 3 filas o 4 como mucho)*/
+          padding-top: 1%;
+          height: 550px;
+          background-image: url('../images/bookshe.png');
+          background-size: 100% 32.59%;
+        }
 		</style>
 
 		<section vertical layout center flex>
@@ -145,13 +161,13 @@
 				</div>
 			</div>		
 		</section>
-
+    <div class="content" center-justified layout flex>
 			<template repeat="{{libro in libros}}">
     	            <div class="libros">
     	              <mi-libro class="lib" titulo="{{libro.titulo}}" imagen="{{libro.imagen}}"></mi-libro>
     	          	</div> 
                 </template>
-			
+		</div>	
 	</template>
 	<script>
 	(function() {
@@ -161,19 +177,17 @@
 
         	var book="https://www.googleapis.com/books/v1/volumes?q=isbn:"+isbn;
 
-  
-        
+      
+        that.libros=[];
          $.getJSON(book,function(result){
          		var img =result.items[0].volumeInfo.imageLinks.thumbnail;
          		var title=result.items[0].volumeInfo.title;
-         		that.img=[];
+         	
 
-        	that.libros=[
-         	{titulo:title,imagen:img}];
-
-
-         		
-         		console.log("imagen   "+img+"     titulo   "+title);
+        	that.libros.push(
+         	{titulo:title,imagen:img});
+           
+            
 
          		
 		});
