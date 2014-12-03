@@ -19,7 +19,7 @@
             background-repeat: no-repeat;
             border: 3px solid dimgray;
             margin: 20px;
-            height: 620px;
+            height: 909px;
         }
         paper-input {
               color:white;
@@ -89,6 +89,29 @@
             text-align: center;
             
         }
+        select{
+          height: 50px;
+          width: 180px;
+          margin-bottom: 10px;
+        }
+        
+        #divisbn{
+          width: 100%;
+          height: 260px;
+         padding: 1%;
+          margin-top: 1%;
+          margin-left: 1%;
+              background-image: url('../images/log.jpg');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            color: white;
+               border-radius: 7px;
+           
+        }
+        p{
+          color:white;
+        }
+    
          @media (max-width: 600px) {
          
              textarea{
@@ -109,109 +132,137 @@
          
             
              <paper-input-decorator label="Titulo" floatingLabel error="Titulo is required!">
-              <input is="core-input" required>
+              <input is="core-input" id="titulo" required/>
              </paper-input-decorator>
              
               <paper-input-decorator label="Autor" floatingLabel error="Autor is required!">
-              <input is="core-input" required>
-             </paper-input-decorator>
-              
-             <paper-input-decorator label="ISBN" floatingLabel error="ISBN is required!">
-              <input is="core-input" required>
-             </paper-input-decorator>
+              <input is="core-input" id="autor" required/>
+             </paper-input-decorator> 
 
              <paper-input-decorator label="Editorial" floatingLabel error="Editorial is required!">
-              <input is="core-input" >
+              <input is="core-input" id="editorial"/>
              </paper-input-decorator>
               
             <paper-input-decorator label="Precio" floatingLabel error="Precio is required!">
-              <input is="core-input" required>
+              <input is="core-input" id="precio"  required/>
              </paper-input-decorator>
+            
+              
+             <paper-input-decorator label="ISBN" floatingLabel error="ISBN is required!" id="decoisbn">
+              <input is="core-input" id="isbn" required/>
+             </paper-input-decorator>
+              
+          
+             <!-- <paper-button id="butt" on-tap="{{validateIsbn}}">Comprobar ISBN</paper-button>-->
+             <paper-button id="butt" on-tap="{{validateIsbn}}">
+                Comprobar ISBN</paper-button>
+             <div id="divisbn" hidden>
+               
+               <core-input id="tisbn" disabled></core-input>
+               <core-input id="ttitulo" disabled></core-input>
+                <core-input id="tautor" disabled></core-input>
+                <img id="timg"></img>
+               
+             </div>
+              
+           
 
             
           </div>
           <div id="right">
-   
-                <label for="categoria">Categoria</label>
-              <paper-dropdown-menu id="cat" >
-                   <paper-dropdown class="dropdown"label="{{route}}" >
-                    <core-menu >
-                      <template repeat="{{category in categories}}">
-                        <paper-item label='{{category.name}}'></paper-item>
-                      </template>
-                    </core-menu>
-                   </paper-dropdown>
-               </paper-dropdown-menu>       
+            <paper-input-decorator label="Categoria" floatingLabel error="Categoria is required!" id="cate">
+              <select id="cat" >
+               
+                   
+                  <option value="0"> Seleccione Categoria</option>          
+                <option >primaria </option>
+                <option> secundaria</option>
+                <option > bachillerato</option>
+                <option> universidad</option>
+                <option> formacion profesional</option>
+                <option > oposiciones</option>
+                <option  >lectura</option>
+                                     
+             
+                
+             
+               </select> 
+                 </paper-input-decorator>   
             
             <br>
-             <label for="provincia">provincia</label>
-            <paper-dropdown-menu label="Seleccione provincia">
-                <paper-item label='A Coruña'>A Coruña</paper-item>
-                <paper-item label='Alicante'>Alacant</paper-item>
-                <paper-item label='Albacete'>Albacete</paper-item>
-                <paper-item label='Almeria'>Almería</paper-item>
-                <paper-item label='Araba'>Araba</paper-item>
-                <paper-item label='Asturias'>Asturias</paper-item>
-                <paper-item label='Avila'>Ávila</paper-item>
-                <paper-item label='Badajoz'>Badajoz</paper-item>
-                <paper-item label='Balearres'>Balears</paper-item>
-                <paper-item label='Barcelona'>Barcelona</paper-item>
-                <paper-item label='Bizcaya'>Bizkaia</paper-item>
-                <paper-item label='Burgos'>Burgos</paper-item>
-                <paper-item label='Caceres'>Cáceres</paper-item>
-                <paper-item label='Cadiz'>Cádiz</paper-item>
-                <paper-item label='Cantabria'>Cantabria</paper-item>
-                <paper-item label='Castellon'>Castelló</paper-item>
-                <paper-item label=Ceuta>Ceuta</paper-item>
-                <paper-item label='Ciudad Real'>Ciudad Real</paper-item>
-                <paper-item label='Cordoba'>Córdoba</paper-item>
-                <paper-item label='Cuenca'>Cuenca</paper-item>
-                <paper-item label='Girona'>Girona</paper-item>
-                <paper-item label='Granada'>Granada</paper-item>
-                <paper-item label='Guadalajara'>Guadalajara</paper-item>
-                <paper-item label='Guipuzkoa'>Guipuzkoa</paper-item>
-                <paper-item label='Huelva'>Huelva</paper-item>
-                <paper-item label='Huesca'>Huesca</paper-item>
-                <paper-item label='Jaen'>Jaén</paper-item>
-                <paper-item label='La Rioja'>La Rioja</paper-item>
-                <paper-item label='Las Palmas'>Las Palmas</paper-item>
-                <paper-item label='Leon'>León</paper-item>
-                <paper-item label='Lleida'>Lleida</paper-item>
-                <paper-item label='Lugo'>Lugo</paper-item>
-                <paper-item label='Madrid'>Madrid</paper-item>
-                <paper-item label='Malaga'>Málaga</paper-item>
-                <paper-item label='Melilla'>Melilla</paper-item>
-                <paper-item label='Murcia'>Murcia</paper-item>
-                <paper-item label='Navarra'>Navarra</paper-item>
-                <paper-item label='Ourense'>Ourense</paper-item>
-                <paper-item label='Palencia'>Palencia</paper-item>
-                <paper-item label='Pontevedra'>Pontevedra</paper-item>
-                <paper-item label='Tenerife'>S.C. Tenerife</paper-item>
-                <paper-item label='Salamanca'>Salamanca</paper-item>
-                <paper-item label='Segovia'>Segovia</paper-item>
-                <paper-item label='Sevilla'>Sevilla</paper-item>
-                <paper-item label='Soria'>Soria</paper-item>
-                <paper-item label='Tarragona'>Tarragona</paper-item>
-                <paper-item label='Teruel'>Teruel</paper-item>
-                <paper-item label='Toledo'>Toledo</paper-item>
-                <paper-item label='Valencia'>Valencia</paper-item>
-                <paper-item label='Valladolid'>Valladolid</paper-item>
-                <paper-item label='Zamora'>Zamora</paper-item>
-                <paper-item label='Zaragoza'>Zaragoza</paper-item> 
-            </paper-dropdown-menu>
+            <paper-input-decorator label="Provincia" floatingLabel error="provincia is required!"id="provi" >
+            <select id="pro">
+                 <option value="0"> Seleccione Provincia</option>      
+              <option> A Coruña</option>
+              <option> Alicante</option>
+                <option>Albacete</option>
+                <option>Almería</option>
+                <option>Araba</option>
+                <option >Asturias</option>
+                <option>Ávila</option>
+                <option >Badajoz</option>
+                <option >Balears</option>
+                <option>Barcelona</option>
+                <option >Bizkaia</option>
+                <option >Burgos</option>
+                <option >Cáceres</option>
+                <option >Cádiz</option>
+                <option >Cantabria</option>
+                <option >Castelló</option>
+                <option >Ceuta</option>
+                <option >Ciudad Real</option>
+                <option >Córdoba</option>
+                <option>Cuenca</option>
+                <option >Girona</option>
+                <option>Granada</option>
+                <option >Guadalajara</option>
+                <option >Guipuzkoa</option>
+                <option >Huelva</option>
+                <option>Huesca</option>
+                <option >Jaén</option>
+                <option>La Rioja</option>
+                <option >Las Palmas</option>
+                <option >León</option>
+                <option >Lleida</option>
+                <option >Lugo</option>
+                <option>Madrid</option>
+                <option >Málaga</option>
+                <option >Melilla</option>
+                <option>Murcia</option>
+                <option >Navarra</option>
+                <option >Ourense</option>
+                <option >Palencia</option>
+                <option >Pontevedra</option>
+                <option >S.C. Tenerife</option>
+                <option >Salamanca</option>
+                <option>Segovia</option>
+                <option >Sevilla</option>
+                <option >Soria</option>
+                <option >Tarragona</option>
+                <option>Teruel</option>
+                <option >Toledo</option>
+                <option >Valencia</option>
+                <option >Valladolid</option>
+                <option >Zamora</option>
+                <option >Zaragoza</option> 
+            </select>
+            </paper-input-decorator>
             <br>
-             <label for="estado">estado</label>
-            <paper-dropdown-menu label="Seleccione estado" /> 
-                <paper-item label='Muy malo'>Muy malo</paper-item>
-                <paper-item label='Malo'>Malo</paper-item>
-                <paper-item label='Normal'>Normal</paper-item>
-                <paper-item label='Bueno'>Bueno</paper-item>
-                <paper-item label='Muy bueno'>Muy bueno</paper-item>
-            </paper-dropdown-menu><br>
+            <paper-input-decorator label="Estado" floatingLabel error="Estado is required!" id="esta">
+            <select id="est"> 
+                 <option value="0"> Seleccione estado</option>    
+                <option >Muy malo</option>
+                <option>Malo</option>
+                <option>Normal</option>
+                <option>Bueno</option>
+                <option >Muy bueno</option>
+            </select>
+            </paper-input-decorator><br>
             
-            <label for="descripcion">descripción*</label><br>
-            <textarea id="descripcion"rows="4" cols="50" placeholder="Describe your book..." required></textarea>
-
+       
+            <paper-input-decorator label="Descripcion" floatingLabel error="description is required!" id="desc">
+                <textarea id="descripcion"rows="4" cols="50" required></textarea>
+            </paper-input-decorator>  
             <span class="titulo">Añade algunas imágenes, ¡se venderá más rápido!</span><br><br>
                             
                 <label for="img1">imagen #1</label>
@@ -227,7 +278,7 @@
               
         </div>
           <div id="foo">
-            <paper-button id="butt" on-tap="{{valid}}">Continuar y publicar</paper-button>
+            <paper-button id="butt" on-tap="{{validates}}">Continuar y publicar</paper-button>
           </div>
         
         </section>     
@@ -240,43 +291,81 @@
         Polymer({
           
                 ready:function(){
-                  this.categories=[
-                    {name :'Primaria'},
-                    {name :'Secundaria'},
-                    {name :'Bachillerato'},
-                    {name :'Universidad'},
-                    {name :'Oposiciones'},
-                    {name :'formacion rofesional'}
-                  ];
+                    
+                    
+               
+                   
                   
                 },
-            
-                validates: function(){
+           
+                validateIsbn:function(e){
+                  
+                  
+                  
+                   var isbn=this.$.isbn;
+                   
+                
+                   
+                   if(isbn.validity.valid){
+                     if(validator.isISBN(isbn.value)){
+                        this.$.divisbn.hidden=!this.$.divisbn.hidden;
+                      this.$.decoisbn.isInvalid=false;
+         
+                      this.$.tisbn.value="El ISBN "+isbn.value+" es correcto ";
+                      this.$.ttitulo.value=" ";
+                       this.$.tautor.value="";
+                       this.$.timg.src="";
+                     
+
+                      var that=this;
+                      var book="https://www.googleapis.com/books/v1/volumes?q=isbn:"+isbn.value;
+                     
+                      $.getJSON(book,function(result){
+                       
+                       var titulo=result.items[0].volumeInfo.title;
+                       var autor=result.items[0].volumeInfo.authors;
+                       var imagen=result.items[0].volumeInfo.imageLinks.thumbnail;
+                       var isbn=result.items[0].volumeInfo.industryIdentifiers[0].identifier;           
+
+
+                       // Set the table td text
+                       that.$.tisbn.value="El ISBN   "+isbn+"  corresponde a:";
+                       that.$.ttitulo.value="Titulo:   "+titulo;
+                       that.$.tautor.value="Autor :    "+autor;
+                       that.$.timg.src=imagen;
+                     
+                     });
+                     }else{
+                       this.$.decoisbn.isInvalid=true;
+                       this.$.decoisbn.error="ISBN Invalid!";
+                       this.$.divisbn.hidden=true;
                  
-                  var genre=this.$.categoria.value;
-                  var province=this.$.provincia.value;
+                     }
+                  
+                     
+                    }else{
+                      this.$.decoisbn.isInvalid=true;
+                      this.$.decoisbn.error="ISBN is required!";
+                      this.$.divisbn.hidden=true;
+                    }
+                },
+                
+                validates: function(){
+                  if(this.valid()){
+                 
+                  var genre=this.$.cat.value;
+                  var province=this.$.pro.value;
                    var isbn=this.$.isbn.value;
                   var author=this.$.autor.value;
                   var publisher=this.$.editorial.value;
-                  var status=this.$.estado.value;
+                  var status=this.$.est.value;
                   var price=this.$.precio.value;
                   var title=this.$.titulo.value;
                   var description=this.$.descripcion.value;
-                 //-------------- 
-                  console.log(genre);
-                  console.log(province);
-                 console.log(isbn);
-                  console.log(author);
-                  console.log(publisher);
-                  console.log(status);
-                  console.log(price);
-                  console.log(title);
-                  console.log(description);
-                  
                   
                   //------------apiss/////
-                  
-                  $.post("http://172.16.100.72:8080/book",
+               
+                 $.post("http://localhost:8080/book",
                     {
                      genre : genre,
                     province : province,
@@ -291,32 +380,100 @@
                     function(data,status){
                       if (status){
                       alert("libro guardado correctamente " + status);
+                      location.reload();
                     }else{
                       alert("error al subir");
                     }
                      
                     });
             
-                  
+              }else{
+                this.valid();
+              }
                   
                 },
-                getdata:function(){
-                      var libros="http://172.16.100.72:8080/books";
-                      $.getJSON(libros,function(result){
-                        alert(result);
-                        console.log(result);
-                      });
-                     
-                },
+                
                 valid:function(){
-                  
-                  var $d=this.$.main.querySelectorAll('paper-input-decorator');
-                 // console.log(decorator);
-                   Array.prototype.forEach.call($d, function(d) {
-                    d.isInvalid = !d.querySelector('input').validity.valid;
-                    });
-                 var $f=this.$.main.querySelectorAll('paper-dropdown-menu');
-                  console.log($f[0].isSelected);
+                
+                var inn=this.$.main.querySelectorAll('input');
+                var flag=true;
+                 
+                for(var j=0;j<5;j++){             
+               
+                  if(inn[j].validity.valid==false){
+                    flag=false;
+                    
+                    }
+                }
+                 
+                var $d=this.$.main.querySelectorAll('paper-input-decorator');
+           
+                   for(var i=0;i<4;i++){
+                      $d[i].isInvalid = !$d[i].querySelector('input').validity.valid;
+                    
+                    
+                   }
+                   var code=this.$.isbn.value;
+                   
+                   console.log(code);
+                   if(this.$.isbn.validity.valid){
+                                        if(validator.isISBN(code)){
+                     console.log("isbn correcto");
+                     this.$.decoisbn.isInvalid=false;
+                   }else{
+                     flag=false;
+                     this.$.decoisbn.isInvalid=true;
+                     this.$.decoisbn.error="ISBN Invalid!";
+                     this.$.divisbn.hidden=true;
+                   }
+    
+                   }else{
+                     flag=false;
+                     this.$.decoisbn.isInvalid=true;
+                     this.$.decoisbn.error="ISBN required!";
+                     this.$.divisbn.hidden=true;
+                   }
+                   
+
+                
+    
+                      
+                      
+         
+    
+                   if(this.$.cat.value ==0){
+                        this.$.cate.isInvalid=true;
+                        flag=false;
+                        
+                      }else{
+                        this.$.cate.isInvalid=false;
+                       
+                      }
+                  if(this.$.pro.value ==0){
+                        this.$.provi.isInvalid=true;
+                        flag=false;
+                      }else{
+                        this.$.provi.isInvalid=false;
+                       
+                      
+                    }
+                  if(this.$.est.value ==0){
+                        this.$.esta.isInvalid=true;
+                        flag=false;
+                      }else{
+                        this.$.esta.isInvalid=false;
+                     
+                      }
+                  if(this.$.descripcion.value ==""){
+                    this.$.desc.isInvalid=true;
+                    flag=false;
+                  }else{
+                    this.$.desc.isInvalid=false;
+                    
+                  }
+                 
+                    return flag;
+                   
                 }
             
         });
