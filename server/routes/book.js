@@ -116,24 +116,28 @@ module.exports = function(app) {
  
   //PUT - Update a register already exists
   updateBook = function(req, res) {
-    console.log("PUT - /book/:id");
+    console.log("PUT - /book/:isbn");
     console.log(req.body);
-     Book.findById(req.params.id, function(err, book) {
+        res.header('Access-Control-Allow-Origin', "*");     // TODO - Make this more secure!!
+        res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
+        res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
+   Book.findOne({isbn: req.params.isbn}, function(err,book) {
       if(!book) {
         res.statusCode = 404;
         res.send({ error: 'Not found' });
       }
  
-      if (req.body.author !== null) book.author = req.body.author;
-      if (req.body.year !== null) book.year = req.body.year;
-      if (req.body.publisher !== null) book.publisher = req.body.publisher; 
-      if (req.body.isbn !== null) book.isbn = req.body.isbn;
-      if (req.body.genre !== null) book.genre  = req.body.genre;
-      if (req.body.description !== null) book.description = req.body.description;
-      if (req.body.title !== null) book.title = req.body.title;
-      if (req.body.status !== null) book.status=req.body.status;
-      if (req.body.province !== null) book.province=req.body.province;
-      if (!req.body.price) book.price=req.body.price;
+      book.author = req.body.author;
+      book.year = req.body.year;
+      book.publisher = req.body.publisher; 
+      book.isbn = req.body.isbn;
+      book.genre  = req.body.genre;
+      book.description = req.body.description;
+      book.title = req.body.title;
+      book.status=req.body.status;
+      book.province=req.body.province;
+      book.price=req.body.price;
+  
  
      book.save(function(err) {
         if(!err) {
@@ -152,6 +156,7 @@ module.exports = function(app) {
  
         res.send(book);
       });
+   
     });
 
   };
@@ -159,6 +164,9 @@ module.exports = function(app) {
   //DELETE - Delete a Book with specified ID
   deleteBook = function(req, res) {
        console.log("DELETE - /book/:id");
+       res.header('Access-Control-Allow-Origin', "*");     // TODO - Make this more secure!!
+        res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE');
+        res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
      Book.findOne({isbn: req.params.isbn}, function(err,book) {
       if(!book) {
         res.statusCode = 404;
@@ -182,7 +190,7 @@ module.exports = function(app) {
   app.get('/books', findAllBooks);
   app.get('/book/:isbn', findByIsbn);
   app.post('/book', addBook);
-  app.put('/book/:id', updateBook);
+  app.put('/book/:isbn', updateBook);
   app.delete('/book/:isbn', deleteBook);
  
 };

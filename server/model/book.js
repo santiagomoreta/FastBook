@@ -6,7 +6,7 @@ var Images = new Schema({
         enum: ['thumbnail', 'detail'],
         required: true
     },
-    url: { type: String, required: true }
+    url: { type: String}
 });
 
 
@@ -15,7 +15,6 @@ var Book   = new Schema({
 	author: String,
         images:    [Images],
         title: String,
-        year: Number ,
         publisher:   String ,
         isbn:  Number ,
         genre: String,

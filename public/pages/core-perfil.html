@@ -1,82 +1,45 @@
 <polymer-element name="core-perfil">
 	<template>
 		<style>
-		:host {
-			position: absolute;
+        :host {
+            position: absolute;
             width: 100%;
             height: 100%;
             box-sizing: border-box;
-		}
-		section {
+        }
+        section {
 			margin: 20px;
 			background: rgba(8,46,64, 0.6);
-			padding: 20px;
+			padding-top: 10px;
 			border: 3px solid dimgray;
 			border-radius: 10px;
         }
 		paper-button {
-	        padding-top: 15px;
+			width: 100%;
+			height: 30px;
 	        background-image: url('../../../images/log.jpg');
 	        background-size: 100% 100%;
 	        background-repeat: no-repeat;
 	        color: white;
 	        font-weight: bold;
-	        margin-top: 20px;
-		}
-		#mi_perfil {
-            margin: 20px;
-            border-radius: 6px;
-            background: #fff;
-            width: 100%;
-		}
-		article {
-			width: 128px;
-			height: auto;
-			float: right;
-		}
-		figure {
-		}
-		.campos {
-			padding: 10px;
+	        margin: 10px 0px 0px 10px;
 		}
 		.icon {
-			height: 61px;
-			width: 61px;
-			border-radius: 0px 5px 5px 0px;
+			height: 60px;
+			width: 60px;
+			border-radius: 5px;
 			background: #F1F1F1;
-			margin-top: 10px;
-			margin-left: 0px;
-			margin-right: 10px;
-			margin-bottom: 10px;
+			margin-top: 20px;
+			margin-left: 20px;
+			margin-right: 0px;
+			margin-bottom: 20px;
 			color: rgba(8,46,64, 0.6);
 		}
 		.icon:hover {
 			background: rgba(8,46,64, 0.6);
 		}
 		paper-input {
-			border-radius: 5px 0px 0px 5px;
-			color: black;
-			width: 100%;
-			background: #F1F1F1;
-			padding: 15px 15px 15px 15px;
-			margin-top: 10px;
-			margin-left: 10px;
-			margin-right: 0px;
-			margin-bottom: 10px;
-		}
-		#butt {
-			width: 200px;
-			padding: 15px;
-			background-image: url('../../../images/log.jpg');
-			background-size: 100% 100%;
-			background-repeat: no-repeat;
-			color: white;
-			font-weight: bold;
-			margin: 20px;
-		}
-		#actualizar {
-			margin: 0 auto;
-			width: 200px;
+
 		}
 		h3 {
 			padding: 10px;
@@ -85,18 +48,16 @@
 			color: rgba(8,46,64, 0.6);
 		}
 		#avatar {
-			width: 230px;
-			margin: 0 auto;
 		}
 		#photo {
-			width: 150px;
-			height: 150px;
+			width: 100px;
+			height: 100px;
 			border-radius: 75px;
 		}
-		#icon-edit {
+		.icon-edit {
 			padding: 10px;
 			border-radius: 25px;
-			float: right;
+			display: inline;
 			height: 20px;
 			width: 20px;
 			color: rgba(8,46,64, 0.6);
@@ -105,117 +66,100 @@
 		#photo:hover {
 			opacity: 0.8;
 		}
-		#icon-edit:hover {
+		.icon-edit:hover {
 			background: rgba(8,46,64, 0.6);
 		}
-         .libros{
-        padding-right: 10%;
-        width:10%; 
-        height: 150px;
-        float:left;
-        margin-left: 5%;
-        margin-top: 2.8%;
-        margin-bottom: 1.5%;
-        
-      }
-           .content { /*se hara por cada fila de recomendados (solo haremos 3 filas o 4 como mucho)*/
-          padding-top: 1%;
-          height: 550px;
-          background-image: url('../images/bookshe.png');
-          background-size: 100% 32.59%;
+		.content { /*se hara por cada fila de recomendados (solo haremos 3 filas o 4 como mucho)*/
+			padding-top: 1%;
+			height: 550px;
+			background-image: url('../images/bookshe.png');
+			background-size: 100% 32.59%;
+		}
+        .rows {
+        	display: block;
+        	margin-top: 0px;
+			margin-left: 20px;
+			margin-right: 20px;
+			margin-bottom: 20px;
+        }
+        #campos {
+        	margin: 0px;
+        	width: 100%;
+        }
+        #actu {
+        	visibility: hidden;;
+        }
+        #botones {
+        	font-size: 14px;
+        	margin: 0px;
+        }
+        @media (max-width: 800px) {
+        	#photo {
+        		width: 50px;
+        		height: 50px;
+        	}
+        	paper-button {
+        		width: 100px;
+        	}
+        	.icon-edit {
+        		width: 10px;
+        		height: 10px;
+        	}
         }
 		</style>
 
 		<section vertical layout center flex>
-
-			<div id="mi_perfil">
-			<h3>Hello {{perfil.name}}!</h3>
-				<div id="avatar">
-					<img id="photo" src="https://lh5.googleusercontent.com/-GiF-k96QJZ0/Uk28qg27t-I/AAAAAAAAACE/JBQBACxCsLw/w561-h560-no/RSCN0370.JPG">
-					<core-icon id="icon-edit" icon="delete"></core-icon>
-					<core-icon id="icon-edit" icon="create"></core-icon>
+			<div horizontal layout center>
+				<div id="avatar" horizontal layout>
+					<img id="photo" src="{{perfil.photo}}">
+					<core-icon class="icon-edit" icon="delete"></core-icon>
+					<core-icon class="icon-edit" icon="create"></core-icon>
 				</div>
-
-				<div horizontal layout center flex class="campos">
-					<paper-input id="name" placeholder="{{perfil.name}}" disabled="true"></paper-input>
-					<core-icon class="icon" class="icon" icon="create" on-tap="{{edit}}"></core-icon>
+				<div id="botones" vertical layout>
+					<paper-button label="MODIFICAR" on-tap="{{edit}}"></paper-button>
+					<paper-button label="ACTUALIZAR" id="actu" on-tap="{{actualizar}}"></paper-button>
 				</div>
-				<div horizontal layout center flex class="campos">
-					<paper-input placeholder="{{perfil.lastName}}" disabled="true"></paper-input>
-					<core-icon class="icon" icon="create" on-tap="{{edit}}"></core-icon>
+			</div>
+			<div id="campos" horizontal layout>
+				<div class="rows" vertical layout flex>
+					<paper-input id="name" label="{{perfil.name}}" disabled="true"></paper-input>
+					<paper-input id="number" label="{{perfil.number}}" disabled="true"></paper-input>
 				</div>
-				<div horizontal layout center flex class="campos">
-					<paper-input placeholder="{{perfil.email}}" disabled="true"></paper-input>
-					<core-icon class="icon" icon="create" on-tap="{{edit}}"></core-icon class="icon">
+				<div class="rows" vertical layout flex>
+					<paper-input id="email" label="{{perfil.email}}" disabled="true"></paper-input>
+					<paper-input id="password" label="{{perfil.password}}" disabled="true"></paper-input>
 				</div>
-				<div horizontal layout center flex class="campos">
-					<paper-input placeholder="{{perfil.userName}}" disabled="true"></paper-input>
-					<core-icon class="icon" icon="create" on-tap="{{edit}}"></core-icon class="icon">
-				</div>
-				<div horizontal layout center flex class="campos">
-					<paper-input placeholder="{{perfil.password}}" disabled="true"></paper-input>
-					<core-icon class="icon" icon="create" on-tap="{{edit}}"></core-icon class="icon">
-				</div>
-				<div id="actualizar">
-					<paper-button id="butt">Actualizar</paper-button>
-				</div>
-			</div>		
+			</div>
+			<biblio-user></biblio-user>	
 		</section>
-    <div class="content" center-justified layout flex>
-			<template repeat="{{libro in libros}}">
-    	            <div class="libros">
-    	              <mi-libro class="lib" titulo="{{libro.titulo}}" imagen="{{libro.imagen}}"></mi-libro>
-    	          	</div> 
-                </template>
-		</div>	
+
 	</template>
 	<script>
-	(function() {
-		function getGoogleImage(isbn) {
-		
-			var that=this;
 
-        	var book="https://www.googleapis.com/books/v1/volumes?q=isbn:"+isbn;
-
-      
-        that.libros=[];
-         $.getJSON(book,function(result){
-         		var img =result.items[0].volumeInfo.imageLinks.thumbnail;
-         		var title=result.items[0].volumeInfo.title;
-         	
-
-        	that.libros.push(
-         	{titulo:title,imagen:img});
-           
-            
-
-         		
-		});
-     }
 
 		Polymer({
 			ready: function () {
-				/*this.perfil = {name: 'Carlos Andrés', lastName: 'García Maldonado', email: 'carlos@gmail.com', userName: 'charlie', password: '12345'};*/
-				var that=this;
+				this.perfil = {name: 'Carlos Andrés', lastName: 'García Maldonado', email: 'carlos@gmail.com', userName: 'charlie', password: '12345', photo: "https://lh5.googleusercontent.com/-GiF-k96QJZ0/Uk28qg27t-I/AAAAAAAAACE/JBQBACxCsLw/w561-h560-no/RSCN0370.JPG", number: 8276312097};
 	
-
-				$.get("http://172.16.100.72:8080/books",function(data){
-					
-					that.lib=data;
-			
-					for(var i=0;i<data.length;i++){
-					getGoogleImage.bind(that)(data[i].isbn);
-			
-					}
-							
-
-				});
 			},
 			edit: function() {
-				var edit = this.$.name;
-				edit.disabled = false;
+				this.$.actu.style.visibility="visible";
+				this.$.name.disabled=false;
+				this.$.email.disabled=false;
+				this.$.number.disabled=false;
+				this.$.password.disabled=false;
+			},
+			actualizar: function() {
+				if (this.$.name.value == "") {
+					this.$.name.label = perfil.name + "wdqwjn";
+					this.$.name.disabled=true;
+				} else {
+					perfil.name = this.$.name.value;
+					this.$.name.disabled=true;
+				}
+				this.$.actu.style.visibility="hidden";
 			}
 		});
-	}());
+
 	</script>
 </polymer-element>

@@ -8,7 +8,7 @@
             box-sizing: border-box;
 		}
 		section {
-			margin: 20px;
+			margin: 20px 40px 20px 0px;
 			background: rgba(8,46,64, 0.6);
 			padding: 20px;
 			border: 3px solid dimgray;
@@ -79,10 +79,11 @@
 			width: 200px;
 		}
 		h3 {
-			padding: 10px;
-			font-size: 26px;
+      color: #fff;
+      margin: 0px 0px 10px 0px;
+      padding: 0px;
+			font-size: 20px;
 			text-align: center;
-			color: rgba(8,46,64, 0.6);
 		}
 		#avatar {
 			width: 230px;
@@ -169,6 +170,7 @@
 
 
  <section>
+    <h3>My Books</h3>
     <div class="content" center-justified layout flex>
 			<template repeat="{{libro in libros}}">
     	            <div class="libros">
@@ -205,13 +207,13 @@
               <td>
                 <select id="cat" disabled>
                   <option value="0"> Seleccione Categoria</option>          
-                  <option >primaria </option>
-                  <option> secundaria</option>
-                  <option > bachillerato</option>
-                  <option> universidad</option>
-                  <option> formacion profesional</option>
-                  <option > oposiciones</option>
-                  <option  >lectura</option>
+                  <option value="primaria">primaria </option>
+                  <option value="secundaria"> secundaria</option>
+                  <option value="bachillerato"> bachillerato</option>
+                  <option value="universidad"> universidad</option>
+                  <option value="formacion profesional"> formacion profesional</option>
+                  <option value="oposiciones"> oposiciones</option>
+                  <option value="lectura" >lectura</option>
                 </select> 
                </td> 
             </tr> 
@@ -220,7 +222,7 @@
                 <paper-input class="modify"  id="tprovincia" disabled></paper-input>
               </td>
               <td>
-                <select  disabled>
+                <select id="province" disabled>
                   <option value="0"> Seleccione Provincia</option>      
                   <option> A Coruña</option>
                   <option> Alicante</option>
@@ -282,7 +284,7 @@
                    <paper-input class="modify"  id="testado" disabled></paper-input>
               </td>
               <td>
-                <select disabled> 
+                <select id="selest" disabled> 
                      <option value="0"> Seleccione estado</option>    
                     <option >Muy malo</option>
                     <option>Malo</option>
@@ -294,12 +296,12 @@
             </tr>
            </table> 
           
-                     <paper-button on-tap="{{modifyBooK}}">Modificar</paper-button>
+                     <paper-button id="modify" label="Modificar" on-tap="{{modifyBooK}}"></paper-button>
              
                   
-                     <paper-button on-tap="{{updateBook}}">Guardar</paper-button>
+                     <paper-button id="save" on-tap="{{updateBook}}">Guardar</paper-button>
            
-                     <paper-button on-tap="{{deleteBook}}">Borrar</paper-button>
+                     <paper-button  on-tap="{{deleteBook}}">Borrar</paper-button>
         
          
        </div>
@@ -358,71 +360,166 @@
 				edit.disabled = false;
 			},
       bookDetail:function(a,e,i){ 
-      
+       this.$.save.disabled=true;
         var d=this.$.dialog;
         var d2=this.$.dialog2;
-        d.hidden=false;      
-     $(d2).append('<mi-libro  imagen='+i.imagen+'>  </mi-libro');
-     
-      var book="http://172.16.100.72:8080/book/"+i.titulo;
-      
-      console.log(book);
-      
-      var that=this;
-      $.get(book,function(data){
-        
-        console.log(data);
-       that.$.ttitulo.value=data.book.title;
-       that.$.tautor.value=data.book.author;
-        that.$.tisbn.value=data.book.isbn;
-        that.$.teditorial.value=data.book.publisher;
-        that.$.tprecio.value=data.book.price+"$";
-        that.$.tdescription.value=data.book.description;
-        that.$.tcategoria.value=data.book.genre;
-        that.$.tprovincia.value=data.book.province;
-        that.$.testado.value=data.book.status;
-        
+          d.hidden=false;      
+       $(d2).append('<mi-libro  imagen='+i.imagen+'>  </mi-libro');
+
+        var book="http://172.16.100.72:8080/book/"+i.titulo;
+
+        console.log(book);
+
+        var that=this;
+        $.get(book,function(data){
+
+          console.log(data);
+         that.$.ttitulo.value=data.book.title;
+         that.$.tautor.value=data.book.author;
+          that.$.tisbn.value=data.book.isbn;
+          that.$.teditorial.value=data.book.publisher;
+          that.$.tprecio.value=data.book.price+"$";
+          that.$.tdescription.value=data.book.description;
+          that.$.tcategoria.value=data.book.genre;
+          that.$.tprovincia.value=data.book.province;
+          that.$.testado.value=data.book.status;
+
         
       });
    
         
+  
 
         
       },
       closeDialog:function(){
+             this.$.modify.label="Modificar";
          var d=this.$.dialog;
           var d2=this.$.dialog2;
         d.hidden=true;
           $(d2).empty();
+       var inn=this.shadowRoot.querySelectorAll('paper-input');
+         var sel=this.shadowRoot.querySelectorAll('select');
+         
+    for(var i=0;i<6;i++){
+          inn[i].disabled=true;
+        }
           
-      
+         for(var i=0;i<sel.length;i++){
+          sel[i].disabled=true;
+        }
   
        
       },
      
       modifyBooK:function(a,e,i){
         //alert("soy modifyBook");
+        this.$.save.disabled=false;
+        
+        this.$.modify.label="Confirmar";
        var inn=this.shadowRoot.querySelectorAll('paper-input');
        var sel=this.shadowRoot.querySelectorAll('select');
-
+       var tcategoria=this.shadowRoot.querySelector('#tcategoria');
+         var selecat=this.shadowRoot.querySelector('#cat');
+           var tprovincia=this.shadowRoot.querySelector('#tprovincia');
+         var selepro=this.shadowRoot.querySelector('#province');
+      var testado=this.shadowRoot.querySelector('#testado');
+         var selest=this.shadowRoot.querySelector('#selest');
+     
+         
+ 
         for(var i=0;i<6;i++){
           inn[i].disabled=false;
         }
-          for(var i=6;i<inn.length;i++){
-          inn[i].hidden=true;
-        }
+ 
          for(var i=0;i<sel.length;i++){
           sel[i].disabled=false;
         }
-        
+            console.log("soooy select     "+selecat);
+          console.log("soooy tcategoria    "+tcategoria);
+        if(selecat.value==0){
+            tcategoria.value=tcategoria.value;  
+        }else{
+          tcategoria.value=selecat.value;
+        }
+         if(selepro.value==0){
+            tprovincia.value=tprovincia.value;  
+        }else{
+          tprovincia.value=selepro.value;
+        }
+             if(selest.value==0){
+          testado.value=testado.value;  
+        }else{
+          testado.value=selest.value;
+        }
+       
         
       },
       updateBook:function(){
-        alert("holaaa updateee");
+        //alert("holaaa updateee");
+        var price=this.$.tprecio.value.replace(/[^\d]/g, '');
+
+        var book={
+         title: this.$.ttitulo.value,
+         author: this.$.tautor.value,
+         isbn: this.$.tisbn.value,
+         publisher: this.$.teditorial.value,
+         price: price,
+         description: this.$.tdescription.value,
+         genre: this.$.tcategoria.value,
+         province: this.$.tprovincia.value,
+         status: this.$.testado.value     
+        };
+        
+       var  jbook=JSON.stringify(book);
+       var url="http://172.16.100.72:8080/book/"+book.isbn;
+       console.log(url+"yoooo");
+        var that=this;
+           $.ajax({
+                type: "PUT",
+                url: url,
+                data: jbook,
+                contentType: "application/json; charset=utf-8",
+                success: function (result) {
+                    console.log(result+"    soy suceess");
+                    alert("libro modificado correctamente");
+                    that.disabledInputs();
+   
+            
+                },
+                error: function (xhr, ajaxOptions, thrownError) {
+                    alert(xhr.responseText);
+                    
+                }
+            });
+        
+    console.log(jbook);   
+        
+   
+        
       },
+      disabledInputs:function(){
+         var inn=this.shadowRoot.querySelectorAll('paper-input');
+         var sel=this.shadowRoot.querySelectorAll('select');
+         
+         for(var i=0;i<6;i++){
+          inn[i].disabled=true;
+         }
+          
+         for(var i=0;i<sel.length;i++){
+          sel[i].disabled=true;
+          }
+      },
+      perfil:function(){
+        var per=this.$;
+        console.log(this);
+        
+      },
+      
        deleteBook:function(){
          var titulo=this.$.tisbn;
-
+         console.log(titulo+"    de borrar");
+          var that=this;
           var answer = confirm("esta seguro qu quiere borrar el libro?"+titulo.value);
             if (answer){
               
@@ -435,7 +532,7 @@
                           data: { isbn: titulo.value },
                           success: function() {
                                alert("libro borrado!!     "+titulo.value);
-                                location.reload();
+                               location.reload();
                           }
                       });
              
