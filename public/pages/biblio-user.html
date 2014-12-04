@@ -168,7 +168,7 @@
 		</style>
 
 
- 
+ <section>
     <div class="content" center-justified layout flex>
 			<template repeat="{{libro in libros}}">
     	            <div class="libros">
@@ -309,7 +309,7 @@
 
       
   
-
+</section>
 	</template>
 	<script>
 	(function() {
@@ -341,7 +341,7 @@
 				var that=this;
 	
 
-				$.get("http://localhost:8080/books",function(data){
+				$.get("http://172.16.100.72:8080/books",function(data){
 					
 					that.lib=data;
 			
@@ -364,7 +364,7 @@
         d.hidden=false;      
      $(d2).append('<mi-libro  imagen='+i.imagen+'>  </mi-libro');
      
-      var book="http://localhost:8080/book/"+i.titulo;
+      var book="http://172.16.100.72:8080/book/"+i.titulo;
       
       console.log(book);
       
@@ -426,7 +426,7 @@
           var answer = confirm("esta seguro qu quiere borrar el libro?"+titulo.value);
             if (answer){
               
-              var book="http://localhost:8080/book/"+titulo.value;
+              var book="http://172.16.100.72:8080/book/"+titulo.value;
               
               
                           $.ajax({
