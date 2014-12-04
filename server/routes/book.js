@@ -118,6 +118,9 @@ module.exports = function(app) {
   updateBook = function(req, res) {
     console.log("PUT - /book/:isbn");
     console.log(req.body);
+        res.header('Access-Control-Allow-Origin', "*");     // TODO - Make this more secure!!
+        res.header('Access-Control-Allow-Methods', 'GET,PUT,POST');
+        res.header('Access-Control-Allow-Headers', 'Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept');
    Book.findOne({isbn: req.params.isbn}, function(err,book) {
       if(!book) {
         res.statusCode = 404;
