@@ -191,7 +191,7 @@
                 </paper-input-decorator>
                
                 <div id="button_e" tool center-justified horizontal layout display:flex>
-                  <paper-button id="ok" on-tap="{{ validateAll }}" class="accept" showing> LOGIN >> </paper-button> 
+                  <paper-button id="ok" on-tap="{{ validateAll }}{{perfil}}" class="accept" showing> LOGIN >> </paper-button> 
                 </div><br>
 
                 <paper-checkbox for> </paper-checkbox> <div class="remember"> Remember me </div>
@@ -244,6 +244,11 @@
   <script>
   
     Polymer({
+      perfil: function() {
+        var sell = this.$.page_account;
+        $(sell).empty();
+        $(sell).append("<core-perfil></core-perfil>");
+      },
 
       accept: function(){
         var decorator_name = this.$.name_register; //decorator name
@@ -318,12 +323,12 @@
           }
           
         }
-
+/*
         if ((user.validity.valid) && (pass.validity.valid) ) {
             alert("los datos recibidos son:" + user.value + ' '+ pass.value);
         }
         else { alert("datos erroneos");}
-        
+        */
 
 
       }
