@@ -8,7 +8,7 @@
             box-sizing: border-box;
 		}
 		section {
-			margin: 20px;
+			margin: 20px 40px 20px 0px;
 			background: rgba(8,46,64, 0.6);
 			padding: 20px;
 			border: 3px solid dimgray;
@@ -79,10 +79,11 @@
 			width: 200px;
 		}
 		h3 {
-			padding: 10px;
-			font-size: 26px;
+      color: #fff;
+      margin: 0px 0px 10px 0px;
+      padding: 0px;
+			font-size: 20px;
 			text-align: center;
-			color: rgba(8,46,64, 0.6);
 		}
 		#avatar {
 			width: 230px;
@@ -169,6 +170,7 @@
 
 
  <section>
+    <h3>My Books</h3>
     <div class="content" center-justified layout flex>
 			<template repeat="{{libro in libros}}">
     	            <div class="libros">
