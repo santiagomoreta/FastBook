@@ -510,10 +510,16 @@
           sel[i].disabled=true;
           }
       },
+      perfil:function(){
+        var per=this.$;
+        console.log(this);
+        
+      },
       
        deleteBook:function(){
          var titulo=this.$.tisbn;
-
+         console.log(titulo+"    de borrar");
+          var that=this;
           var answer = confirm("esta seguro qu quiere borrar el libro?"+titulo.value);
             if (answer){
               
@@ -526,7 +532,7 @@
                           data: { isbn: titulo.value },
                           success: function() {
                                alert("libro borrado!!     "+titulo.value);
-                                location.reload();
+                               location.reload();
                           }
                       });
              

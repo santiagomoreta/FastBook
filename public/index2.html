@@ -201,17 +201,9 @@
       <div class="header">
         <core-toolbar id="title-bar"> 
                 <div id="title" flex > FASTBOOK </div> <!-- aqui va fastbook -->
-                        <div id="boton" horizontal end-justified layout>
-                          <core-menu-button>
-
-                                <template repeat="{{page in pages}}">
-                                  <core-item onclick="color(this);" label="{{page.name}}"></core-item>
-                                </template>
-
-                          </core-menu-button>
-                        </div>
-             
-
+                        
+                <a href="#login">Sign In/Register</a>
+  
         </core-toolbar>
       </div> 
 
@@ -260,7 +252,7 @@
     
 function color(them){
     
-    $("#theme").attr("href", "components/polymer-themes/"+them.label+"/theme.css");
+    location.hash(#account);
    
 }
   
