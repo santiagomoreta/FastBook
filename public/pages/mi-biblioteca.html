@@ -163,6 +163,101 @@
         }
       }
 
+      #popup{
+      position:fixed;
+      top:0px;
+      left:0px;
+      width:100%;
+      height:100%;
+      background: rgba(0, 0, 0, 0.7);
+      -webkit-transition: all 1s ease;
+      -moz-transition: all 1s ease;
+      -ms-transition: all 1s ease;
+      transition: all 1s ease;
+      }
+
+      #dialog{
+          position: absolute;
+          position:fixed;
+          margin-left:18%;
+          margin-right:20%;
+          margin-top:0%;
+          margin-bottom: 10%;
+          width: 820px;
+          height:500px;
+          border: 1px solid black;
+          background: rgba(8,46,64, 0.98);
+          border-radius: 7px;
+          padding: 10px;
+        }
+      
+      #optionButtons{
+            position:relative;
+      }
+
+      .modify {
+        background-color: transparent;
+        color:white;
+        margin:0px;
+        padding: 0px;
+        color: transparent;
+        font-size: 25px;
+        text-decoration: none;
+      }
+     .accept {
+        padding-top: -10px;
+        margin-top: 10px;
+        margin-right: 20px;
+        margin-bottom: 15px;
+       
+        height: 40px;
+        font-size: 15px;
+        background-image: url('../images/log.jpg');
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        color: white;
+        font-weight: bold;
+      }
+      #detail_book {
+        
+      }
+      #dialog2{
+        float: left;
+        margin-right: 50px;
+      }
+      label {
+        color: cadetblue;
+        float: left;
+        font-size: 20px;
+        font-weight: bold;;
+      }
+      img {
+        width: 20px;
+        height:20px;
+        text-align: right;
+      }
+      table{
+        width: 300px;
+      }
+      #tprecio {
+        width: 50px;
+        color: transparent;
+      }
+      paper-input /deep/ input {
+        color: lavender;
+      }
+      paper-input /deep/ input #ttitulo {
+        color: azure;
+      }
+      #ttitulo {
+        text-align: center;
+        font-size: 30px;
+        font-weight: bold;
+      }
+      #close:hover{
+        clear: both;
+      
+      }
     </style>
     <section tool center-justified vertical layout flex>
       <div class="page" center-justified layout flex>
@@ -171,52 +266,208 @@
             <div class="content" center-justified layout flex>
                 <template repeat="{{libro in libros}}">
     	            <div class="libros">
-    	              <mi-libro class="lib" titulo="{{libro.titulo}}" imagen="{{libro.imagen}}"></mi-libro>
+    	              <mi-libro class="lib" titulo="{{libro.titulo}}" imagen="{{libro.imagen}}" on-tap="{{bookDetail}}"></mi-libro>
     	          	</div> 
                 </template>
-              
+                    
+              <div id="popup" hidden>  
+              <paper-button on-tap="{{closeDialog}}"> <img src="../images/close.png"> </paper-button>
+                <div id="dialog" hidden>
+
+                <table>
+                  <tr>
+                    <td colspan="4"> <paper-input class="modify" id="ttitulo" disabled ></paper-input> </td>
+                    <td><paper-input id="tprecio" disabled></paper-input></td>
+                  
+                  </tr>
+                  <tr>
+                    <td rowspan="4"> <div id="dialog2" ></div></td>
+                    <td> <label> Autor: </label>  </td>
+                    <td colspan="2"> <paper-input class="modify" id="tautor" disabled></paper-input> </td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td> <label>Editorial:</label> </td>
+                    <td colspan="2"> <paper-input class="modify" id="teditorial" disabled></paper-input> </td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td><label>Isbn: </label> </td>
+                    <td colspan="2"><paper-input class="modify" id="tisbn" disabled> </paper-input> </td>
+                    <td></td>
+                  </tr>
+                   <tr>
+                    <td><label>Categoria: </label> </td>
+                    <td colspan="2"><paper-input class="modify" id="tcategoria" disabled> </paper-input> </td>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td colspan="3"><label> Description: </label> </td>
+                  </tr>
+                  <tr>
+                    <td colspan="3"><paper-input class="modify" id="tdescription" disabled> </paper-input> </td>
+                    </td>
+               
+                </table>
+
+                <div id="button_e" tool center-justified horizontal layout display:flex>
+                  <paper-button id="ok" on-tap="{{ validatiieAll }}" class="accept" showing> Buy </paper-button> 
+                  <paper-button id="ok" on-tap="{{ validatiieAll }}" class="accept" showing> Like </paper-button> 
+                  <paper-button id="ok" on-tap="{{ validatiieAll }}" class="accept" showing> Favorite </paper-button> 
+                </div>
+
+                
+             
+                </div> 
+              </div> <!--fin popup-->
+
             </div>
             <div class="footer"> </div>
-        </div>  
+        </div> 
+         
+
+    </div>
+
+
     </div>
     
     </section>
   </template>
   <script>
+(function() {
+    function getGoogleImage(isbn) {
+    
+      var that=this;
 
+          var book="https://www.googleapis.com/books/v1/volumes?q=isbn:"+isbn;
 
+      
+        that.libros=[];
+         $.getJSON(book,function(result){
+            var img =result.items[0].volumeInfo.imageLinks.thumbnail;
+
+          that.libros.push(
+          {titulo:isbn,imagen:img});
+        
+        });
+     };
+ 
+         
     Polymer({
-        	ready: function () {
-            
-                /*    
-	           this.libros=[
+      ready: function () {
+        /*this.perfil = {name: 'Carlos Andrés', lastName: 'García Maldonado', email: 'carlos@gmail.com', userName: 'charlie', password: '12345'};*/
+        var that=this;
+  
 
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=uFI8Kmx3a0oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=di-5bhX94zwC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=PgNbEmEhXewC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks7.books.google.es/books?id=qbfjn5VtQqgC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=uFI8Kmx3a0oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=1EwPAwAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=uFI8Kmx3a0oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=2mhNrHch2pYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=NynQQGQbglYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=hwDKc6ocEt0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=uFI8Kmx3a0oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=2mhNrHch2pYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=NynQQGQbglYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=hwDKc6ocEt0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=hwDKc6ocEt0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=uFI8Kmx3a0oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=2mhNrHch2pYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=NynQQGQbglYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"},
-               {titulo:"kfc" , imagen:"http://bks4.books.google.es/books?id=hwDKc6ocEt0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"}
-               
-               
-	            ];*/
+        $.get("http://172.16.100.72:8080/books",function(data){
+          
+          that.lib=data;
+      
+          for(var i=0;i<data.length;i++){
+          getGoogleImage.bind(that)(data[i].isbn);
+      
+          }
               
-           
-	        }
-    });
-  </script>
 
+        });
+      },
+      edit: function() {
+        var edit = this.$.name;
+        edit.disabled = false;
+      },
+
+      bookDetail:function(a,e,i){ 
+        var backg = this.$.popup;
+        var d=this.$.dialog;
+        var d2=this.$.dialog2;
+        backg.hidden=false;
+        d.hidden=false;      
+     $(d2).append('<mi-libro  imagen='+i.imagen+'>  </mi-libro');
+     
+      var book="http://172.16.100.72:8080/book/"+i.titulo;
+      
+      console.log(book);
+      
+      var that=this;
+      $.get(book,function(data){
+        
+        console.log(data);
+       that.$.ttitulo.value=data.book.title;
+       that.$.tautor.value=data.book.author;
+        that.$.tisbn.value=data.book.isbn;
+        that.$.teditorial.value=data.book.publisher;
+        that.$.tprecio.value=data.book.price+" €";
+        that.$.tdescription.value=data.book.description;
+        that.$.tcategoria.value=data.book.genre;
+        that.$.tprovincia.value=data.book.province;
+        that.$.testado.value=data.book.status;
+        
+        
+      });
+   
+        
+
+        
+      },
+      closeDialog:function(){
+          var backg = this.$.popup;
+          var d=this.$.dialog;
+          var d2=this.$.dialog2;
+          backg.hidden=true;
+          d.hidden=true;
+          $(d2).empty();
+          
+      
+  
+       
+      },
+     
+      modifyBooK:function(a,e,i){
+        //alert("soy modifyBook");
+       var inn=this.shadowRoot.querySelectorAll('paper-input');
+       var sel=this.shadowRoot.querySelectorAll('select');
+
+        for(var i=0;i<6;i++){
+          inn[i].disabled=false;
+        }
+          for(var i=6;i<inn.length;i++){
+          inn[i].hidden=true;
+        }
+         for(var i=0;i<sel.length;i++){
+          sel[i].disabled=false;
+        }
+        
+        
+      },
+      updateBook:function(){
+        alert("holaaa updateee");
+      },
+       deleteBook:function(){
+         var titulo=this.$.tisbn;
+
+          var answer = confirm("esta seguro qu quiere borrar el libro?"+titulo.value);
+            if (answer){
+              
+              var book="http://172.16.100.72:8080/book/"+titulo.value;
+              
+              
+                          $.ajax({
+                          type: 'DELETE',
+                          url: book,
+                          data: { isbn: titulo.value },
+                          success: function() {
+                               alert("libro borrado!!     "+titulo.value);
+                                location.reload();
+                          }
+                      });
+             
+             
+            }
+            else{
+              
+            }
+      }
+    });
+  }());
+  </script>
 </polymer-element>
