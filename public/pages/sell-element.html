@@ -146,7 +146,7 @@
               <input is="core-input" id="editorial"/>
              </paper-input-decorator>
               
-            <paper-input-decorator label="Precio" floatingLabel error="Precio is required!">
+            <paper-input-decorator label="Precio" floatingLabel error="Precio is required!" id="decoprecio">
               <input is="core-input" id="precio"  required/>
              </paper-input-decorator>
             
@@ -368,7 +368,7 @@
                   
                   //------------apiss/////
                
-                 $.post("http://172.16.100.72:8080/book",
+                 $.post("/book",
                     {
                      genre : genre,
                     province : province,
@@ -474,7 +474,17 @@
                     this.$.desc.isInvalid=false;
                     
                   }
-                 
+                  var precio=this.$.precio;
+                  
+                  if(validator.isNumeric(precio.value)){
+                  console.log("el precio es numerico      soy value precio");
+                    this.$.decoprecio.isInvalid=false;
+                }else{
+                  console.log("el precio no es numerico");
+                 this.$.decoprecio.isInvalid=true;
+                     this.$.decoprecio.error="price Invalid!";
+                     flag=false;
+                }
                     return flag;
                    
                 }

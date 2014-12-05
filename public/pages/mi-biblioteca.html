@@ -360,7 +360,7 @@
         var that=this;
   
 
-        $.get("http://172.16.100.72:8080/books",function(data){
+        $.get("/books",function(data){
           
           that.lib=data;
       
@@ -385,7 +385,7 @@
         d.hidden=false;      
      $(d2).append('<mi-libro  imagen='+i.imagen+'>  </mi-libro');
      
-      var book="http://172.16.100.72:8080/book/"+i.titulo;
+      var book="/book/"+i.titulo;
       
       console.log(book);
       
@@ -449,7 +449,7 @@
           var answer = confirm("esta seguro qu quiere borrar el libro?"+titulo.value);
             if (answer){
               
-              var book="http://172.16.100.72:8080/book/"+titulo.value;
+              var book="/book/"+titulo.value;
               
               
                           $.ajax({
