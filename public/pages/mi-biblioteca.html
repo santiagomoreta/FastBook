@@ -176,7 +176,7 @@
       transition: all 1s ease;
       }
 
-      #dialog{
+      #dialogo{
           position: absolute;
           position:fixed;
           margin-left:14%;
@@ -190,6 +190,7 @@
           /*background: rgba(8,46,64, 0.98);*/
           border-radius: 7px;
           padding: 10px;
+          z-index: 2;
         }
       
       #optionButtons{
@@ -209,7 +210,7 @@
         color: white;
         font-weight: bold;
       }
-      #dialog2{
+      #dialogo2{
         float: left;
         margin-right: 50px;
       }
@@ -232,21 +233,21 @@
         color: transparent;
       }
       paper-input /deep/ input {
-        color: dimgray;
+        color: black;
         font-family: Courier;
         font-weight: bold;
         text-shadow: #fff 0 0 4px, #fcffbb 0 0 20px;
         text-decoration: none;
         border-bottom-color: white;
       }
-      
+   
       paper-input{
             text-decoration: none;
             color:black;
             margin:0px;
             padding: 0px;
       }
-      
+
       #ttitulo {
         text-align: center;
         font-size: 30px;
@@ -270,7 +271,7 @@
         font-family: Courier;
         font-weight: bold;
         text-shadow: #fff 0 0 4px, #fcffbb 0 0 20px;
-        height: 200px;
+        height: 100px;
         resize: none;
       }
 
@@ -287,8 +288,8 @@
                 </template>
                     
               <div id="popup" hidden>  
-              <paper-button on-tap="{{closeDialog}}"> <img src="../images/close.png"> </paper-button>
-                <div id="dialog" hidden>
+              <paper-button on-tap="{{closedialogo}}"> <img src="../images/close.png"> </paper-button>
+                <div id="dialogo" hidden>
 
                 <table>
                   <tr>
@@ -297,7 +298,7 @@
                   
                   </tr>
                   <tr>
-                    <td rowspan="4"> <div id="dialog2" ></div></td>
+                    <td rowspan="4"> <div id="dialogo2" ></div></td>
                     <td> <label> Autor: </label>  </td>
                     <td colspan="2"> <paper-input class="modify" id="tautor" disabled></paper-input> </td>
                     <td></td>
@@ -393,8 +394,8 @@
 
       bookDetail:function(a,e,i){ 
         var backg = this.$.popup;
-        var d=this.$.dialog;
-        var d2=this.$.dialog2;
+        var d=this.$.dialogo;
+        var d2=this.$.dialogo2;
         backg.hidden=false;
         d.hidden=false;      
      $(d2).append('<mi-libro  imagen='+i.imagen+'>  </mi-libro');
@@ -424,10 +425,10 @@
 
         
       },
-      closeDialog:function(){
+      closedialogo:function(){
           var backg = this.$.popup;
-          var d=this.$.dialog;
-          var d2=this.$.dialog2;
+          var d=this.$.dialogo;
+          var d2=this.$.dialogo2;
           backg.hidden=true;
           d.hidden=true;
           $(d2).empty();
@@ -446,7 +447,7 @@
       },
       favorite:function(){
         //alert("Se ha marcado como favorito");
-        var imagep = this.$.dialog2;
+        var imagep = this.$.dialogo2;
 
         imagep.style.borderColor="2px solid red";
         console.log(imagep.style.borderColor="2px solid red");
