@@ -179,12 +179,12 @@
       #dialog{
           position: absolute;
           position:fixed;
-          margin-left:18%;
-          margin-right:20%;
-          margin-top:0%;
+          margin-left:14%;
+          margin-right:15%;
+          margin-top:-2%;
           margin-bottom: 10%;
-          width: 600px;
-          height: 500px;
+          width: 660px;
+          height: 520px;
           border: 1px solid black;
           background-color: white;
           /*background: rgba(8,46,64, 0.98);*/
@@ -209,19 +209,16 @@
         color: white;
         font-weight: bold;
       }
-      #detail_book {
-        
-      }
       #dialog2{
         float: left;
         margin-right: 50px;
       }
-      label, .modify {
+      label {
         color: cadetblue;
-        float: left;
         font-size: 20px;
         font-weight: bold;;
       }
+      
       img {
         width: 20px;
         height:20px;
@@ -235,21 +232,21 @@
         color: transparent;
       }
       paper-input /deep/ input {
-        color: green;
+        color: dimgray;
+        font-family: Courier;
+        font-weight: bold;
+        text-shadow: #fff 0 0 4px, #fcffbb 0 0 20px;
+        text-decoration: none;
+        border-bottom-color: white;
       }
-      paper-input /deep/ input #ttitulo {
-        color: green;
-      }
+      
       paper-input{
-            background-color: transparent;
+            text-decoration: none;
             color:black;
             margin:0px;
             padding: 0px;
-        }
-      input {
-        color: dimgray;
-        padding: 0px;
       }
+      
       #ttitulo {
         text-align: center;
         font-size: 30px;
@@ -257,8 +254,26 @@
       }
       #close:hover{
         clear: none;
-      
       }
+      .modify {
+        
+        font-size: 15px;
+        color: white;
+      }
+      .modify2{
+        font-size: 15px;
+        width: 108%;
+      }
+      textarea{
+        border: 0px solid white;
+        color: dimgray;
+        font-family: Courier;
+        font-weight: bold;
+        text-shadow: #fff 0 0 4px, #fcffbb 0 0 20px;
+        height: 200px;
+        resize: none;
+      }
+
     </style>
     <section tool center-justified vertical layout flex>
       <div class="page" center-justified layout flex>
@@ -306,15 +321,14 @@
                     <td colspan="3"><label> Description: </label> </td>
                   </tr>
                   <tr>
-                    <td colspan="3"><paper-input class="modify" id="tdescription" disabled> </paper-input> </td>
+                    <td colspan="3"><textarea rows="5" cols="100" class="modify2" id="tdescription"> </textarea> </td>
                     </td>
                
                 </table>
 
                 <div id="button_e" tool center-justified horizontal layout display:flex>
-                  <paper-button id="ok" on-tap="{{ validatiieAll }}" class="accept" showing> Buy </paper-button> 
-                  <paper-button id="ok" on-tap="{{ validatiieAll }}" class="accept" showing> Like </paper-button> 
-                  <paper-button id="ok" on-tap="{{ validatiieAll }}" class="accept" showing> Favorite </paper-button> 
+                  <paper-button id="ok" on-tap="{{ buy }}" class="accept" showing> Buy </paper-button> 
+                  <paper-button id="ok" on-tap="{{ favorite }}" class="accept" showing> Favorite </paper-button> 
                 </div>
 
                 
@@ -423,50 +437,20 @@
        
       },
      
-      modifyBooK:function(a,e,i){
-        //alert("soy modifyBook");
-       var inn=this.shadowRoot.querySelectorAll('paper-input');
-       var sel=this.shadowRoot.querySelectorAll('select');
-
-        for(var i=0;i<6;i++){
-          inn[i].disabled=false;
-        }
-          for(var i=6;i<inn.length;i++){
-          inn[i].hidden=true;
-        }
-         for(var i=0;i<sel.length;i++){
-          sel[i].disabled=false;
-        }
+      buy:function(a,e,i){
+        
+        alert("Su libro se añadira a su lista de compra");
+       
         
         
       },
-      updateBook:function(){
-        alert("holaaa updateee");
-      },
-       deleteBook:function(){
-         var titulo=this.$.tisbn;
+      favorite:function(){
+        //alert("Se ha marcado como favorito");
+        var imagep = this.$.dialog2;
 
-          var answer = confirm("esta seguro qu quiere borrar el libro?"+titulo.value);
-            if (answer){
-              
-              var book="/book/"+titulo.value;
-              
-              
-                          $.ajax({
-                          type: 'DELETE',
-                          url: book,
-                          data: { isbn: titulo.value },
-                          success: function() {
-                               alert("libro borrado!!     "+titulo.value);
-                                location.reload();
-                          }
-                      });
-             
-             
-            }
-            else{
-              
-            }
+        imagep.style.borderColor="2px solid red";
+        console.log(imagep.style.borderColor="2px solid red");
+
       }
     });
   }());
