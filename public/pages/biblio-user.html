@@ -198,7 +198,7 @@
         
           </div>
        <div id="der">
-          <paper-input class="modify"  id="tdescription" disabled></paper-input>
+          <textarea  rows="4" cols="30" class="modify"  id="tdescription" disabled></textarea>
           <table border="0">
             <tr>
               <td>
@@ -361,6 +361,7 @@
 			},
       bookDetail:function(a,e,i){ 
        this.$.save.disabled=true;
+       this.$.tdescription.disabled=true;
         var d=this.$.dialog;
         var d2=this.$.dialog2;
           d.hidden=false;      
@@ -415,6 +416,7 @@
       modifyBooK:function(a,e,i){
         //alert("soy modifyBook");
         this.$.save.disabled=false;
+        this.$.tdescription.disabled=false;
         
         this.$.modify.label="Confirmar";
        var inn=this.shadowRoot.querySelectorAll('paper-input');
@@ -501,7 +503,7 @@
       disabledInputs:function(){
          var inn=this.shadowRoot.querySelectorAll('paper-input');
          var sel=this.shadowRoot.querySelectorAll('select');
-         
+          this.$.tdescription.disabled=true;
          for(var i=0;i<6;i++){
           inn[i].disabled=true;
          }

@@ -215,16 +215,20 @@ Fallback
 .no-csstransforms3d .movie .info {
 	position: relative;
 }
+   #four{
+      visibility: hidden;
+    }
+
 
 /*************************************
 Media Queries
 **************************************/
+
 @media screen and (max-width: 1024px){
 
-    .stage{
-    
+    #four{
+      visibility: visible;
     }
-
 }
 
 @media screen and (max-width: 60.75em){
@@ -349,6 +353,26 @@ core-input {
 							</div>
 						</div>
 					</li>
+          <div id="four">
+                  <li class="scene">
+                    <div class="movie" onclick="return true">
+                      <div class="poster" id="po3"></div>
+                      <div class="info">
+                        <header id="head3">
+                          <h1>{{book1[cuatro].title}}</h1>
+                          <span class="year">ISBN:-{{book1[cuatro].isbn}}</span><br>
+                          <h3>PRECIO:-<span class="rating">{{book1[cuatro].price}}$</span></h3><br>
+                          <h3>CATEGORIA:-<span class="duration">{{book1[cuatro].genre}}</span></h3><br>
+                           <h3>ESTADO:-<span class="duration">{{book1[cuatro].status}}</span></h3>
+                        </header>
+                        <p>
+                          {{book1[cuatro].description}}
+                        </p>
+                      </div>
+                    </div>
+                  </li> 
+                  
+          </div>     
 
 
 				</ul>
@@ -367,6 +391,7 @@ this.book1=data;
 this.uno=data.length-1;
 this.dos=data.length-2;
 this.tres=data.length-3;
+this.cuatro=data.length-4;
 
 console.log(data.length+"leeeeen");
 
@@ -415,6 +440,19 @@ console.log(data.length+"leeeeen");
           	that.$.head2.style.backgroundColor='#0E2A53';
         });
         
+        	var book="https://www.googleapis.com/books/v1/volumes?q=isbn:"+data[this.cuatro].isbn;
+
+
+   
+     
+         $.getJSON(book,function(result){
+         var img =result.items[0].volumeInfo.imageLinks.thumbnail;
+         console.log(img);
+        //	that.$.es.style.backgroundImage='url("'+img+'")';
+     	//
+            that.$.po3.style.backgroundImage='url("'+img+'")';
+          	that.$.head3.style.backgroundColor='#0E2A53';
+        });
      
    
  
