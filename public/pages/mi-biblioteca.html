@@ -13,7 +13,7 @@
       height: 100%;
       color:#292215;
       font-size: 30px;
-
+      padding: 0px;
       }
 
       .titulo{
@@ -227,38 +227,25 @@
       }
       table{
         width: 600px;
+        height: auto;
+        border-collapse: collapse;
       }
       #tprecio {
         width: 50px;
         color: transparent;
-      }
-      paper-input /deep/ input {
-        color: black;
-        font-family: Courier;
-        font-weight: bold;
-        text-shadow: #fff 0 0 4px, #fcffbb 0 0 20px;
-        text-decoration: none;
-        border-bottom-color: white;
         padding: 0px;
-      }
-   
-      paper-input{
-            text-decoration: none;
-            color:black;
-            margin:0px;
-            padding: 0px;
       }
 
       #ttitulo {
         text-align: center;
-        font-size: 30px;
+        font-size: 20px;
         font-weight: bold;
       }
       #close:hover{
         clear: none;
       }
       .modify {
-        
+        padding: 0px;
         font-size: 15px;
         color: white;
       }
@@ -266,7 +253,13 @@
         font-size: 15px;
         width: 108%;
       }
-      textarea{
+      .modify, .modify2 {
+      	color: dimgray;
+        font-family: Courier;
+        font-weight: bold;
+        text-shadow: #fff 0 0 4px, #fcffbb 0 0 20px;
+      }
+      textarea, input{
         border: 0px solid white;
         color: dimgray;
         font-family: Courier;
@@ -292,7 +285,7 @@
               <paper-button on-tap="{{closedialogo}}"> <img src="../images/close.png"> </paper-button>
                 <div id="dialogo" hidden>
 
-                <table>
+                <table border="1">
                   <tr>
                     <td colspan="4"> <paper-input class="modify" id="ttitulo" disabled ></paper-input> </td>
                     <td><paper-input id="tprecio" disabled></paper-input></td>
