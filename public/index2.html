@@ -5,9 +5,9 @@
   <title>Fast-Book</title>
   <script src="./bower_components/platform/platform.js">
   </script>
-  <!--<link id="theme" rel="stylesheet" type="text/css" href="#"> -
+  <link id="theme" rel="stylesheet" type="text/css" href="#"> -
   <link href="//fonts.googleapis.com/css?family=Fredericka+the Great:400" rel="stylesheet" type="text/css">
-  <link href="//fonts.googleapis.com/css?family=Playball:400" rel="stylesheet" type="text/css"> -->
+  <link href="//fonts.googleapis.com/css?family=Playball:400" rel="stylesheet" type="text/css">
   <script src="http://code.jquery.com/jquery-1.9.1.js"></script>
 
   <!---------------------------------------------------->
@@ -81,9 +81,7 @@
         margin-left: 15%;
         margin-right: 15%;
         background-image: url('images/darkblue.jpg');
-        background-size: 100% 100%;
-       // background-color: #105D7F;
- 
+        background-size: 100% 100%; 
       }
 
 
@@ -123,7 +121,13 @@
       }
       a#log{
           color:white;
+          padding: 5px;
+          font-size: 10px;
           text-decoration: none;
+          border: 2px solid white;
+          background-image: url("/images/log.jpg");
+          background-repeat: no-repeat;
+          border-radius: 10px;
       }
 
       @media (max-width: 600px) {
@@ -178,6 +182,7 @@
         box-shadow: 0px 2px 0.5px white;
         position: absolute;
         z-index: -1;
+        width: 100%;
       }
 
       core-item {
@@ -196,6 +201,8 @@
         color: white;
         background-color: slategray;
       }
+
+
      
     </style>
   
@@ -215,10 +222,10 @@
       </div> 
 
       <div class="menu">
-          <menu-index horizontal center layouy flex></menu-index>
+          <menu-index horizontal center flex></menu-index>
 
       </div> 
-      <div class="footer">
+      <div class="footer" horizontal center layout>
         &copy; Copyright 2014 <br>
         Fast-book <br>
         Politica de Privacidad  <br>

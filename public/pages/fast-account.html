@@ -131,13 +131,14 @@
       #core_icon { margin-bottom: 10%; }
 
       @media (max-width: 600px) {
+        
         #section { margin: 0px;}
         h1 { margin-bottom: -10px; font-size: 20px;}
 
         #core_pages1, #core_pages2 {
           border-radius: 10px;
           width: 88%;
-          background-color: yellow;
+          background-color: azure;
           height: auto;
         }
 
@@ -191,7 +192,7 @@
                 </paper-input-decorator>
                
                 <div id="button_e" tool center-justified horizontal layout display:flex>
-                  <paper-button id="ok" on-tap="{{ validateAll }}{{perfil}}" class="accept" showing> LOGIN >> </paper-button> 
+                  <paper-button id="ok" on-tap="{{ validateAll }}" class="accept" showing> LOGIN >> </paper-button> 
                 </div><br>
 
                 <paper-checkbox for> </paper-checkbox> <div class="remember"> Remember me </div>
@@ -245,7 +246,7 @@
   
     Polymer({
       perfil: function() {
-    location.href="#account";
+        location.href="#account";
       },
 
       accept: function(){
@@ -321,12 +322,13 @@
           }
           
         }
-/*
+
         if ((user.validity.valid) && (pass.validity.valid) ) {
-            alert("los datos recibidos son:" + user.value + ' '+ pass.value);
+            //alert("los datos recibidos son:" + user.value + ' '+ pass.value);
+             this.perfil();
         }
-        else { alert("datos erroneos");}
-        */
+        
+        
 
 
       }
