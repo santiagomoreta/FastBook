@@ -46,6 +46,10 @@
 				margin-top:7%;
 				margin-bottom: 100px;
 			}
+      paper-item{
+          background-image: none;
+    
+      }
 			:host{
 				background-color: grey;
 			}
@@ -55,7 +59,8 @@
 			}
 			paper-item::shadow #icon {
 				color: white;
-				margin-left: 10px;
+       
+				//margin-left: 10px;
 			}
 			.paper{
 				font-size: 0px;
@@ -68,11 +73,11 @@
 				border-radius: 0px;
 				height: 36px;
 				margin-top: -5%;
-				background-image: url('../images/icon.png');
+				//background-image: url('../images/icon.png');
 				background-size:100% 110%;
 				background-repeat: no-repeat;
 			}
-		}
+		
 		.footer {
 			height: 80px;
 			background-color: white;
@@ -103,16 +108,16 @@
 			<core-animated-pages valueattr="hash" selected="{{route}}"
 			transitions="slide-from-right" id="animated">
 				<section hash="home" layout vertical center-center>
-					<book-animation></book-animation>
+					<book-animation id="bookAnimation"></book-animation>
 				</section>
 
 				<section hash="search" layout vertical center-center>
 					<core-search></core-search>
 				</section>
 
-				<section hash="buy" layout vertical center-center>
+				<section " hash="buy" layout vertical center-center>
 					<!--<buy-element></buy-element>-->
-					<mi-biblioteca></mi-biblioteca>
+					<mi-biblioteca id="buy"></mi-biblioteca>
 				</section>
 
 				<section hash="sell" layout vertical center-center>
@@ -144,6 +149,9 @@
 			this.route = this.route || 'home'; // Select initial route.
 		},
 		favoriteTapped: function (a, b, c) {
+      
+        this.$.bookAnimation.ready();
+         this.$.buy.ready();
 			var t = document.querySelector('menu-index').shadowRoot.querySelectorAll('paper-item');
 			// console.log(c.style);
 			for (var i = 0; i < t.length; i++) {
@@ -179,6 +187,7 @@
 				progress.secondaryProgress = 0;
 				clearInterval(myVar);
 			}
+      
 		}
 	});
 	</script>

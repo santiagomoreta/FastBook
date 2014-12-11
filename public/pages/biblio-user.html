@@ -180,7 +180,7 @@
 		
       
       
-      
+     
      <div id="dialog" hidden>
                  <div id="optionButtons">
                   <paper-button on-tap="{{closeDialog}}">regresar</paper-button>
@@ -307,8 +307,10 @@
        </div>
     
         </div>  
+        
+      
     </div>
-
+ 
       
   
 </section>
@@ -360,6 +362,7 @@
 				edit.disabled = false;
 			},
       bookDetail:function(a,e,i){ 
+  
        this.$.save.disabled=true;
        this.$.tdescription.disabled=true;
         var d=this.$.dialog;
@@ -534,7 +537,8 @@
                           data: { isbn: titulo.value },
                           success: function() {
                                alert("libro borrado!!     "+titulo.value);
-                               location.reload();
+                               that.ready();
+                               that.closeDialog();
                           }
                       });
              
