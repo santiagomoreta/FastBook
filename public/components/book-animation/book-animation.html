@@ -29,6 +29,7 @@
    border-radius: 10px;
    margin-top:7%;
    width: 920px;
+   height: 500px;
 }
 .stage {
 	list-style: none;
@@ -49,8 +50,10 @@ Build the scene and rotate on hover
             background: rgba(8,46,64, 0.6);
               margin: 20px;
               border: 3px solid dimgray;
+              
             
         }
+       
 	.scene {
 
  margin: 14px;
@@ -228,6 +231,10 @@ Media Queries
 
     #four{
       visibility: visible;
+ 
+    }
+    .container{
+             height: 850px;
     }
 }
 
@@ -276,7 +283,36 @@ core-input {
     margin-right: 0px;
     margin-bottom: 10px;
     color: rgba(8,46,64, 0.6);
-}      
+}       
+  section#pc{
+                visibility:visible;
+            } 
+  section#movil{
+      visibility: hidden;
+  }
+          
+          
+        @media (max-width: 800px) {
+   
+ 
+   
+          section{
+              margin:0px;
+              padding: 0px;
+          }
+          section#pc{
+              visibility: hidden;
+              width: 0px;
+          }
+           section#movil{
+              visibility: visible;
+          }
+           #four{
+            visibility: hidden;
+          }
+     
+        
+      }
       
       
 		</style>
@@ -285,8 +321,14 @@ core-input {
         <core-icon id="icon_search" icon="search"></core-icon>
         <core-input placeholder="Find a book..."></core-input>
         <paper-button id="butt">Search</paper-button>
-    </section>
-    <section horizontal layout flex >
+    </section >
+    <section id="movil" horizontal layout flex  >
+      
+      <mi-biblioteca></mi-biblioteca>
+      </section>
+
+    <section horizontal layout id="pc"  >
+    
       
       <div style="position: absolute;margin-left: 5%;"><h2><b>ULTIMOS LIBROS AÑADIDOS</b></h2></div>
 		<div class="container">
@@ -378,7 +420,9 @@ core-input {
 				</ul>
 			</div><!-- /wrapper -->
 		</div><!-- /container -->
+  
     </section>
+
       <center>
 	</template>
 <script>
@@ -407,6 +451,7 @@ console.log(data.length+"leeeeen");
      	//
             that.$.po0.style.backgroundImage='url("'+img+'")';
           	that.$.head0.style.backgroundColor='#0E2A53';
+            that.img1=img;
         });
         
         
