@@ -201,7 +201,7 @@
         resize: none;
       }
       textarea { 
-      	width: 600px;
+      	width: 500px;
     	height: 5em;
 	  }
       #imagen{
@@ -241,7 +241,11 @@
         	width: 70px;
         	height: 120px;
         	border: 2px solid whitesmoke;
-
+        }
+         mi-libro /deep/ img:hover {
+        	width: 70px;
+        	height: 120px;
+      
         }
 
         /* pop up */
@@ -314,7 +318,7 @@
     <section tool center-justified vertical layout flex>
       <div class="page" center-justified layout flex>
         <div class="body">
-          <div id="reco">Recomendados<br></div>
+          <div id="reco">LIBRARY<br></div>
             <div class="content" center-justified layout flex>
                 <template repeat="{{libro in libros}}">
     	            <div class="libros">
@@ -334,7 +338,7 @@
                   </tr>
                   <tr>
                     <td rowspan="4"  id="imagen"> <div id="dialogo2" ></div></td>
-                    <td class="desc"> <label> Autor: </label>  </td>
+                    <td class="desc"> <label> Author: </label>  </td>
                     <td colspan="2"> <paper-input class="modify" id="tautor" disabled></paper-input> </td>
                     <td></td>
                   </tr>
@@ -349,7 +353,7 @@
                     <td></td>
                   </tr>
                    <tr>
-                    <td class="desc"><label>Categoria: </label> </td>
+                    <td class="desc"><label>Category: </label> </td>
                     <td colspan="2"><paper-input class="modify" id="tcategoria" disabled> </paper-input> </td>
                     <td></td>
                   </tr>
@@ -475,7 +479,7 @@
      
       buy:function(a,e,i){
         
-        alert("Su libro se añadira a su lista de compra");
+        alert("The book is your shopping list will be added");
        
         
         
