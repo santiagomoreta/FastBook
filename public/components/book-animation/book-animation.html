@@ -290,12 +290,15 @@ core-input {
   section#movil{
       visibility: hidden;
   }
+  .book{
+    position:absolute;
+  }
           
           
         @media (max-width: 800px) {
    
  
-   
+        
           section{
               margin:0px;
               padding: 0px;
@@ -303,12 +306,39 @@ core-input {
           section#pc{
               visibility: hidden;
               width: 0px;
+              height: 0px;
           }
+          ul li {
+             width: 0px;
+              height: 0px;
+          }
+          .scene{
+         
+             width: 0px;
+              height: 0px;
+          }
+         .movie{
+             width: 0px;
+              height: 0px;
+          }
+         
+          .poster{   
+              width: 0px;
+              height: 0px;
+          }          
+      
            section#movil{
               visibility: visible;
           }
            #four{
             visibility: hidden;
+          }
+            .book{
+            position:relative;
+          }
+          html{
+            padding: 0px;
+            margin: 0px;
           }
      
         
@@ -324,13 +354,15 @@ core-input {
     </section >
     <section id="movil" horizontal layout flex  >
       
-      <mi-biblioteca></mi-biblioteca>
+         <mi-libro class="book" imagen="{{img1}}" titulo="{{book1[uno].title}}"></mi-libro>
+       <mi-libro class="book" imagen="{{img2}}" titulo="{{book1[dos].title}}"></mi-libro>
+        <mi-libro class="book" imagen="{{img3}}" titulo="{{book1[tres].title}}"></mi-libro>
       </section>
 
     <section horizontal layout id="pc"  >
     
       
-      <div style="position: absolute;margin-left: 5%;"><h2><b>ULTIMOS LIBROS AÑADIDOS</b></h2></div>
+      <div style="position: absolute;margin-left: 5%;"><h2><b>Latest Books</b></h2></div>
 		<div class="container">
 			<!-- Top Navigation -->
 

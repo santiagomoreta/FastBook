@@ -220,7 +220,7 @@
      
      <div id="dialog" hidden>
                  <div id="optionButtons">
-                  <paper-button on-tap="{{closeDialog}}">regresar</paper-button>
+                  <paper-button on-tap="{{closeDialog}}">return</paper-button>
               </div>
       
           <div id="izq">
@@ -243,7 +243,7 @@
               </td>
               <td>
                 <select id="cat" disabled>
-                  <option value="0"> Seleccione Categoria</option>          
+                  <option value="0"> Select Category</option>          
                   <option value="primaria">primaria </option>
                   <option value="secundaria"> secundaria</option>
                   <option value="bachillerato"> bachillerato</option>
@@ -260,7 +260,7 @@
               </td>
               <td>
                 <select id="province" disabled>
-                  <option value="0"> Seleccione Provincia</option>      
+                  <option value="0"> Select Province</option>      
                   <option> A Coruña</option>
                   <option> Alicante</option>
                   <option>Albacete</option>
@@ -322,7 +322,7 @@
               </td>
               <td>
                 <select id="selest" disabled> 
-                     <option value="0"> Seleccione estado</option>    
+                     <option value="0"> Select Status</option>    
                     <option >Muy malo</option>
                     <option>Malo</option>
                     <option>Normal</option>
@@ -333,12 +333,12 @@
             </tr>
            </table> 
           
-                     <paper-button id="modify" label="Modificar" on-tap="{{modifyBooK}}"></paper-button>
+                     <paper-button id="modify" label="Modify" on-tap="{{modifyBooK}}"></paper-button>
              
                   
-                     <paper-button id="save" on-tap="{{updateBook}}">Guardar</paper-button>
+                     <paper-button id="save" on-tap="{{updateBook}}">Save</paper-button>
            
-                     <paper-button  on-tap="{{deleteBook}}">Borrar</paper-button>
+                     <paper-button  on-tap="{{deleteBook}}">Delete</paper-button>
         
          
        </div>
@@ -434,7 +434,7 @@
         
       },
       closeDialog:function(){
-             this.$.modify.label="Modificar";
+             this.$.modify.label="Modify";
          var d=this.$.dialog;
           var d2=this.$.dialog2;
         d.hidden=true;
@@ -458,7 +458,7 @@
         this.$.save.disabled=false;
         this.$.tdescription.disabled=false;
         
-        this.$.modify.label="Confirmar";
+        this.$.modify.label="Confirm";
        var inn=this.shadowRoot.querySelectorAll('paper-input');
        var sel=this.shadowRoot.querySelectorAll('select');
        var tcategoria=this.shadowRoot.querySelector('#tcategoria');
@@ -524,7 +524,7 @@
                 contentType: "application/json; charset=utf-8",
                 success: function (result) {
                     console.log(result+"    soy suceess");
-                    alert("libro modificado correctamente");
+                    alert("Book Update¡¡¡");
                     that.disabledInputs();
    
             
@@ -562,7 +562,7 @@
          var titulo=this.$.tisbn;
          console.log(titulo+"    de borrar");
           var that=this;
-          var answer = confirm("esta seguro qu quiere borrar el libro?"+titulo.value);
+          var answer = confirm("Are you sure?");
             if (answer){
               
               var book="/book/"+titulo.value;
@@ -573,7 +573,7 @@
                           url: book,
                           data: { isbn: titulo.value },
                           success: function() {
-                               alert("libro borrado!!     "+titulo.value);
+                               alert("Book Deleted!     "+titulo.value);
                                that.ready();
                                that.closeDialog();
                           }

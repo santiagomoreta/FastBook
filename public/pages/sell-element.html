@@ -120,6 +120,26 @@
              textarea{
               width: 315px;
              }
+             
+           #contenido-izq{
+            position:relative;
+            width:100%;
+            margin-left: 0px;
+        
+            
+        }
+        #right{
+            position:relative;
+    
+            width:1000%;
+            margin-right: 0%;
+            margin-top: 0%;
+        } 
+           select{
+          height: 50px;
+          width: 90px;
+          margin-left: 80%;
+        }
          }
          
         </style>
@@ -129,24 +149,24 @@
             
             
 
-              <h1>Pon un libro a la venta, gratis y en solo unos minutos</h1>
+              <h1>Put a book for sale</h1>
             
 
          
             
-             <paper-input-decorator label="Titulo" floatingLabel error="Titulo is required!">
+             <paper-input-decorator label="Title" floatingLabel error="Title is required!">
               <input is="core-input" id="titulo" required/>
              </paper-input-decorator>
              
-              <paper-input-decorator label="Autor" floatingLabel error="Autor is required!">
+              <paper-input-decorator label="Author" floatingLabel error="Author is required!">
               <input is="core-input" id="autor" required/>
              </paper-input-decorator> 
 
-             <paper-input-decorator label="Editorial" floatingLabel error="Editorial is required!">
+             <paper-input-decorator label="Publisher" floatingLabel error="Publisher is required!">
               <input is="core-input" id="editorial"/>
              </paper-input-decorator>
               
-            <paper-input-decorator label="Precio" floatingLabel error="Precio is required!" id="decoprecio">
+            <paper-input-decorator label="Price" floatingLabel error="Price is required!" id="decoprecio">
               <input is="core-input" id="precio"  required/>
              </paper-input-decorator>
             
@@ -158,7 +178,7 @@
           
              <!-- <paper-button id="butt" on-tap="{{validateIsbn}}">Comprobar ISBN</paper-button>-->
              <paper-button id="butt" on-tap="{{validateIsbn}}">
-                Comprobar ISBN</paper-button>
+                Validate ISBN</paper-button>
              <div id="divisbn" hidden>
                
                <core-input id="tisbn" disabled></core-input>
@@ -173,11 +193,11 @@
             
           </div>
           <div id="right">
-            <paper-input-decorator label="Categoria" floatingLabel error="Categoria is required!" id="cate">
+            <paper-input-decorator label="Category" floatingLabel error="Category is required!" id="cate">
               <select id="cat" >
                
                    
-                  <option value="0"> Seleccione Categoria</option>          
+                  <option value="0"> Select Category</option>          
                 <option >primaria </option>
                 <option> secundaria</option>
                 <option > bachillerato</option>
@@ -193,9 +213,9 @@
                  </paper-input-decorator>   
             
             <br>
-            <paper-input-decorator label="Provincia" floatingLabel error="provincia is required!"id="provi" >
+            <paper-input-decorator label="Province" floatingLabel error="province is required!"id="provi" >
             <select id="pro">
-                 <option value="0"> Seleccione Provincia</option>      
+                 <option value="0"> Select Province</option>      
               <option> A Coruña</option>
               <option> Alicante</option>
                 <option>Albacete</option>
@@ -251,9 +271,9 @@
             </select>
             </paper-input-decorator>
             <br>
-            <paper-input-decorator label="Estado" floatingLabel error="Estado is required!" id="esta">
+            <paper-input-decorator label="Status" floatingLabel error="Status is required!" id="esta">
             <select id="est"> 
-                 <option value="0"> Seleccione estado</option>    
+                 <option value="0"> Select Status</option>    
                 <option >Muy malo</option>
                 <option>Malo</option>
                 <option>Normal</option>
@@ -263,7 +283,7 @@
             </paper-input-decorator><br>
             
        
-            <paper-input-decorator label="Descripcion" floatingLabel error="description is required!" id="desc">
+            <paper-input-decorator label="Description" floatingLabel error="description is required!" id="desc">
                 <textarea id="descripcion"rows="4" cols="50" required></textarea>
             </paper-input-decorator>  
          <!--   <span class="titulo">Añade algunas imágenes, ¡se venderá más rápido!</span><br><br>
@@ -281,7 +301,7 @@
               
         </div>
           <div id="foo">
-            <paper-button id="butt" on-tap="{{validates}}">Continuar y publicar</paper-button>
+            <paper-button id="butt" on-tap="{{validates}}">Continue y publish</paper-button>
           </div>
         
         </section>     
@@ -382,10 +402,10 @@
                     },
                     function(data,status){
                       if (status){
-                      alert("libro guardado correctamente " + status);
+                      alert("Book Save¡¡¡¡¡" + status);
                       location.reload();
                     }else{
-                      alert("error al subir libro");
+                      alert("error¡¡¡¡");
                     }
                      
                     });
