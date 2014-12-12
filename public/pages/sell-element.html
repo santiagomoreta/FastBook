@@ -348,14 +348,14 @@
                        var titulo=result.items[0].volumeInfo.title;
                        var autor=result.items[0].volumeInfo.authors;
                        var isbn=result.items[0].volumeInfo.industryIdentifiers[0].identifier;  
-                       var imagen=result.items[0].volumeInfo.imageLinks.thumbnail;
+                      that.imagen=result.items[0].volumeInfo.imageLinks.thumbnail;
 
 
                        // Set the table td text
                        that.$.tisbn.value="El ISBN   "+isbn+"  corresponde a:";
                        that.$.ttitulo.value="Titulo:   "+titulo;
                        that.$.tautor.value="Autor :    "+autor;
-                       that.$.timg.src=imagen;
+                       that.$.timg.src=that.imagen;
                      
                      });
                      }else{
@@ -385,7 +385,8 @@
                   var price=this.$.precio.value;
                   var title=this.$.titulo.value;
                   var description=this.$.descripcion.value;
-                  
+                  var that=this;
+                var imagen=this.$.timg.src;
                   //------------apiss/////
                
                  $.post("/book",
@@ -398,7 +399,8 @@
                     status : status,
                     price : price,
                     title : title,
-                    description : description
+                    description : description,
+                    imagen:imagen
                     },
                     function(data,status){
                       if (status){

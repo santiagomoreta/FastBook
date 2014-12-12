@@ -22,6 +22,7 @@ var Book   = new Schema({
         status:String,
         province:String,
          price: Number,
+         imagen:String,
         modified: { type: Date, default: Date.now }    
 });
 

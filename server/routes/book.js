@@ -89,6 +89,7 @@ module.exports = function(app) {
                 description : req.body.description,
                 status:req.body.status,
                 province:req.body.province,
+                imagen:req.body.imagen,
                 price: req.body.price
               
     });
@@ -136,6 +137,7 @@ module.exports = function(app) {
       book.title = req.body.title;
       book.status=req.body.status;
       book.province=req.body.province;
+      book.imagen=req.body.imagen;
       book.price=req.body.price;
   
  

@@ -354,9 +354,9 @@ core-input {
     </section >
     <section id="movil" horizontal layout flex  >
       
-         <mi-libro class="book" imagen="{{img1}}" titulo="{{book1[uno].title}}"></mi-libro>
-       <mi-libro class="book" imagen="{{img2}}" titulo="{{book1[dos].title}}"></mi-libro>
-        <mi-libro class="book" imagen="{{img3}}" titulo="{{book1[tres].title}}"></mi-libro>
+         <mi-libro class="book" imagen="{{book1[uno].imagen}}" titulo="{{book1[uno].title}}"></mi-libro>
+       <mi-libro class="book" imagen="{{book1[dos].imagen}}" titulo="{{book1[dos].title}}"></mi-libro>
+        <mi-libro class="book" imagen="{{book1[tres].imagen}}" titulo="{{book1[tres].title}}"></mi-libro>
       </section>
 
     <section horizontal layout id="pc"  >
@@ -469,9 +469,20 @@ this.dos=data.length-2;
 this.tres=data.length-3;
 this.cuatro=data.length-4;
 
+  this.$.po0.style.backgroundImage='url('+data[this.uno].imagen+')';
+  this.$.head0.style.backgroundColor='#0E2A53';
+   this.$.po1.style.backgroundImage='url('+data[this.dos].imagen+')';
+   this.$.head1.style.backgroundColor='#0E2A53';
+               this.$.po2.style.backgroundImage='url('+data[this.tres].imagen+')';
+          	this.$.head2.style.backgroundColor='#0E2A53';
+            
+                       this.$.po3.style.backgroundImage='url('+data[this.cuatro].imagen+')';
+          	this.$.head3.style.backgroundColor='#0E2A53';
+
+;
 console.log(data.length+"leeeeen");
 
-	var book="https://www.googleapis.com/books/v1/volumes?q=isbn:"+data[this.uno].isbn;
+/*	var book="https://www.googleapis.com/books/v1/volumes?q=isbn:"+data[this.uno].isbn;
 
 
       var that=this;
@@ -484,11 +495,11 @@ console.log(data.length+"leeeeen");
             that.$.po0.style.backgroundImage='url("'+img+'")';
           	that.$.head0.style.backgroundColor='#0E2A53';
             that.img1=img;
-        });
+        });*/
         
         
         //repitiendo codigooo-------------------------------
-        	var book="https://www.googleapis.com/books/v1/volumes?q=isbn:"+data[this.dos].isbn;
+      /*  	var book="https://www.googleapis.com/books/v1/volumes?q=isbn:"+data[this.dos].isbn;
 
 
      
@@ -501,9 +512,9 @@ console.log(data.length+"leeeeen");
             that.$.po1.style.backgroundImage='url("'+img+'")';
           	that.$.head1.style.backgroundColor='#0E2A53';
         });
-        //-----------------otra vez-----------------------
+        //-----------------otra vez-----------------------*/
         
-        	var book="https://www.googleapis.com/books/v1/volumes?q=isbn:"+data[this.tres].isbn;
+       /* 	var book="https://www.googleapis.com/books/v1/volumes?q=isbn:"+data[this.tres].isbn;
 
 
    
@@ -515,9 +526,9 @@ console.log(data.length+"leeeeen");
      	//
             that.$.po2.style.backgroundImage='url("'+img+'")';
           	that.$.head2.style.backgroundColor='#0E2A53';
-        });
+        });*/
         
-        	var book="https://www.googleapis.com/books/v1/volumes?q=isbn:"+data[this.cuatro].isbn;
+       /* 	var book="https://www.googleapis.com/books/v1/volumes?q=isbn:"+data[this.cuatro].isbn;
 
 
    
@@ -529,7 +540,7 @@ console.log(data.length+"leeeeen");
      	//
             that.$.po3.style.backgroundImage='url("'+img+'")';
           	that.$.head3.style.backgroundColor='#0E2A53';
-        });
+        });*/
      
    
  

@@ -211,7 +211,7 @@
     <div class="content" center-justified layout flex>
 			<template repeat="{{libro in libros}}">
     	            <div class="libros">
-    	              <mi-libro  class="lib" titulo="{{libro.titulo}}" imagen="{{libro.imagen}}" on-tap="{{bookDetail}}"></mi-libro>
+    	              <mi-libro  class="lib" titulo="{{libro.isbn}}" imagen="{{libro.imagen}}" on-tap="{{bookDetail}}"></mi-libro>
     	          	</div> 
       </template>
 		
@@ -354,42 +354,22 @@
 	</template>
 	<script>
 	(function() {
-		function getGoogleImage(isbn) {
 		
-			var that=this;
-
-        	var book="https://www.googleapis.com/books/v1/volumes?q=isbn:"+isbn;
-
-      
-        that.libros=[];
-         $.getJSON(book,function(result){
-         		var img =result.items[0].volumeInfo.imageLinks.thumbnail;
-
-        	that.libros.push(
-         	{titulo:isbn,imagen:img});
-     		
-        });
-     };
  
          
-         
-       
- 
+
 
 		Polymer({
 			ready: function () {
 				/*this.perfil = {name: 'Carlos Andrés', lastName: 'García Maldonado', email: 'carlos@gmail.com', userName: 'charlie', password: '12345'};*/
 				var that=this;
-	
+        
 
 				$.get("/books",function(data){
 					
-					that.lib=data;
+					that.libros=data;
 			
-					for(var i=0;i<data.length;i++){
-					getGoogleImage.bind(that)(data[i].isbn);
 			
-					}
 							
 
 				});
@@ -405,11 +385,11 @@
         var d=this.$.dialog;
         var d2=this.$.dialog2;
           d.hidden=false;      
-       $(d2).append('<mi-libro  imagen='+i.imagen+'>  </mi-libro');
-
+       $(d2).append('<mi-libro id="bbb" imagen='+i.imagen+' titulo='+i.titulo+'>  </mi-libro');
+this.imgg=i.imagen;
         var book="/book/"+i.titulo;
 
-        console.log(book);
+        console.log(i.titulo+"soy boook");
 
         var that=this;
         $.get(book,function(data){
@@ -500,6 +480,7 @@
       updateBook:function(){
         //alert("holaaa updateee");
         var price=this.$.tprecio.value.replace(/[^\d]/g, '');
+        console.log(this.$.bbb +"sooy imagen");
 
         var book={
          title: this.$.ttitulo.value,
@@ -510,8 +491,12 @@
          description: this.$.tdescription.value,
          genre: this.$.tcategoria.value,
          province: this.$.tprovincia.value,
-         status: this.$.testado.value     
+         status: this.$.testado.value,
+         imagen:this.imgg
+         
+        
         };
+        
         
        var  jbook=JSON.stringify(book);
        var url="/book/"+book.isbn;

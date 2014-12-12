@@ -322,7 +322,7 @@
             <div class="content" center-justified layout flex>
                 <template repeat="{{libro in libros}}">
     	            <div class="libros">
-    	              <mi-libro class="lib" titulo="{{libro.titulo}}" imagen="{{libro.imagen}}" on-tap="{{bookDetail}}"></mi-libro>
+    	              <mi-libro class="lib" titulo="{{libro.isbn}}" imagen="{{libro.imagen}}" on-tap="{{bookDetail}}"></mi-libro>
     	          	</div> 
                 </template>
                     
@@ -390,7 +390,7 @@
   </template>
   <script>
 (function() {
-    function getGoogleImage(isbn) {
+   /* function getGoogleImage(isbn) {
     
       var that=this;
 
@@ -406,7 +406,7 @@
         
         });
      };
- 
+ */
          
     Polymer({
       ready: function () {
@@ -416,12 +416,9 @@
 
         $.get("/books",function(data){
           
-          that.lib=data;
+          that.libros=data;
       
-          for(var i=0;i<data.length;i++){
-          getGoogleImage.bind(that)(data[i].isbn);
-      
-          }
+        console.log(that.libros[0].imagen+ "   soy lubrooo");
               
 
         });
@@ -437,7 +434,7 @@
         var d2=this.$.dialogo2;
         backg.hidden=false;
         d.hidden=false;      
-     $(d2).append('<mi-libro  imagen='+i.imagen+'>  </mi-libro');
+     $(d2).append('<mi-libro  imagen='+i.imagen+' titulo='+i.titulo+'>  </mi-libro');
      
       var book="/book/"+i.titulo;
       
