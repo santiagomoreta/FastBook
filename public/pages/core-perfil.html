@@ -39,7 +39,10 @@
 			background: rgba(8,46,64, 0.6);
 		}
 		paper-input {
-
+			color: white;
+		}
+		paper-input-decorator {
+			color: white;
 		}
 		h3 {
 			padding: 10px;
@@ -105,10 +108,6 @@
         		width: 10px;
         		height: 10px;
         	}
-          section{
-              margin:0px;
-              padding: 0px;
-          }
         }
 		</style>
 
@@ -126,12 +125,25 @@
 			</div>
 			<div id="campos" horizontal layout>
 				<div class="rows" vertical layout flex>
-					<paper-input id="name" label="{{perfil.name}}" disabled="true"></paper-input>
-					<paper-input id="number" label="{{perfil.number}}" disabled="true"></paper-input>
+
+					<paper-input-decorator id="d_name" label="{{perfil.name}}" floatingLabel error="Name is invalid!">
+						<input is="core-input" id="name" disabled="true"/>
+					</paper-input-decorator>
+
+					<paper-input-decorator id="d_number" label="{{perfil.number}}" floatingLabel error="Number is invalid!">
+						<input is="core-input" id="number" disabled="true"/>
+					</paper-input-decorator>
+
 				</div>
 				<div class="rows" vertical layout flex>
-					<paper-input id="email" label="{{perfil.email}}" disabled="true"></paper-input>
-					<paper-input id="password" label="{{perfil.password}}" disabled="true"></paper-input>
+
+					<paper-input-decorator id="d_email" label="{{perfil.email}}" floatingLabel error="Email is invalid!">
+						<input is="core-input" id="email" disabled="true"/>
+					</paper-input-decorator>
+
+					<paper-input-decorator id="d_password" label="{{perfil.password}}" floatingLabel error="Password is invalid!">
+						<input is="core-input" id="password" disabled="true"/>
+					</paper-input-decorator>
 				</div>
 			</div>
 			<biblio-user></biblio-user>	
@@ -139,11 +151,9 @@
 
 	</template>
 	<script>
-
-
 		Polymer({
 			ready: function () {
-				this.perfil = {name: 'Carlos Andrés', lastName: 'García Maldonado', email: 'carlos@gmail.com', userName: 'charlie', password: '12345', photo: "https://lh5.googleusercontent.com/-GiF-k96QJZ0/Uk28qg27t-I/AAAAAAAAACE/JBQBACxCsLw/w561-h560-no/RSCN0370.JPG", number: 8276312097};
+				this.perfil = {name: 'Carlos', email: 'carlos@gmail.com', userName: 'charlie', password: '12345', photo: "https://lh5.googleusercontent.com/-GiF-k96QJZ0/Uk28qg27t-I/AAAAAAAAACE/JBQBACxCsLw/w561-h560-no/RSCN0370.JPG", number: 655072180};
 	
 			},
 			edit: function() {
@@ -154,14 +164,35 @@
 				this.$.password.disabled=false;
 			},
 			actualizar: function() {
-				if (this.$.name.value == "") {
-					this.$.name.label = perfil.name + "wdqwjn";
-					this.$.name.disabled=true;
-				} else {
-					perfil.name = this.$.name.value;
-					this.$.name.disabled=true;
+				var name = this.$.name.value;
+				if(!name == '') {
+					var decorator_name = this.$.d_name;
+					if(name.match(/^[A-Za-záéíóúñ]{2,20}/g)) {
+						decorator_name.isInvalid = false;
+					} else {
+						decorator_name.isInvalid = true;
+					}
 				}
-				this.$.actu.style.visibility="hidden";
+
+				var number = this.$.number.value;
+				if(!number == '') {
+					var decorator_number = this.$.d_number;
+					if(number.match(/\b\d{9}/g)) {
+						decorator_number.isInvalid = false;
+					} else {
+						decorator_number.isInvalid = true;
+					}
+				}
+
+				var email = this.$.email.value;
+				if(!email == '') {
+					var decorator_email = this.$.d_email;
+					if(email.match(/^[_a-z0-9-]+(\.[_a-z0-9-]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,3})$/g)) {
+						decorator_email.isInvalid = false;
+					} else {
+						decorator_email.isInvalid = true;
+					}
+				}
 			}
 		});
 
