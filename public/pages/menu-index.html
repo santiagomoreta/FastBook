@@ -96,6 +96,10 @@
 	</style>
 
 	<div>
+    <paper-toast id="toast" class="capsule" text="Book Added¡¡¡" style="padding-right: 60px;">
+      <p id="t"></p>
+      <p id="a"></p>
+    </paper-toast>
 		<div id="menu">
 			<core-toolbar id="menu-bar">
 				<core-menu horizontal center layout flex id="coremenu" valueattr="hash" selected="{{route}}">
@@ -119,7 +123,7 @@
 					<core-search></core-search>
 				</section>
 
-				<section " hash="buy" layout vertical center-center>
+				<section  hash="buy" layout vertical center-center>
 					<!--<buy-element></buy-element>-->
 					<mi-biblioteca id="buy"></mi-biblioteca>
 				</section>
@@ -139,6 +143,7 @@
 		</div>
 	</div>
 	</template>
+   <script src="/socket.io/socket.io.js"></script>
 	<script>
 	Polymer({
 		ready: function () {
@@ -151,6 +156,24 @@
 			];
 
 			this.route = this.route || 'home'; // Select initial route.
+               this.socket=io();
+               var that=this;
+                    this.socket.on('chat message', function(msg){
+                    console.log(msg.title+"     okok");
+                    
+                    var toast=that.$.toast;
+                    console.log(toast);
+                    var tit=that.$.t;
+                    var aut=that.$.a;
+                    $(tit).text("Title: "+msg.title);
+                    $(aut).text("Author: "+msg.author);
+               
+                    toast.show();
+
+                    that.$.bookAnimation.ready();
+                    that.$.buy.ready();
+                    
+                  });
 		},
 		favoriteTapped: function (a, b, c) {
       

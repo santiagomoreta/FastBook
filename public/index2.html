@@ -14,7 +14,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.js"></script>
   <script type="text/javascript" src="./lib/validator-js/validator.min.js"></script>
   
-
+ <!-------------------SOCKET IO ---------------------------->
+  <script src="https://cdn.socket.io/socket.io-1.2.0.js"></script>
 
 
   <link rel="import" href="./bower_components/polymer/polymer.html">
@@ -38,7 +39,8 @@
   <link rel="import" href="pages/fast-account.html"> 
   <link rel="import" href="pages/core-search.html">
   
-<link rel="import" href="../../bower_components/paper-button/paper-button.html">
+<link rel="import" href="./bower_components/paper-button/paper-button.html">
+<link rel="import" href="./bower_components/paper-toast/paper-toast.html">
 
 
 
@@ -273,12 +275,14 @@
     
   </div>
 </body>
+
 </html>
+
 <script>
     
 
    //+------------------------------------------------------- 
-
+       
   
   //-----------------------------------------------------------------------------
      var template = document.querySelector('template[is="auto-binding"]');

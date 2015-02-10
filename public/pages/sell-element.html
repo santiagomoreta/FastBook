@@ -310,14 +310,28 @@
 
         
     </template>
+    
+    <script src="/socket.io/socket.io.js"></script>
+    
     <script>
         Polymer({
-          
+        
                 ready:function(){
-                    
-                    
+                        this.socket=io();
+                    this.socket.on('chat message', function(msg){
+                    console.log(msg.title+"     okok");
+                  });
                
                    
+                  
+                },
+                prueba:function(){
+                  
+                  var newbook={title:"okokokok", isbn:1354654654};
+                  
+                          this.socket.emit('chat message', newbook);
+                        return false;
+                        
                   
                 },
            
@@ -374,11 +388,12 @@
                 },
                 
                 validates: function(){
+            
                   if(this.valid()){
                  
                   var genre=this.$.cat.value;
                   var province=this.$.pro.value;
-                   var isbn=this.$.isbn.value;
+                  var isbn=this.$.isbn.value;
                   var author=this.$.autor.value;
                   var publisher=this.$.editorial.value;
                   var status=this.$.est.value;
@@ -386,11 +401,10 @@
                   var title=this.$.titulo.value;
                   var description=this.$.descripcion.value;
                   var that=this;
-                var imagen=this.$.timg.src;
+                  var imagen=this.$.timg.src;
                   //------------apiss/////
-               
-                 $.post("/book",
-                    {
+                  
+                  var newbook={
                      genre : genre,
                     province : province,
                      isbn : isbn,
@@ -401,10 +415,16 @@
                     title : title,
                     description : description,
                     imagen:imagen
-                    },
+                    };
+               
+                 $.post("/book",newbook
+                    ,
                     function(data,status){
                       if (status){
-                      alert("Book Save¡¡¡¡¡" + status);
+                           that.socket.emit('chat message', newbook);
+
+                           alert("Book Save¡¡¡¡¡" + status);
+                     
                       location.reload();
                     }else{
                       alert("error¡¡¡¡");

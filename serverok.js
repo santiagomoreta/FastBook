@@ -1,8 +1,12 @@
 var express=require('express');
+var app=express();
+var http = require('http').Server(app);
+var io = require('socket.io')(http);
 var bodyParser=require('body-parser');
+
 mongoose = require('mongoose');
 
-var app=express();
+
 //----estaticoo-----------
 app.use(express.static(__dirname + '/public'));
 
@@ -36,16 +40,25 @@ app.all("/*", function(req, res, next) {
 
 
 app.get('/', function(req, res) {
-  res.send("Hello world!");
+  res.sendfile("public/index2.html");
 });
 
 //-----------puertos
 var port     = process.env.PORT || 8080; // set our port
 
-app.listen(port);
-console.log('server running in ' + port+'   port');
 
+//socket io
+io.on('connection', function(socket){
+  socket.on('chat message', function(msg){
+    console.log(msg);
+    io.emit('chat message', msg);
 
+  });
+});
+
+http.listen(port, function(){
+  console.log('listening on *:' +port);
+});
 
 
 

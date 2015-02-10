@@ -1,0 +1,446 @@
+
+		
+
+	<!--	<link rel="stylesheet" type="text/css" href="css/normalize.css" />
+		<link rel="stylesheet" type="text/css" href="css/demo.css" />
+		<link rel="stylesheet" type="text/css" href="css/component.css" />-->
+		<script src="js/modernizr.custom.js"></script>-
+	
+	
+	<polymer-element name="animation-book">
+	<template>
+		<style>
+      
+     
+
+:host{
+
+	font-family: 'Lato', Arial, sans-serif;
+	color: #fff;
+  width:100%;
+  height:100%;
+}
+
+.wrapper {
+	//margin: 0 auto 100px auto;
+	//max-width: 960px;
+}
+.container{
+   border-radius: 10px;
+   margin-top:7%;
+   width: 920px;
+}
+.stage {
+	list-style: none;
+	padding: 0;
+}
+
+/*************************************
+Build the scene and rotate on hover
+**************************************/
+
+        section {
+
+            // background-color: #082E40;
+            border-radius: 10px;
+           //background-image: url('../../images/steel.jpg');
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            background: rgba(8,46,64, 0.6);
+              margin: 20px;
+              border: 3px solid dimgray;
+            
+        }
+	.scene {
+
+ margin: 14px;
+
+	}
+
+.scene {
+	//width: 260px;
+	//height: 400px;
+	
+	float: left;
+	-webkit-perspective: 1000px;
+	-moz-perspective: 1000px;
+	perspective: 1000px;
+}
+
+.movie {
+	width: 260px;
+	height: 400px;
+	-webkit-transform-style: preserve-3d;
+	-moz-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-transform: translateZ(-130px);
+	-moz-transform: translateZ(-130px);
+	transform: translateZ(-130px);
+	-webkit-transition: -webkit-transform 350ms;
+	-moz-transition: -moz-transform 350ms;
+	transition: transform 350ms;
+}
+
+.movie:hover {
+	-webkit-transform: rotateY(-78deg) translateZ(20px);
+	-moz-transform: rotateY(-78deg) translateZ(20px);
+	transform: rotateY(-78deg) translateZ(20px);
+}
+
+/*************************************
+Transform and style the two planes
+**************************************/
+
+.movie .poster, 
+.movie .info {
+	position: absolute;
+	width: 260px;
+	height: 400px;
+	background-color: #fff;
+	-webkit-backface-visibility: hidden;
+	-moz-backface-visibility: hidden;
+	backface-visibility: hidden;
+}
+
+.movie .poster  {
+	-webkit-transform: translateZ(130px);
+	-moz-transform: translateZ(130px);
+	transform: translateZ(130px);
+	background-size: cover;
+	background-repeat: no-repeat;
+}
+
+.movie .info {
+	-webkit-transform: rotateY(90deg) translateZ(130px);
+	-moz-transform: rotateY(90deg) translateZ(130px);
+	transform: rotateY(90deg) translateZ(130px);
+	border: 1px solid #B8B5B5;
+	font-size: 0.75em;
+}
+
+/*************************************
+Shadow beneath the 3D object
+**************************************/
+
+.csstransforms3d .movie::after {
+	content: '';
+	width: 260px;
+	height: 260px;
+	position: absolute;
+	bottom: 0;
+	box-shadow: 0 30px 50px rgba(0,0,0,0.3);
+	-webkit-transform-origin: 100% 100%;
+	-moz-transform-origin: 100% 100%;
+	transform-origin: 100% 100%;
+	-webkit-transform: rotateX(90deg) translateY(130px);
+	-moz-transform: rotateX(90deg) translateY(130px);
+	transform: rotateX(90deg) translateY(130px);
+	-webkit-transition: box-shadow 350ms;
+	-moz-transition: box-shadow 350ms;
+	transition: box-shadow 350ms;
+}
+
+.csstransforms3d .movie:hover::after {
+	box-shadow: 20px -5px 50px rgba(0,0,0,0.3);
+}
+
+/*************************************
+Movie information
+**************************************/
+
+.info header {
+	color: #FFF;
+	padding: 7px 10px;
+	font-weight: bold;
+	height: 195px;
+	background-size: contain;
+	background-repeat: no-repeat;
+	text-shadow: 0px 1px 1px rgba(0,0,0,1);
+}
+
+.info header h1 {
+	margin: 0 0 2px;
+	font-size: 1.4em;
+}
+
+.info header .rating {
+	border: 1px solid #FFF;
+	padding: 0px 3px;
+}
+
+.info p {
+	//padding: 1.2em 1.4em;
+	margin: 2px 0 0;
+	font-weight: 700;
+	color: #666;
+	line-height: 1.4em;
+	border-top: 10px solid #555;
+}
+
+/*************************************
+Generate "lighting" using box shadows
+**************************************/
+
+.movie .poster,
+.movie .info,
+.movie .info header {
+	-webkit-transition: box-shadow 350ms;
+	-moz-transition: box-shadow 350ms;
+	transition: box-shadow 350ms;
+}
+
+.csstransforms3d .movie .poster {
+	box-shadow: inset 0px 0px 40px rgba(255,255,255,0);
+}
+
+.csstransforms3d .movie:hover .poster {
+	box-shadow: inset 300px 0px 40px rgba(255,255,255,0.8);
+}
+
+.csstransforms3d .movie .info, 
+.csstransforms3d .movie .info header {
+	box-shadow: inset -300px 0px 40px rgba(0,0,0,0.5);
+}
+
+.csstransforms3d .movie:hover .info, 
+.csstransforms3d .movie:hover .info header {
+	box-shadow: inset 0px 0px 40px rgba(0,0,0,0);
+}
+
+/*************************************
+Posters and still images
+**************************************/
+
+.scene:nth-child(1) .movie .poster {
+  
+}
+
+.scene:nth-child(2) .poster {
+  
+}
+
+.scene:nth-child(3) .poster {
+
+}
+
+.scene:nth-child(1) .info header {
+	
+}
+
+.scene:nth-child(2) .info header {
+
+}
+
+.scene:nth-child(3) .info header {
+	
+}
+
+/*************************************
+Fallback
+**************************************/
+.no-csstransforms3d .movie .poster, 
+.no-csstransforms3d .movie .info {
+	position: relative;
+}
+
+/*************************************
+Media Queries
+**************************************/
+
+@media screen and (max-width: 60.75em){
+	.scene {
+		float: center;
+    
+		
+	}
+}
+
+core-input {
+    color: black;
+    width: 100%;
+    background: #F1F1F1;
+    padding: 15px 15px 15px 0px;
+    margin-top: 10px;
+    margin-left: 0px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+}
+
+#butt {
+    padding-top: 15px;
+    vertical-align: middle;
+    background-image: url('../../images/log.jpg');
+    border-radius: 0px 5px 5px 0px;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    color: white;
+    font-weight: bold;
+    margin-top: 10px;
+    margin-left: 0px;
+    margin-right: 10px;
+    margin-bottom: 10px;
+}
+#icon_search {
+    border-radius: 5px 0px 0px 5px;
+    background: #F1F1F1;
+    margin: 10px;
+    width: 51px;
+    height: auto;
+    padding: 15px 0px 15px 15px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 0px;
+    margin-bottom: 10px;
+    color: rgba(8,46,64, 0.6);
+}      
+      
+      
+		</style>
+
+ 
+      
+
+		<div class="container">
+			<!-- Top Navigation -->
+
+			<div class="wrapper">
+				<ul class="stage clearfix">
+          
+    
+              <li class="scene" id="es">
+                <div class="movie" id ="mo" onclick="return true">
+                  <div class="poster" id="po0" style=""></div>
+                  <div class="info">
+                    <header id="head0">
+
+                      <h1>{{book1[uno].title}}</h1>
+                      <span class="year">ISBN:-{{book1[uno].isbn}}</span><br>
+                      <h3>PRECIO :<span class="rating">{{book1[uno].price}}$</span></h3><br>
+                      <h3>CATEGORIA:  <span class="duration">{{book1[uno].genre}}</span></h3><br>
+                      <h3>ESTADO :<span class="year">{{book1[uno].status}}</span></h3>
+                    </header>
+
+                          <p>{{book1[uno].description}} </p>
+
+                  </div>
+                </div>
+              </li>
+
+				</ul>
+			</div><!-- /wrapper -->
+		</div><!-- /container -->
+
+  
+	</template>
+<script>
+
+     
+function getBooks(data){
+   
+this.book1=data;
+
+this.uno=data.length-1;
+this.dos=data.length-2;
+this.tres=data.length-3;
+
+console.log(data.length+"leeeeen");
+
+	var book="https://www.googleapis.com/books/v1/volumes?q=isbn:"+data[this.uno].isbn;
+
+
+      var that=this;
+     
+         $.getJSON(book,function(result){
+         var img =result.items[0].volumeInfo.imageLinks.thumbnail;
+         console.log(img);
+        //	that.$.es.style.backgroundImage='url("'+img+'")';
+     	//
+            that.$.po0.style.backgroundImage='url("'+img+'")';
+          	that.$.head0.style.backgroundColor='#0E2A53';
+        });
+        
+        
+        //repitiendo codigooo-------------------------------
+        	var book="https://www.googleapis.com/books/v1/volumes?q=isbn:"+data[this.dos].isbn;
+
+
+     
+     
+         $.getJSON(book,function(result){
+         var img =result.items[0].volumeInfo.imageLinks.thumbnail;
+         console.log(img);
+        //	that.$.es.style.backgroundImage='url("'+img+'")';
+     	//
+            that.$.po1.style.backgroundImage='url("'+img+'")';
+          	that.$.head1.style.backgroundColor='#0E2A53';
+        });
+        //-----------------otra vez-----------------------
+        
+        	var book="https://www.googleapis.com/books/v1/volumes?q=isbn:"+data[this.tres].isbn;
+
+
+   
+     
+         $.getJSON(book,function(result){
+         var img =result.items[0].volumeInfo.imageLinks.thumbnail;
+         console.log(img);
+        //	that.$.es.style.backgroundImage='url("'+img+'")';
+     	//
+            that.$.po2.style.backgroundImage='url("'+img+'")';
+          	that.$.head2.style.backgroundColor='#0E2A53';
+        });
+        
+     
+   
+ 
+    }
+    function seleccionar( zoo) {
+		
+          this.zoo = zoo;
+
+          var tamano = zoo.length;
+          var lote = new Array();
+
+          var indice = 0;
+          do {
+            var aleatorio = zoo[parseInt(Math.random()* tamano)];
+            if(lote.indexOf(aleatorio)!=-1){
+              continue;
+            }else{
+                      lote[indice]=aleatorio;
+                      indice++;
+                        }
+          } while(lote.length <3);
+          return lote;
+
+	}
+
+    Polymer({
+      
+      
+      ready: function() {
+       
+        
+        this.prueba=[{o:"olaaa",a:"adios"}];
+        
+        console.log(this);
+        this.books=[];
+        var that=this;
+        
+        $.get("/books",function(data){
+          //console.log(data);
+        that.milibro=  getBooks.bind(that)(data);
+        console.log(that.milibro);
+            
+          });
+          
+          
+        }
+        
+        
+        
+  
+
+    });
+  </script>
+</polymer-element>
